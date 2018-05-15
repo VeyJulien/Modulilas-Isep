@@ -1795,3 +1795,20 @@ input:checked + .slider:before {
     background-color: #f45765;
     color: white;
 }
+
+.save_container
+{
+    font-size: 14px;
+    color:white;
+    background-color: #f45765;
+    border:1px solid #f45764;
+    text-align:center;
+    cursor:pointer;
+    transition: .5s;
+}
+
+.save_container:hover
+{
+    background-color: white;
+    color:#f45765;
+}
