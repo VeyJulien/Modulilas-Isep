@@ -1787,3 +1787,11 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+/* END SWITCH */
+
+.activate_template
+{
+    background-color: #f45765;
+    color: white;
+}
