@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Menu</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link rel="icon" href="icon_website.gif" type="image/gif" sizes="16x16">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+</head>
+<body>
+    <div class="background">
+        
+        <div id="overlay" onclick="off()">
+            <div>
+                <i class="fas fa-times cross_overlay"></i>
+                <div class="overlay_text">Êtes-vous sûre de vouloir<br>vous déconnecter ?</div>
+                <div class="overlay_under_text">Tous les changements non enregistrés seront perdus.</div>
+                <div style="display:flex;" class="button_overlay"><a class="button_1">Rester</a><a href="index.html" class="button_1">Quitter</a></div>
+            </div>
+        </div>
+        
+        <div class="main_block">
+            <p class="title_project title_page">Module Creator</p>
+            
+            <div class="page">
+                
+                <ul class="list_template">
+                    <li id="empty_1" class="empty_space">Vide</li>
+                    <li id="box1" class="element_list_template"><div>Présentation</div><i type="button" onmousedown="move_block()"  class="fas fa-bars menu_icon_template"></i></li>
+                    
+                    <li id="empty_2" class="empty_space">Vide</li>
+                    <li id="box2" class="element_list_template"><div>Informations générales</div><i class="fas fa-bars menu_icon_template"></i></li>
+                    
+                    <li id="empty_3" class="empty_space">Vide</li>
+                    <li id="box2" class="element_list_template"><div>Objectifs Pédagogiques</div><i class="fas fa-bars menu_icon_template"></i></li>
+                    
+                    <li id="empty_4" class="empty_space">Vide</li>
+                    <li id="box2" class="element_list_template"><div>Modalités Pédagogiques</div><i class="fas fa-bars menu_icon_template"></i></li>
+                </ul>
+                
+            </div>
+        
+        <div class="lateral_menu">
+            <div class="menu_title">Menu</div>
+            
+            <ul class="button_list">
+                <a href="menu.html" class="link_button"><li class="button_menu">Ma Page</li><span class="bullet_notif">1</span></a>
+                <a href="create_module.html" class="link_button"><li class="button_menu">Créer un module</li></a>
+                <a href="find.html" class="link_button"><li class="button_menu">Chercher un module</li></a>
+                <a href="create_template.html" class="link_button"><li class="button_menu menu_select">Créer un template</li></a>
+                <a type="button" onclick="on()" class="link_button"><li class="button_menu" style="border-bottom:1px solid rgba(255,255,255,0.1);">Déconnexion</li></a>
+            </ul>
+            
+            <div class="info_menu">
+                <p>Session : Test<br>
+                Version : 1.0.0 ©</p>
+            </div>
+        </div>
+        
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+function on() {
+    document.getElementById("overlay").style.display = "block";
+    document.getElementsByClassName("main_block")[0].style.filter = "blur(7px)";
+}
+
+function off() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementsByClassName("main_block")[0].style.filter = "blur(0px)";
+}
+</script>
+
+<script type="text/javascript">
+        //<!-- Empêche la selection //-->
+                function ffalse()
+                {
+                        return false;
+                }
+                function ftrue()
+                {
+                        return true;
+                }
+                document.onselectstart = new Function ("return false");
+                if(window.sidebar)
+                {
+                        document.onmousedown = ffalse;
+                        document.onclick = ftrue;
+                }
+</script>
+
+<script type="text/javascript">
+
+document.getElementById("box1").addEventListener("mouseup", mouseUp);
+
+function mouseUp() {    
+    var bsDiv = document.getElementById("box1");
+    bsDiv.style.top = "0px";
+    window.addEventListener('mousemove', function(event){bsDiv.style.top = "0px"; bsDiv.style.cursor = "auto";}, false);
+    
+}
+    
+function move_block(){
+    var bsDiv = document.getElementById("box1");
+    
+    var x, y;
+    var y_initial = 0;
+    
+// On mousemove use event.clientX and event.clientY to set the location of the div to the location of the cursor:
+    
+    window.addEventListener('mousemove', function(event){
+        x = event.clientX;
+        y = event.clientY;
+        
+        y = y - 200;
+        
+        if ( typeof x !== 'undefined' )
+        {
+            /*bsDiv.style.left = x + "px";*/
+            bsDiv.style.top = y + "px";
+            bsDiv.style.cursor = "-webkit-grabbing";
+        }
+        
+        if(y > 50)
+        {
+            $(document).ready(function(){
+                
+                jQuery("#box2").prependTo(".list_template");
+                jQuery("#empty_2").prependTo(".list_template");
+
+            });
+        }
+        
+        if(y < 50)
+        {
+            jQuery("#box1").prependTo(".list_template");
+            jQuery("#empty_1").prependTo(".list_template");
+        }
+        
+    }, false);
+}
+            
+</script>
