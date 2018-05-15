@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mar 10 Avril 2018 à 14:34
+-- Généré le :  Mar 15 Mai 2018 à 16:42
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -23,13 +23,14 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `canedit`
+-- Structure de la table `content`
 --
 
-CREATE TABLE `canedit` (
-  `canEditId` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
-  `moduleId` int(11) NOT NULL
+CREATE TABLE `content` (
+  `contentId` int(11) NOT NULL,
+  `content` varchar(6000) NOT NULL,
+  `moduleId` int(11) NOT NULL,
+  `fieldTypeId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -47,14 +48,27 @@ CREATE TABLE `course` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `fieldtype`
+--
+
+CREATE TABLE `fieldtype` (
+  `fieldTypeId` int(11) NOT NULL,
+  `title` varchar(500) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `format` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `module`
 --
 
 CREATE TABLE `module` (
   `moduleId` int(11) NOT NULL,
   `moduleName` varchar(255) NOT NULL,
-  `data` longtext NOT NULL,
-  `templateId` int(11) NOT NULL
+  `courseId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -72,25 +86,25 @@ CREATE TABLE `moduleskill` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `notification`
+--
+
+CREATE TABLE `notification` (
+  `notifId` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `message` varchar(1000) NOT NULL,
+  `userId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `skill`
 --
 
 CREATE TABLE `skill` (
   `skillId` int(11) NOT NULL,
   `skillName` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `template`
---
-
-CREATE TABLE `template` (
-  `templateId` int(11) NOT NULL,
-  `templateName` varchar(255) NOT NULL,
-  `isActive` tinyint(1) NOT NULL,
-  `data1` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -106,31 +120,77 @@ CREATE TABLE `user` (
   `mail` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `view`
+--
+
+CREATE TABLE `view` (
+  `viewId` int(11) NOT NULL,
+  `viewName` varchar(255) NOT NULL,
+  `isActive` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `viewfieldtype`
+--
+
+CREATE TABLE `viewfieldtype` (
+  `viewFieldTypeId` int(11) NOT NULL,
+  `viewId` int(11) NOT NULL,
+  `fieldTypeId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Index pour les tables exportées
 --
 
 --
--- Index pour la table `canedit`
+-- Index pour la table `content`
 --
-ALTER TABLE `canedit`
-  ADD PRIMARY KEY (`canEditId`);
+ALTER TABLE `content`
+  ADD PRIMARY KEY (`contentId`),
+  ADD KEY `fk_fieldTypeId_content` (`fieldTypeId`),
+  ADD KEY `fk_moduleId_content` (`moduleId`);
 
 --
 -- Index pour la table `course`
 --
 ALTER TABLE `course`
-  ADD PRIMARY KEY (`courseId`);
+  ADD PRIMARY KEY (`courseId`),
+  ADD KEY `fk_userId_course` (`userId`);
+
+--
+-- Index pour la table `fieldtype`
+--
+ALTER TABLE `fieldtype`
+  ADD PRIMARY KEY (`fieldTypeId`);
+
 --
 -- Index pour la table `module`
 --
 ALTER TABLE `module`
-  ADD PRIMARY KEY (`moduleId`);
+  ADD PRIMARY KEY (`moduleId`),
+  ADD KEY `fk_courseId` (`courseId`),
+  ADD KEY `fk_userId_module` (`userId`);
+
 --
 -- Index pour la table `moduleskill`
 --
 ALTER TABLE `moduleskill`
-  ADD PRIMARY KEY (`moduleSkillId`);
+  ADD PRIMARY KEY (`moduleSkillId`),
+  ADD KEY `fk_skillId` (`skillId`),
+  ADD KEY `fk_moduleId_moduleskill` (`moduleId`);
+
+--
+-- Index pour la table `notification`
+--
+ALTER TABLE `notification`
+  ADD PRIMARY KEY (`notifId`),
+  ADD KEY `fk_userId_notification` (`userId`);
 
 --
 -- Index pour la table `skill`
@@ -139,64 +199,122 @@ ALTER TABLE `skill`
   ADD PRIMARY KEY (`skillId`);
 
 --
--- Index pour la table `template`
---
-ALTER TABLE `template`
-  ADD PRIMARY KEY (`templateId`);
-
---
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`userId`);
 
 --
+-- Index pour la table `view`
+--
+ALTER TABLE `view`
+  ADD PRIMARY KEY (`viewId`);
+
+--
+-- Index pour la table `viewfieldtype`
+--
+ALTER TABLE `viewfieldtype`
+  ADD PRIMARY KEY (`viewFieldTypeId`),
+  ADD KEY `fk_fieldTypeId_viewFieldType` (`fieldTypeId`),
+  ADD KEY `fk_viewId` (`viewId`);
+
+--
 -- AUTO_INCREMENT pour les tables exportées
 --
 
 --
--- AUTO_INCREMENT pour la table `canedit`
+-- AUTO_INCREMENT pour la table `content`
 --
-ALTER TABLE `canedit`
-  MODIFY `canEditId` int(11) NOT NULL AUTO_INCREMENT;
-
+ALTER TABLE `content`
+  MODIFY `contentId` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `course`
+--
+ALTER TABLE `course`
+  MODIFY `courseId` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `fieldtype`
+--
+ALTER TABLE `fieldtype`
+  MODIFY `fieldTypeId` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `module`
+--
+ALTER TABLE `module`
+  MODIFY `moduleId` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `moduleskill`
+--
+ALTER TABLE `moduleskill`
+  MODIFY `moduleSkillId` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `notification`
+--
+ALTER TABLE `notification`
+  MODIFY `notifId` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `skill`
+--
+ALTER TABLE `skill`
+  MODIFY `skillId` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
   MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT;
-  
 --
--- AUTO_INCREMENT pour la table `course`
+-- AUTO_INCREMENT pour la table `view`
+--
+ALTER TABLE `view`
+  MODIFY `viewId` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `viewfieldtype`
+--
+ALTER TABLE `viewfieldtype`
+  MODIFY `viewFieldTypeId` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `content`
+--
+ALTER TABLE `content`
+  ADD CONSTRAINT `fk_fieldTypeId_content` FOREIGN KEY (`fieldTypeId`) REFERENCES `fieldtype` (`fieldTypeId`),
+  ADD CONSTRAINT `fk_moduleId_content` FOREIGN KEY (`moduleId`) REFERENCES `module` (`moduleId`);
+
+--
+-- Contraintes pour la table `course`
 --
 ALTER TABLE `course`
-  MODIFY `courseId` int(11) NOT NULL AUTO_INCREMENT,
-  ADD CONSTRAINT fk_userId FOREIGN KEY (userId) REFERENCES user(userId);
+  ADD CONSTRAINT `fk_userId_course` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
 
 --
--- AUTO_INCREMENT pour la table `template`
---
-ALTER TABLE `template`
-  MODIFY `templateId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `module`
+-- Contraintes pour la table `module`
 --
 ALTER TABLE `module`
-  MODIFY `moduleId` int(11) NOT NULL AUTO_INCREMENT,
-  ADD CONSTRAINT fk_templateId FOREIGN KEY (templateId) REFERENCES template(templateId);
-  --
-  -- AUTO_INCREMENT pour la table `skill`
-  --
-  ALTER TABLE `skill`
-    MODIFY `skillId` int(11) NOT NULL AUTO_INCREMENT;
+  ADD CONSTRAINT `fk_courseId` FOREIGN KEY (`courseId`) REFERENCES `course` (`courseId`),
+  ADD CONSTRAINT `fk_userId_module` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
+
 --
--- AUTO_INCREMENT pour la table `moduleskill`
+-- Contraintes pour la table `moduleskill`
 --
 ALTER TABLE `moduleskill`
-  MODIFY `moduleSkillId` int(11) NOT NULL AUTO_INCREMENT,
-  ADD CONSTRAINT fk_moduleId FOREIGN KEY (moduleId) REFERENCES module(moduleId),
-  ADD CONSTRAINT fk_skillId FOREIGN KEY (skillId) REFERENCES skill(skillId);
+  ADD CONSTRAINT `fk_moduleId_moduleskill` FOREIGN KEY (`moduleId`) REFERENCES `module` (`moduleId`),
+  ADD CONSTRAINT `fk_skillId` FOREIGN KEY (`skillId`) REFERENCES `skill` (`skillId`);
+
+--
+-- Contraintes pour la table `notification`
+--
+ALTER TABLE `notification`
+  ADD CONSTRAINT `fk_userId_notification` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
+
+--
+-- Contraintes pour la table `viewfieldtype`
+--
+ALTER TABLE `viewfieldtype`
+  ADD CONSTRAINT `fk_fieldTypeId_viewFieldType` FOREIGN KEY (`fieldTypeId`) REFERENCES `fieldtype` (`fieldTypeId`),
+  ADD CONSTRAINT `fk_viewId` FOREIGN KEY (`viewId`) REFERENCES `view` (`viewId`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
