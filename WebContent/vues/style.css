@@ -1682,7 +1682,7 @@ input::-webkit-input-placeholder
 
 .template_picture
 {
-    height: 90%;
+    height: 80%;
     display:inline-block;
     width: 120px;
     margin-left: 20px;
@@ -1700,4 +1700,33 @@ input::-webkit-input-placeholder
     color:white;
     transition:0.5s;
     
+}
+
+.manage_template
+{
+    margin-top:25px;
+    color: black !important;
+}
+
+.manage_template_icon
+{
+    padding-left:5px;
+}
+
+.manage_template_icon:hover
+{
+    color:#f45765;
+}
+
+.table_edit_vue
+{
+    width: 100%;
+    font-size: 14px;
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+
+.table_edit_vue td
+{
+    border-bottom:1px solid grey;
 }
