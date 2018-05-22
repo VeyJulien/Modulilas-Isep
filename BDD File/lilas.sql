@@ -36,18 +36,6 @@ CREATE TABLE `content` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `course`
---
-
-CREATE TABLE `course` (
-  `courseId` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `userId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `fieldtype`
 --
 
@@ -67,7 +55,6 @@ CREATE TABLE `fieldtype` (
 CREATE TABLE `module` (
   `moduleId` int(11) NOT NULL,
   `moduleName` varchar(255) NOT NULL,
-  `courseId` int(11) NOT NULL,
   `userId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -157,13 +144,6 @@ ALTER TABLE `content`
   ADD KEY `fk_moduleId_content` (`moduleId`);
 
 --
--- Index pour la table `course`
---
-ALTER TABLE `course`
-  ADD PRIMARY KEY (`courseId`),
-  ADD KEY `fk_userId_course` (`userId`);
-
---
 -- Index pour la table `fieldtype`
 --
 ALTER TABLE `fieldtype`
@@ -174,7 +154,6 @@ ALTER TABLE `fieldtype`
 --
 ALTER TABLE `module`
   ADD PRIMARY KEY (`moduleId`),
-  ADD KEY `fk_courseId` (`courseId`),
   ADD KEY `fk_userId_module` (`userId`);
 
 --
@@ -228,11 +207,6 @@ ALTER TABLE `viewfieldtype`
 ALTER TABLE `content`
   MODIFY `contentId` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `course`
---
-ALTER TABLE `course`
-  MODIFY `courseId` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT pour la table `fieldtype`
 --
 ALTER TABLE `fieldtype`
@@ -284,16 +258,9 @@ ALTER TABLE `content`
   ADD CONSTRAINT `fk_moduleId_content` FOREIGN KEY (`moduleId`) REFERENCES `module` (`moduleId`);
 
 --
--- Contraintes pour la table `course`
---
-ALTER TABLE `course`
-  ADD CONSTRAINT `fk_userId_course` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
-
---
 -- Contraintes pour la table `module`
 --
 ALTER TABLE `module`
-  ADD CONSTRAINT `fk_courseId` FOREIGN KEY (`courseId`) REFERENCES `course` (`courseId`),
   ADD CONSTRAINT `fk_userId_module` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
 
 --
