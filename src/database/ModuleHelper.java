@@ -20,7 +20,7 @@ public class ModuleHelper {
 		List<Module> spModules = new ArrayList<>();
 		
 		for (Module var : modules) {
-			if (var.getEnseignement().equals(ens) & var.getAnnée() == year) {
+			if (var.getEnseignement().equals(ens) & var.getAnnee() == year) {
 				spModules.add(var);
 			}
 		}
@@ -42,8 +42,8 @@ public class ModuleHelper {
 		List<Integer> années = new ArrayList<>();
 		
 		for (Module var : modules) {
-			if (!années.contains(var.getAnnée())) {
-				années.add(var.getAnnée());
+			if (!années.contains(var.getAnnee())) {
+				années.add(var.getAnnee());
 			}
 		}
 		return années;
