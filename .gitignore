@@ -1,2 +1,4 @@
 
 build/classes/database/MySQLDB.class
+build/classes/database/Module.class
+*.class

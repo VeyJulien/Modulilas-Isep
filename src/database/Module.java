@@ -4,7 +4,7 @@ public class Module {
 	private String Titre;
 	private String Code;
 	private String Enseignement;
-	private int Année;
+	private int Annee;
 	
 	
 	public String getEnseignement() {
@@ -13,11 +13,11 @@ public class Module {
 	public void setEnseignement(String enseignement) {
 		Enseignement = enseignement;
 	}
-	public int getAnnée() {
-		return Année;
+	public int getAnnee() {
+		return Annee;
 	}
-	public void setAnnée(int année) {
-		Année = année;
+	public void setAnnee(int annee) {
+		Annee = annee;
 	}
 	
 	public String getTitre() {
