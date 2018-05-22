@@ -3,3 +3,4 @@ build/classes/database/MySQLDB.class
 build/classes/database/Module.class
 *.class
 build/classes/database/MySQLDB.class
+.classpath
