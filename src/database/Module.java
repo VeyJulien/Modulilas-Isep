@@ -1,6 +1,11 @@
 package database;
 
 public class Module {
+	private String Titre;
+	private String Code;
+	private String Enseignement;
+	private int Année;
+	
 	
 	public String getEnseignement() {
 		return Enseignement;
@@ -14,10 +19,6 @@ public class Module {
 	public void setAnnée(int année) {
 		Année = année;
 	}
-	private String Titre;
-	private String Code;
-	private String Enseignement;
-	private int Année;
 	
 	public String getTitre() {
 		return Titre;

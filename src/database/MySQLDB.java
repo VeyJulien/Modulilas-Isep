@@ -34,7 +34,7 @@ public class MySQLDB {
  
 		try {
 			// DriverManager: The basic service for managing a set of JDBC drivers.
-			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lilas", "root", "");
+			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "");
 			if (Conn != null) {
 				log("Connection Successful! Enjoy. Now it's time to push data");
 			} else {
