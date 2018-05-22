@@ -13,16 +13,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/Guillaume_2/.m2/repository/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="org.eclipse.jst.component.archivename" value="servlet-api-2.5.jar"/>
-			<attribute name="maven.groupId" value="javax.servlet"/>
-			<attribute name="maven.artifactId" value="servlet-api"/>
-			<attribute name="maven.version" value="2.5"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Guillaume_2/Desktop/apache-tomcat-8.5.27/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
