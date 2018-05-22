@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost
--- Généré le :  Mar 15 Mai 2018 à 16:42
--- Version du serveur :  5.7.11
--- Version de PHP :  5.6.18
+-- Client :  127.0.0.1
+-- Généré le :  Mar 22 Mai 2018 à 14:21
+-- Version du serveur :  10.1.19-MariaDB
+-- Version de PHP :  5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `lilas`
+-- Base de données :  `modulilas`
 --
 
 -- --------------------------------------------------------
@@ -43,8 +43,25 @@ CREATE TABLE `fieldtype` (
   `fieldTypeId` int(11) NOT NULL,
   `title` varchar(500) NOT NULL,
   `description` varchar(500) NOT NULL,
-  `format` varchar(500) NOT NULL
+  `format` int(10) NOT NULL,
+  `formStep` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `fieldtype`
+--
+
+INSERT INTO `fieldtype` (`fieldTypeId`, `title`, `description`, `format`, `formStep`) VALUES
+(1, 'Titre du module', 'Entrez le nom de votre module', 2, 1),
+(2, 'Identifiant du module', 'Entrez l''identifiant de votre module', 2, 1),
+(3, 'Responsable du module', 'Rentrez le nom du responsable du module', 2, 1),
+(4, 'Nombre de crédits ECTS', '', 4, 1),
+(5, 'Quantité de travail par élève', '', 4, 1),
+(6, 'Travail par équipe', '', 3, 1),
+(7, 'Mots clefs', 'Ajouter un mot clef', 2, 1),
+(8, 'Présentation', 'Entrez une description détaillée de votre module', 1, 2),
+(9, 'Objectifs pédagogiques', 'Entrez les différents objectifs pédagogiques de votre module', 1, 3),
+(10, 'Modalités Pédagogiques', 'Entrez les différentes modalités pédagogiques de votre module', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -83,6 +100,13 @@ CREATE TABLE `notification` (
   `userId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `notification`
+--
+
+INSERT INTO `notification` (`notifId`, `date`, `message`, `userId`) VALUES
+(1, '2018-05-22', 'Bienvenue ! \r\nFélicitations, ceci est votre 1ère connection !\r\nNous vous souhaitons une agréable navigation, si vous rencontrez des difficultés n''hésitez pas à nous en faire part.', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -102,10 +126,26 @@ CREATE TABLE `skill` (
 
 CREATE TABLE `user` (
   `userId` int(11) NOT NULL,
-  `userName` varchar(255) NOT NULL,
+  `mail` varchar(255) NOT NULL,
+  `firstName` varchar(255) NOT NULL,
+  `lastName` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `mail` varchar(255) NOT NULL
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `user`
+--
+
+INSERT INTO `user` (`userId`, `mail`, `firstName`, `lastName`, `password`, `status`) VALUES
+(1, 'maxime.breviere@isep.fr', 'Maxime', 'BREVIERE', 'lilas', 1),
+(2, 'arthur.rouaix@isep.fr', 'Arthur', 'ROUAIX', 'lilas', 1),
+(3, 'julien.vey@isep.fr', 'Julien', 'VEY', 'lilas', 1),
+(4, 'guillaume.pasquereau@isep.fr', 'Guillaume', 'PASQUEREAU', 'lilas', 1),
+(5, 'hugues.vincey@isep.fr', 'Hugues', 'VINCEY', 'lilas', 1),
+(6, 'noe.faure@isep.fr', 'Noé', 'FAURE', 'lilas', 1),
+(7, 'mathieu.manceny@isep.fr', 'Matthieu', 'MANCENY', 'lilas', 1),
+(8, 'mohamed.sellami@isep.fr', 'Mohamed', 'Sellami', 'lilas', 2);
 
 -- --------------------------------------------------------
 
@@ -118,6 +158,13 @@ CREATE TABLE `view` (
   `viewName` varchar(255) NOT NULL,
   `isActive` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `view`
+--
+
+INSERT INTO `view` (`viewId`, `viewName`, `isActive`) VALUES
+(1, 'Default', 1);
 
 -- --------------------------------------------------------
 
@@ -210,7 +257,7 @@ ALTER TABLE `content`
 -- AUTO_INCREMENT pour la table `fieldtype`
 --
 ALTER TABLE `fieldtype`
-  MODIFY `fieldTypeId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `fieldTypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT pour la table `module`
 --
@@ -225,7 +272,7 @@ ALTER TABLE `moduleskill`
 -- AUTO_INCREMENT pour la table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `notifId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `notifId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `skill`
 --
@@ -235,12 +282,12 @@ ALTER TABLE `skill`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `view`
 --
 ALTER TABLE `view`
-  MODIFY `viewId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `viewId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `viewfieldtype`
 --
