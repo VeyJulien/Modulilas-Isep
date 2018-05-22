@@ -1,6 +1,7 @@
 package lila.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -10,9 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import database.Module;
-import database.ModuleHelper;
-import database.MySQLDB;
+import database.*;
 
 /**
  * Servlet implementation class Controller
@@ -34,6 +33,7 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 	}
 
 	/**
@@ -43,10 +43,14 @@ public class Controller extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		ModuleHelper modhelp = new ModuleHelper();
+		FieldtypeHelper fieldhelp = new FieldtypeHelper();
 		List<Module> mods = MySQLDB.allModules();
+		List<Fieldtype> fields = MySQLDB.allFieldtypes();
 		modhelp.setModules(mods);
+		fieldhelp.setFieldtypes(fields);
 		request.setAttribute("Modules",modhelp);
-		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/find.jsp");
+		request.setAttribute("Fieldtypes",fieldhelp);
+		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/create_template.jsp");
 		dispatcher.include(request, response);
 	}
 
