@@ -34,7 +34,7 @@ public class MySQLDB {
  
 		try {
 			// DriverManager: The basic service for managing a set of JDBC drivers.
-			Conn = DriverManager.getConnection("jdbc:mysql://localhost:8888/Modulilas", "root", "");
+			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "");
 			if (Conn != null) {
 				log("Connection Successful! Enjoy. Now it's time to push data");
 			} else {
@@ -89,14 +89,14 @@ public class MySQLDB {
 				String Titre = rs.getString("Titre");
 				String Code = rs.getString("Code");
 				String Enseignement = rs.getString("Enseignement");
-				int Annee = rs.getInt("Annee");
+				int Année = rs.getInt("Année");
 				
 				Module mod = new Module();
 				
 				mod.setTitre(Titre);
 				mod.setCode(Code);
 				mod.setEnseignement(Enseignement);
-				mod.setAnnee(Annee);
+				mod.setAnnée(Année);
 				
 				allmodules.add(mod);
 				
