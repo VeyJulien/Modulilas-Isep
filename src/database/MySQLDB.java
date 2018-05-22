@@ -89,14 +89,14 @@ public class MySQLDB {
 				String Titre = rs.getString("Titre");
 				String Code = rs.getString("Code");
 				String Enseignement = rs.getString("Enseignement");
-				int Année = rs.getInt("Année");
+				int Annee = rs.getInt("Annee");
 				
 				Module mod = new Module();
 				
 				mod.setTitre(Titre);
 				mod.setCode(Code);
 				mod.setEnseignement(Enseignement);
-				mod.setAnnée(Année);
+				mod.setAnnee(Annee);
 				
 				allmodules.add(mod);
 				
