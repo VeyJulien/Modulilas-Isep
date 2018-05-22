@@ -1,4 +1,13 @@
 
 build/classes/database/MySQLDB.class
+<<<<<<< Updated upstream
 build/classes/database/Module.class
 *.class
+=======
+
+.classpath
+
+build/classes/database/MySQLDB.class
+
+build/classes/database/ModuleHelper.class
+>>>>>>> Stashed changes
