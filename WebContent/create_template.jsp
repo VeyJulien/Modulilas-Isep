@@ -211,8 +211,8 @@
             <ul class="button_list">
                 <a href="menu.html" class="link_button"><li class="button_menu">Ma Page</li><span class="bullet_notif">1</span></a>
                 <a href="create_module.html" class="link_button"><li class="button_menu">Créer un module</li></a>
-                <a href="find.html" class="link_button"><li class="button_menu">Chercher un module</li></a>
-                <a href="create_template.html" class="link_button"><li class="button_menu menu_select">Gérer les champs</li></a>
+                <a href="Chercher_un_module" class="link_button"><li class="button_menu">Chercher un module</li></a>
+                <a href="Gerer_les_champs" class="link_button"><li class="button_menu menu_select">Gérer les champs</li></a>
                 <a href="modify_template.html" class="link_button"><li class="button_menu">Templates</li></a>
                 <a type="button" onclick="on()" class="link_button"><li class="button_menu" style="border-bottom:1px solid rgba(255,255,255,0.1);">Déconnexion</li></a>
             </ul>

@@ -6,7 +6,6 @@ public class Module {
 	private String Enseignement;
 	private int Annee;
 	
-	
 	public String getEnseignement() {
 		return Enseignement;
 	}

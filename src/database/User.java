@@ -1,7 +1,6 @@
 package database;
 
 public class User {
-	
 	private String mail;
 	private String firstName;
 	private String lastName;
@@ -31,7 +30,5 @@ public class User {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	
-	
 
 }
