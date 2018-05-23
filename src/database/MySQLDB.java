@@ -98,8 +98,7 @@ public class MySQLDB {
 				mod.setEnseignement(Enseignement);
 				mod.setAnnee(Annee);
 				
-				allmodules.add(mod);
-				
+				allmodules.add(mod);			
 				
 			}
  
@@ -111,7 +110,50 @@ public class MySQLDB {
 		return allmodules;
 	}
 	
-	
+	public static List<Fieldtype> allFieldtypes() {
+		
+		List<Fieldtype> allfieldtypes = new ArrayList<>();
+		
+		MySQLDB.makeJDBCConnection();
+		
+		try {
+			// MySQL Select Query Tutorial
+			String getQueryStatement = "SELECT * FROM fieldtype";
+			
+			
+			PrepareStat = Conn.prepareStatement(getQueryStatement);
+			
+ 
+			// Execute the Query, and get a java ResultSet
+			ResultSet rs = PrepareStat.executeQuery();		
+ 
+			// Let's iterate through the java ResultSet
+			while (rs.next()) {
+				int FieldTypeId = rs.getInt("fieldTypeId");
+				String Title = rs.getString("title");
+				String Description = rs.getString("Description");
+				int Format = rs.getInt("format");
+				int FormStep = rs.getInt("formstep");
+				
+				Fieldtype field = new Fieldtype();
+				
+				field.setFieldTypeId(FieldTypeId);
+				field.setTitle(Title);
+				field.setDescription(Description);
+				field.setFormat(Format);
+				field.setFormStep(FormStep);
+				
+				allfieldtypes.add(field);	
+				
+			}
+ 
+		} catch (
+ 
+		SQLException e) {
+			e.printStackTrace();
+		}
+		return allfieldtypes;
+	}
  
 	// Simple log utility
 	private static void log(String string) {
