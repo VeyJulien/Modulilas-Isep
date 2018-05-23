@@ -1,7 +1,6 @@
 package database;
 
 public class Fieldtype {
-	
 	private int fieldTypeId;
 	private String title;
 	private String description;

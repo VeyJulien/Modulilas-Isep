@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FieldtypeHelper {
-	
 	private List<Fieldtype> fieldtypes;
 
 	public List<Fieldtype> getFieldtypes() {

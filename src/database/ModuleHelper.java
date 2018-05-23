@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModuleHelper {
-	
 	private List<Module> modules;
 
 	public List<Module> getModules() {
@@ -39,14 +38,14 @@ public class ModuleHelper {
 	}
 	
 	public List<Integer> listAns(){
-		List<Integer> années = new ArrayList<>();
+		List<Integer> annees = new ArrayList<>();
 		
 		for (Module var : modules) {
-			if (!années.contains(var.getAnnee())) {
-				années.add(var.getAnnee());
+			if (!annees.contains(var.getAnnee())) {
+				annees.add(var.getAnnee());
 			}
 		}
-		return années;
+		return annees;
 	}
 	
 }
