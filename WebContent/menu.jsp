@@ -19,8 +19,8 @@
         <div id="overlay" onclick="off()">
             <div>
                 <i class="fas fa-times cross_overlay"></i>
-                <div class="overlay_text">Êtes-vous sûre de vouloir<br>vous déconnecter ?</div>
-                <div class="overlay_under_text">Tous les changements non enregistrés seront perdus.</div>
+                <div class="overlay_text">&#202;tes-vous s&#251;r de vouloir<br>vous d&#233;connecter ?</div>
+                <div class="overlay_under_text">Tous les changements non enregistr&#233;s seront perdus.</div>
                 <div style="display:flex;" class="button_overlay"><a class="button_1">Rester</a><a href="index.html" class="button_1">Quitter</a></div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                     <div style="display:flex;">
                         <span class="title_notif">Notifications (1)</span>
                         <form method="get" action="send_notif.html">
-                            <button type="submit" class="edit_button">Rédiger un message</button>
+                            <button type="submit" class="edit_button">R&#233;diger un message</button>
                         </form>
                         <form method="get" action="change.html">
                             <button type="submit" class="edit_button">Espace Personnel</button>
@@ -50,12 +50,12 @@
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <span>
                             <span class="title_notif">De</span> : 
-                            <span style="color:#ff5c6a;">L'équipe de développement</span></span><button id="edit_1" type="button" onclick="edit_1()" class="edit_button"><i class="fas fa-pencil-alt"></i> Éditer</button><button type="button" class="edit_button"><i class="far fa-trash-alt"></i> Supprimer</button><br>
+                            <span style="color:#ff5c6a;">L'&#233;quipe de d&#233;veloppement</span></span><button id="edit_1" type="button" onclick="edit_1()" class="edit_button"><i class="fas fa-pencil-alt"></i> Éditer</button><button type="button" class="edit_button"><i class="far fa-trash-alt"></i> Supprimer</button><br>
                         <span><span class="title_notif">Le</span> : <span style="color:#ff5c6a;">08/07/2018 à 18h32</span></span><br>
                         
-                        <p id="message_1" style="margin-bottom: 0em;">Bienvenue !<br>Félicitation, ceci est votre première connection !<br> Nous vous souhaitons une agréable navigation, si vous rencontrez des difficultés n'hésitez pas à nous en faire part.</p>
+                        <p id="message_1" style="margin-bottom: 0em;">Bienvenue !<br>F&#233;licitation, ceci est votre première connection !<br> Nous vous souhaitons une agr&#233;able navigation, si vous rencontrez des difficult&#233;s n'h&#233;sitez pas à nous en faire part.</p>
                         
-                        <textarea id="text_area_1" rows="4" class="textarea_module edit_textarea">Bienvenue ! &#13;&#10;Félicitation, ceci est votre première connection !&#13;&#10;Nous vous souhaitons une agréable navigation, si vous rencontrez des difficultés n'hésitez pas à nous en faire part.</textarea>
+                        <textarea id="text_area_1" rows="4" class="textarea_module edit_textarea">Bienvenue ! &#13;&#10;F&#233;licitation, ceci est votre première connection !&#13;&#10;Nous vous souhaitons une agr&#233;able navigation, si vous rencontrez des difficult&#233;s n'h&#233;sitez pas à nous en faire part.</textarea>
                     </div>
                 
                 </div>
@@ -66,17 +66,17 @@
             <div class="statut_bullet">Administrateur</div>
             
             <ul class="button_list">
-                <a href="menu.html" class="link_button"><li class="button_menu menu_select">Ma Page</li><span class="bullet_notif">1</span></a>
-                <a href="create_module.html" class="link_button"><li class="button_menu">Créer un module</li></a>
+                <a href="Menu" class="link_button"><li class="button_menu menu_select">Ma Page</li><span class="bullet_notif">1</span></a>
+                <a href="Creer_un_module" class="link_button"><li class="button_menu">Cr&#233;er un module</li></a>
                 <a href="Chercher_un_module" class="link_button"><li class="button_menu play_element_2_menu">Chercher un module</li></a>
-                <a href="Gerer_les_champs" class="link_button"><li class="button_menu play_element_3_menu">Gérer les champs</li></a>
-                <a href="modify_template.html" class="link_button"><li class="button_menu">Templates</li></a>
-                <a type="button" onclick="on()" class="link_button"><li class="button_menu play_element_4_menu" style="border-bottom:1px solid rgba(255,255,255,0.1);">Déconnexion</li></a>
+                <a href="Gerer_les_champs" class="link_button"><li class="button_menu play_element_3_menu">G&#233;rer les champs</li></a>
+                <a href="Modifier_template" class="link_button"><li class="button_menu">Templates</li></a>
+                <a type="button" onclick="on()" class="link_button"><li class="button_menu play_element_4_menu" style="border-bottom:1px solid rgba(255,255,255,0.1);">D&#233;connexion</li></a>
             </ul>
             
             <div class="info_menu">
                 <p>Session : Test<br>
-                Version : 1.0.0 ©</p>
+                Version : 1.0.0 &#169;</p>
             </div>
         </div>
         

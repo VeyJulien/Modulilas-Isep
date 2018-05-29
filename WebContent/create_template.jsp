@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!doctype html>
 <html lang="fr">
-<heaad>
+<head>
     <meta charset="utf-8">
     <title>Module - Champs</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <link rel="icon" href="icon_website.gif" type="image/gif" sizes="16x16">
@@ -20,8 +21,8 @@
         <div id="overlay" onclick="off()">
             <div>
                 <i class="fas fa-times cross_overlay"></i>
-                <div class="overlay_text">Êtes-vous sûre de vouloir<br>vous déconnecter ?</div>
-                <div class="overlay_under_text">Tous les changements non enregistrés seront perdus.</div>
+                <div class="overlay_text">&#202;Štes-vous s&#251;r de vouloir<br>vous d&#233;connecter ?</div>
+                <div class="overlay_under_text">Tous les changements non enregistr&#233;s seront perdus.</div>
                 <div style="display:flex;" class="button_overlay"><a class="button_1">Rester</a><a href="index.html" class="button_1">Quitter</a></div>
             </div>
         </div>
@@ -51,8 +52,8 @@
                 
                 <div id="step_1">
                     
-                <div class="label_input_step_name">Nom de l'étape</div>
-                <input value="Informations générales" class="input_step_name" type="text">
+                <div class="label_input_step_name">Nom de l'&#233;tape</div>
+                <input value="Informations gï¿½nï¿½rales" class="input_step_name" type="text">
                 
                 <ul id="list_1" class="list_template">
                     <% int i1 = 0; %>
@@ -84,13 +85,13 @@
                     
                 </ul>
                     
-                <div class="add_field" type="button" onclick="add_to_list('list_1')"><i class="fas fa-plus-circle"></i> Ajouter un champ supplémentaire</div>
+                <div class="add_field" type="button" onclick="add_to_list('list_1')"><i class="fas fa-plus-circle"></i> Ajouter un champ suppl&#233;mentaire</div>
                 </div>
                 
                 <div id="step_2" style="display:none;">
                     
-                <div class="label_input_step_name">Nom de l'étape</div>
-                <input value="Présentation générale" class="input_step_name" type="text">
+                <div class="label_input_step_name">Nom de l'&#233;tape</div>
+                <input value="Pr&#233;sentation g&#233;n&#233;rale" class="input_step_name" type="text">
                     
                     <ul id="list_2" class="list_template">
                     <% int i2 = 0; %>
@@ -122,13 +123,13 @@
                     
                     </ul>
                     
-                    <div class="add_field" type="button" onclick="add_to_list('list_2')"><i class="fas fa-plus-circle"></i> Ajouter un champ supplémentaire</div>
+                    <div class="add_field" type="button" onclick="add_to_list('list_2')"><i class="fas fa-plus-circle"></i> Ajouter un champ suppl&#233;mentaire</div>
                 </div>
                     
                 <div id="step_3" style="display:none;">
                     
-                <div class="label_input_step_name">Nom de l'étape</div>
-                <input value="Objectifs pédagogiques" class="input_step_name" type="text">
+                <div class="label_input_step_name">Nom de l'&#233;tape</div>
+                <input value="Objectifs pedagogiques" class="input_step_name" type="text">
                     
                     <ul id="list_3" class="list_template">
                     <% int i3 = 0; %>
@@ -160,13 +161,13 @@
                     
                     </ul>
                     
-                    <div class="add_field" type="button" onclick="add_to_list('list_3')"><i class="fas fa-plus-circle"></i> Ajouter un champ supplémentaire</div>
+                    <div class="add_field" type="button" onclick="add_to_list('list_3')"><i class="fas fa-plus-circle"></i> Ajouter un champ suppl&#233;mentaire</div>
                 </div>
                     
                 <div id="step_4" style="display:none;">
                     
-                <div class="label_input_step_name">Nom de l'étape</div>
-                <input value="Modalités pédagogiques" class="input_step_name" type="text">
+                <div class="label_input_step_name">Nom de l'&#233;tape</div>
+                <input value="Modalites pedagogiques" class="input_step_name" type="text">
                     
                     <ul id="list_4" class="list_template">
                     <% int i4 = 0; %>
@@ -198,7 +199,7 @@
                     
                     </ul>
                     
-                    <div class="add_field" type="button" onclick="add_to_list('list_4')"><i class="fas fa-plus-circle"></i> Ajouter un champ supplémentaire</div>
+                    <div class="add_field" type="button" onclick="add_to_list('list_4')"><i class="fas fa-plus-circle"></i> Ajouter un champ suppl&#233;mentaire</div>
                 </div>
                 
                 </div>
@@ -209,17 +210,17 @@
             <div class="statut_bullet">Administrateur</div>
             
             <ul class="button_list">
-                <a href="menu.html" class="link_button"><li class="button_menu">Ma Page</li><span class="bullet_notif">1</span></a>
-                <a href="create_module.html" class="link_button"><li class="button_menu">Créer un module</li></a>
+                <a href="Menu" class="link_button"><li class="button_menu">Ma Page</li><span class="bullet_notif">1</span></a>
+                <a href="Creer_un_module" class="link_button"><li class="button_menu">Cr&#233;er un module</li></a>
                 <a href="Chercher_un_module" class="link_button"><li class="button_menu">Chercher un module</li></a>
-                <a href="Gerer_les_champs" class="link_button"><li class="button_menu menu_select">Gérer les champs</li></a>
-                <a href="modify_template.html" class="link_button"><li class="button_menu">Templates</li></a>
-                <a type="button" onclick="on()" class="link_button"><li class="button_menu" style="border-bottom:1px solid rgba(255,255,255,0.1);">Déconnexion</li></a>
+                <a href="Gerer_les_champs" class="link_button"><li class="button_menu menu_select">G&#233;rer les champs</li></a>
+                <a href="Modifier_template" class="link_button"><li class="button_menu">Templates</li></a>
+                <a type="button" onclick="on()" class="link_button"><li class="button_menu" style="border-bottom:1px solid rgba(255,255,255,0.1);">D&#233;connexion</li></a>
             </ul>
             
             <div class="info_menu">
                 <p>Session : Test<br>
-                Version : 1.0.0 ©</p>
+                Version : 1.0.0 &#169;</p>
             </div>
         </div>
         
@@ -238,9 +239,7 @@ function off() {
     document.getElementById("overlay").style.display = "none";
     document.getElementsByClassName("main_block")[0].style.filter = "blur(0px)";
 }
-</script>
 
-<script>
 
 function show_step_1()
     {
