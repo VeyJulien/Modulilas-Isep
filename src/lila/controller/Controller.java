@@ -55,6 +55,15 @@ public class Controller extends HttpServlet {
             case "/Espace_personnel":
                 espacePerso(request, response);
                 break;
+            case "/Menu":
+            		menu(request, response);
+            		break;
+            case "/Creer_un_module":
+            		creationMod(request, response);
+            		break;
+            case "/Modifier_template":
+            		modTemplate(request, response);
+            		break;
             default:
                 menu(request, response);
                 break;
@@ -97,7 +106,19 @@ public class Controller extends HttpServlet {
 
 	private void menu(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/menu.jsp");
+        dispatcher.forward(request, response);
+    }
+	
+	private void creationMod(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/create_module.jsp");
+        dispatcher.forward(request, response);
+    }
+	
+	private void modTemplate(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/modify_template.jsp");
         dispatcher.forward(request, response);
     }
 	
