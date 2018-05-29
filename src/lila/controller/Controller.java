@@ -46,15 +46,24 @@ public class Controller extends HttpServlet {
 		 
         try {
             switch (action) {
-            case "/Creer_un_module":
-                createModule(request, response);
-                break;
             case "/Chercher_un_module":
                 find(request, response);
                 break;
             case "/Gerer_les_champs":
                 createTemplate(request, response);
                 break;
+            case "/Espace_personnel":
+                espacePerso(request, response);
+                break;
+            case "/Menu":
+            		menu(request, response);
+            		break;
+            case "/Creer_un_module":
+            		createModule(request, response);
+            		break;
+            case "/Modifier_template":
+            		modTemplate(request, response);
+            		break;
             default:
                 menu(request, response);
                 break;
@@ -93,10 +102,28 @@ public class Controller extends HttpServlet {
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/create_template.jsp");
 		dispatcher.include(request, response);
     }
+	
+	private void espacePerso(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+		
+		UserHelper userHelp = new UserHelper();
+		List<User> listUsers = MySQLDB.allUsers();
+		userHelp.setListUsers(listUsers);
+		request.setAttribute("Users",userHelp);
+		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/change.jsp");
+		dispatcher.include(request, response);
+    }
 
 	private void menu(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/menu.jsp");
+        dispatcher.forward(request, response);
+    }
+	
+	
+	private void modTemplate(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/modify_template.jsp");
         dispatcher.forward(request, response);
     }
 	

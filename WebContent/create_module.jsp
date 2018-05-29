@@ -20,8 +20,8 @@
         <div id="overlay" onclick="off()">
             <div>
                 <i class="fas fa-times cross_overlay"></i>
-                <div class="overlay_text">Êtes-vous sûre de vouloir<br>vous déconnecter ?</div>
-                <div class="overlay_under_text">Tous les changements non enregistrés seront perdus.</div>
+                <div class="overlay_text">&#202;tes-vous s&#251;r de vouloir<br>vous d&#233;connecter ?</div>
+                <div class="overlay_under_text">Tous les changements non enregistr&#233;s seront perdus.</div>
                 <div style="display:flex;" class="button_overlay"><a class="button_1">Rester</a><a href="index.html" class="button_1">Quitter</a></div>
             </div>
         </div>
@@ -31,10 +31,12 @@
             
             <div class="page">
                 <div class="step_name_container">
-                    <span class="step_name unactive_text play_text_loadbar">Informations<br>générales</span>
-                    <span id="l_t_1" class="step_name unactive_text">Présentation<br>générale</span>
-                    <span id="l_t_2" class="step_name unactive_text">Objectifs<br>pédagogiques</span>
-                    <span id="l_t_3" class="step_name unactive_text">Modalités<br>pédagogiques</span>
+
+                    <span class="step_name unactive_text play_text_loadbar">Informations<br>g&#233;n&#233;rales</span>
+                    <span id="l_t_1" class="step_name unactive_text">Pr&#233;sentation<br>g&#233;n&#233;rale</span>
+                    <span id="l_t_2" class="step_name unactive_text">Objectifs<br>p&#233;dagogiques</span>
+                    <span id="l_t_3" class="step_name unactive_text">Modalit&#233;s<br>p&#233;dagogiques</span>
+
                 </div>
                 
                 <div class="loadbar_container">
@@ -72,6 +74,7 @@
                     <form action="sucess.html" method="post">
                         
                         <div id="step_1" style="transition: 1s;">
+                        
                         <c:forEach var="fieldtype" items="${Fieldtypes.specificFieldtype(1)}">
                         
                         	<label>${fieldtype.getTitle()}</label><i class="fas fa-circle oblig_field"></i>
@@ -94,14 +97,16 @@
                             <div style="display:flex; width:100%;">
                                 
                                 <button type="button" onclick="press_previous_step_2()" class="button_1 button_previous" style="margin-right: 46.5%;"><span style="transition:0.5s; font-size:15px; padding-right: 20px;">Précédent</span></button>
-                                
-                                <button type="button" class="button_1 button_next" onclick="press_next_step_2()"><span style="transition:0.5s; font-size:15px; padding-left: 20px;">Suivant</span></button>
-                            </div>
+                        
+                        		<button type="button" onclick="press_next_step_1()" class="button_1 button_next"><span style="transition:0.5s; font-size:15px; padding-left: 20px;">Suivant</span></button>
+                        
+                      	   </div>
                         
                         </div>
                         
                         <div id="step_3" style="margin-right: -700px; padding-left: 700px; display: none; transition: 1s; opacity: 1;">
                             
+
                             <c:forEach var="fieldtype" items="${Fieldtypes.specificFieldtype(3)}">
                         
                         		<label>${fieldtype.getTitle()}</label><i class="fas fa-circle oblig_field"></i>
@@ -140,29 +145,32 @@
                 </div>
                 
             </div>
-          
-     
         
         <div class="lateral_menu">
             <div class="menu_title">Menu</div>
             <div class="statut_bullet">Administrateur</div>
             
             <ul class="button_list">
-                <a href="menu.html" class="link_button"><li class="button_menu">Ma Page</li><span class="bullet_notif">1</span></a>
-                <a href="create_module.html" class="link_button"><li class="button_menu menu_select">Créer un module</li></a>
-                <a href="find.html" class="link_button"><li class="button_menu">Chercher un module</li></a>
-                <a href="create_template.html" class="link_button"><li class="button_menu">Gérer les champs</li></a>
-                <a href="modify_template.html" class="link_button"><li class="button_menu">Templates</li></a>
-                <a type="button" onclick="on()" class="link_button"><li class="button_menu" style="border-bottom:1px solid rgba(255,255,255,0.1);">Déconnexion</li></a>
+
+                <a href="Menu" class="link_button"><li class="button_menu">Ma Page</li><span class="bullet_notif">1</span></a>
+                <a href="Creer_un_module" class="link_button"><li class="button_menu menu_select">Cr&#233;er un module</li></a>
+                <a href="Chercher_un_module" class="link_button"><li class="button_menu">Chercher un module</li></a>
+                <a href="Gerer_les_champs" class="link_button"><li class="button_menu">G&#233;rer les champs</li></a>
+                <a href="Modifier_template" class="link_button"><li class="button_menu">Templates</li></a>
+                <a type="button" onclick="on()" class="link_button"><li class="button_menu" style="border-bottom:1px solid rgba(255,255,255,0.1);">D&#233;connexion</li></a>
+
             </ul>
             
             <div class="info_menu">
                 <p>Session : Test<br>
-                Version : 1.0.0 ©</p>
+
+                Version : 1.0.0 &#169;</p>
             </div>
         </div>
-       </div>
-   </div>
+        
+        </div>
+    </div>
+
 </body>
 </html>
 
