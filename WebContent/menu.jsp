@@ -34,7 +34,7 @@
                         <form method="get" action="send_notif.html">
                             <button type="submit" class="edit_button">Rédiger un message</button>
                         </form>
-                        <form method="get" action="change.html">
+                        <form method="get" action="Espace_personnel">
                             <button type="submit" class="edit_button">Espace Personnel</button>
                         </form>
                     <span class="bell"><i class="fas fa-bell bell_anim"></i></span>

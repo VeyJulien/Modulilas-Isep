@@ -34,7 +34,7 @@ public class MySQLDB {
  
 		try {
 			// DriverManager: The basic service for managing a set of JDBC drivers.
-			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "");
+			Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
 			if (Conn != null) {
 				log("Connection Successful! Enjoy. Now it's time to push data");
 			} else {
@@ -153,6 +153,50 @@ public class MySQLDB {
 			e.printStackTrace();
 		}
 		return allfieldtypes;
+	}
+	
+	public static List<User> allUsers() {
+		
+		List<User> allUsers = new ArrayList<>();
+		
+		MySQLDB.makeJDBCConnection();
+		
+		try {
+			// MySQL Select Query Tutorial
+			String getQueryStatement = "SELECT * FROM user";
+			
+			
+			PrepareStat = Conn.prepareStatement(getQueryStatement);
+			
+ 
+			// Execute the Query, and get a java ResultSet
+			ResultSet rs = PrepareStat.executeQuery();		
+ 
+			// Let's iterate through the java ResultSet
+			while (rs.next()) {
+				String mail = rs.getString("mail");
+				String firstName = rs.getString("firstName");
+				String lastName = rs.getString("lastName");
+				int status = rs.getInt("status");
+
+				
+				User users = new User();
+				
+				users.setMail(mail);
+				users.setFirstName(firstName);
+				users.setLastName(lastName);
+				users.setStatus(status);
+				
+				allUsers.add(users);	
+				
+			}
+ 
+		} catch (
+ 
+		SQLException e) {
+			e.printStackTrace();
+		}
+		return allUsers;
 	}
  
 	// Simple log utility

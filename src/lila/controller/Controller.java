@@ -52,6 +52,9 @@ public class Controller extends HttpServlet {
             case "/Gerer_les_champs":
                 createTemplate(request, response);
                 break;
+            case "/Espace_personnel":
+                espacePerso(request, response);
+                break;
             default:
                 menu(request, response);
                 break;
@@ -78,6 +81,17 @@ public class Controller extends HttpServlet {
 		fieldhelp.setFieldtypes(fields);
 		request.setAttribute("Fieldtypes",fieldhelp);
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/create_template.jsp");
+		dispatcher.include(request, response);
+    }
+	
+	private void espacePerso(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+		
+		UserHelper userHelp = new UserHelper();
+		List<User> listUsers = MySQLDB.allUsers();
+		userHelp.setListUsers(listUsers);
+		request.setAttribute("Users",userHelp);
+		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/change.jsp");
 		dispatcher.include(request, response);
     }
 
