@@ -131,7 +131,7 @@ public class MySQLDB {
 			while (rs.next()) {
 				int FieldTypeId = rs.getInt("fieldTypeId");
 				String Title = rs.getString("title");
-				String Description = rs.getString("Description");
+				String Description = rs.getString("description");
 				int Format = rs.getInt("format");
 				int FormStep = rs.getInt("formstep");
 				

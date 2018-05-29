@@ -51,4 +51,18 @@ public class Fieldtype {
 		}
 		return activeButton;
 	}
+	
+	public String fieldType(int format){
+		String fieldType = "";
+		if ( format == 1 ){
+			fieldType = "<div style=\"margin-bottom: 16px;\"><textarea class=\"textarea_module\" style=\"height:170px;\" placeholder=" + description + "></textarea></div>";
+		}else if( format == 2 ){
+			fieldType = "<div style=\"display: flex; margin-bottom: 16px;\"><input id=\"field_1\" autocomplete=\"off\" onchange=\"check_field_1()\" class=\"input_create_module\" placeholder=" + description + "><i id=\"check_1\" class=\"fas fa-check-circle check_module\"></i><span class=\"ok_popup\" id=\"ok_1\">ok</span></div>";
+		}else if( format == 3){
+			fieldType = "<div style=\"display: flex; margin-bottom: 16px;\"><label class=\"container_check\" style=\"margin-right: 30px;\">Oui<input onchange=\"check_box_field()\" id=\"Mycheck_1\" type=\"checkbox\" style=\"width:0px;\" checked><span class=\"checkmark check_yesno\"></span></label><label class=\"container_check\">Non<input onchange=\"check_box_field_2()\" id=\"Mycheck_2\" type=\"checkbox\" style=\"width:0px;\"><span class=\"checkmark check_yesno\"></span></label></div>";
+		}else if( format == 4 ){
+			fieldType = "<div style=\"display: flex; margin-bottom: 16px;\"><i type=\"button\" onclick=\"add_field_4()\" class=\"fas fa-plus-circle button_add\"></i><i type=\"button\" onclick=\"remove_field_4()\" class=\"fas fa-minus-circle button_add\"></i><input id=\"field_4\" autocomplete=\"off\" onchange=\"check_field_4()\" class=\"input_create_module\" value=\"0\" style=\"margin-left: 15px;\"><i id=\"check_4\" class=\"fas fa-check-circle check_module\"></i><span class=\"ok_popup\" id=\"ok_4\">ok</span></div>";
+		}
+		return fieldType;
+	}
 }

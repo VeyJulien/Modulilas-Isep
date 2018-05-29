@@ -46,6 +46,9 @@ public class Controller extends HttpServlet {
 		 
         try {
             switch (action) {
+            case "/Creer_un_module":
+                createModule(request, response);
+                break;
             case "/Chercher_un_module":
                 find(request, response);
                 break;
@@ -61,6 +64,16 @@ public class Controller extends HttpServlet {
         }
     }
  
+	private void createModule(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+		FieldtypeHelper fieldhelp = new FieldtypeHelper();
+		List<Fieldtype> fields = MySQLDB.allFieldtypes();
+		fieldhelp.setFieldtypes(fields);
+		request.setAttribute("Fieldtypes",fieldhelp);
+		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/create_module.jsp");
+		dispatcher.include(request, response);
+    }
+	
 	private void find(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
 		ModuleHelper modhelp = new ModuleHelper();
