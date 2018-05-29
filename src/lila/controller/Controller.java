@@ -43,9 +43,12 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String action = request.getServletPath();
-		 
+		 System.out.println(action);
         try {
             switch (action) {
+            case "/Controller":
+            	login(request, response);
+            	break;
             case "/Chercher_un_module":
                 find(request, response);
                 break;
@@ -72,7 +75,12 @@ public class Controller extends HttpServlet {
             throw new ServletException(ex);
         }
     }
- 
+	
+	private void login(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+		
+	}
+	
 	private void find(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
 		ModuleHelper modhelp = new ModuleHelper();
