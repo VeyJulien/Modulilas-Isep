@@ -31,7 +31,7 @@
                 <div class="notif_block">
                     <div style="display:flex;">
                         <span class="title_notif">Notifications (1)</span>
-                        <form method="get" action="send_notif.html">
+                        <form method="get" action="Rediger_message">
                             <button type="submit" class="edit_button">R&#233;diger un message</button>
                         </form>
                         <form method="get" action="Espace_personnel">
