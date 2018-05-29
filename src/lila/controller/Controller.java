@@ -83,10 +83,10 @@ public class Controller extends HttpServlet {
 	
 	private void createTemplate(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-	//	FieldtypeHelper fieldhelp = new FieldtypeHelper();
-	//	List<Fieldtype> fields = MySQLDB.allFieldtypes();
-	//	fieldhelp.setFieldtypes(fields);
-	//	request.setAttribute("Fieldtypes",fieldhelp);
+		FieldtypeHelper fieldhelp = new FieldtypeHelper();
+		List<Fieldtype> fields = MySQLDB.allFieldtypes();
+		fieldhelp.setFieldtypes(fields);
+		request.setAttribute("Fieldtypes",fieldhelp);
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/create_template.jsp");
 		dispatcher.include(request, response);
     }
