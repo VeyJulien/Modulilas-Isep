@@ -64,6 +64,9 @@ public class Controller extends HttpServlet {
             case "/Modifier_template":
             		modTemplate(request, response);
             		break;
+            case "/Rediger_message":
+        			writeMessage(request, response);
+        			break;
             default:
                 menu(request, response);
                 break;
@@ -113,6 +116,12 @@ public class Controller extends HttpServlet {
 	private void creationMod(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/create_module.jsp");
+        dispatcher.forward(request, response);
+    }
+	
+	private void writeMessage(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/send_notif.jsp");
         dispatcher.forward(request, response);
     }
 	
