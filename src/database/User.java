@@ -30,5 +30,29 @@ public class User {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	
+	public String displayStatus()
+	{
+		if(status == 1)
+		{
+			return "DEBASE";
+		}
+		else
+		{
+			return "UPGRADE";
+		}
+	}
+	
+	public String displayGradeName()
+	{
+		if(status == 1)
+		{
+			return "Admin";
+		}
+		else
+		{
+			return "Professeur";
+		}
+	}
 
 }

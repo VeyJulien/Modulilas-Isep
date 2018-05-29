@@ -148,66 +148,10 @@
                             <td>${user.getFirstName()}</td>
                             <td>${user.getLastName()}</td>
                             <td><a href='mailto:${user.getMail()}'>${user.getMail()}</a></td>
-                            <td>${user.getStatus()}</td>
-                            <td><a class="upgrade_button" type="submit"><i class="fas fa-star"></i> DEBASE</a></td>
+                            <td>${user.displayGradeName()}</td>
+                            <td><a class="upgrade_button" type="submit"><i class="fas fa-star"></i> ${user.displayStatus()}</a></td>
                         </tr>
                         </c:forEach>
-                        
-                        <%-- <tr>
-                            <td>Arthur</td>
-                            <td>ROUAIX</td>
-                            <td><a href="mailto:arthur.rouaix@isep.fr">arthur.rouaix@isep.fr</a></td>
-                            <td>Admin</td>
-                            <td><a class="upgrade_button" type="submit"><i class="fas fa-star"></i> DEBASE</a></td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Julien</td>
-                            <td>VEY</td>
-                            <td><a href="mailto:julien.vey@isep.fr">julien.vey@isep.fr</a></td>
-                            <td>Admin</td>
-                            <td><a class="upgrade_button" type="submit"><i class="fas fa-star"></i> DEBASE</a></td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Guillaume</td>
-                            <td>PASQUEREAU</td>
-                            <td><a href="mailto:guillaume.pasquereau@isep.fr">guillaume.pasquereau@isep.fr</a></td>
-                            <td>Admin</td>
-                            <td><a class="upgrade_button" type="submit"><i class="fas fa-star"></i> DEBASE</a></td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Hugues</td>
-                            <td>VINCEY</td>
-                            <td><a href="mailto:hugues.vincey@isep.fr">hugues.vincey@isep.fr</a></td>
-                            <td>Admin</td>
-                            <td><a class="upgrade_button" type="submit"><i class="fas fa-star"></i> DEBASE</a></td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Noé</td>
-                            <td>FAURE</td>
-                            <td><a href="mailto:noe.faure@isep.fr">noe.faure@isep.fr</a></td>
-                            <td>Admin</td>
-                            <td><a class="upgrade_button" type="submit"><i class="fas fa-star"></i> DEBASE</a></td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Mathieu</td>
-                            <td>Manceny</td>
-                            <td><a href="mailto:mathieu.manceny@isep.fr">mathieu.manceny@isep.fr</a></td>
-                            <td>DE</td>
-                            <td><a class="upgrade_button" type="submit"><i class="far fa-star"></i> UPGRADE</a></td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Mohamed</td>
-                            <td>Sellami</td>
-                            <td><a href="mailto:mohamed.sellami@isep.fr">mohamed.sellami@isep.fr</a></td>
-                            <td>Professeur</td>
-                            <td><a class="upgrade_button" type="submit"><i class="far fa-star"></i> UPGRADE</a></td>
-                        </tr> --%>
                     </table>
                     </form>
                 </div>
