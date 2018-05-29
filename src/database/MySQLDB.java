@@ -35,6 +35,7 @@ public class MySQLDB {
 		try {
 			// DriverManager: The basic service for managing a set of JDBC drivers.
 			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Modulilas", "root", "root");
+			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "");
 			if (Conn != null) {
 				log("Connection Successful! Enjoy. Now it's time to push data");
 			} else {
@@ -86,10 +87,40 @@ public class MySQLDB {
  
 			// Let's iterate through the java ResultSet
 			while (rs.next()) {
-				String Titre = rs.getString("Titre");
-				String Code = rs.getString("Code");
-				String Enseignement = rs.getString("Enseignement");
-				int Annee = rs.getInt("Annee");
+				String Titre = rs.getString("moduleName");
+				String Code = rs.getString("moduleCode");
+				int Annee = 0;
+				String firstChar = "x";
+				String Enseignement = "error";
+				
+				try {
+					Annee = Integer.parseInt(String.valueOf(Code.charAt(3)));
+				} catch (NumberFormatException e) {}
+				
+				try {
+					firstChar = String.valueOf(Code.charAt(1));
+				} catch (NumberFormatException e) {}
+				
+				
+				switch (firstChar) {
+					case "I":
+						Enseignement = "Informatique";
+						break;
+					case "E":
+						Enseignement = "�l�ctronique";
+						break;
+					case "R":
+						Enseignement = "R�seaux";
+						break;
+					case "T":
+						Enseignement = "T�l�com";
+						break;
+					case "G":
+						Enseignement = "Signal";
+						break;
+						
+				}
+				
 				
 				Module mod = new Module();
 				
