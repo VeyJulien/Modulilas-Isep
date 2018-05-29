@@ -52,6 +52,16 @@ public class Controller extends HttpServlet {
             case "/Gerer_les_champs":
                 createTemplate(request, response);
                 break;
+            case "/Menu":
+            	menu(request, response);
+            	break;
+            case "/Creer_un_module":
+            	creationMod(request, response);
+            	break;
+            case "/Modifier_template":
+            	modTemplate(request, response);
+            	break;
+            
             default:
                 menu(request, response);
                 break;
@@ -73,17 +83,29 @@ public class Controller extends HttpServlet {
 	
 	private void createTemplate(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-		FieldtypeHelper fieldhelp = new FieldtypeHelper();
-		List<Fieldtype> fields = MySQLDB.allFieldtypes();
-		fieldhelp.setFieldtypes(fields);
-		request.setAttribute("Fieldtypes",fieldhelp);
+	//	FieldtypeHelper fieldhelp = new FieldtypeHelper();
+	//	List<Fieldtype> fields = MySQLDB.allFieldtypes();
+	//	fieldhelp.setFieldtypes(fields);
+	//	request.setAttribute("Fieldtypes",fieldhelp);
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/create_template.jsp");
 		dispatcher.include(request, response);
     }
 
 	private void menu(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/menu.jsp");
+        dispatcher.forward(request, response);
+    }
+	
+	private void creationMod(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/create_module.jsp");
+        dispatcher.forward(request, response);
+    }
+	
+	private void modTemplate(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/modify_template.jsp");
         dispatcher.forward(request, response);
     }
 	
