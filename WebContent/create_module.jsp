@@ -5,7 +5,7 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Module - Créer un module</title>
+    <title>Module - Cr&#233;er un module</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -98,7 +98,7 @@
                                 
                                 <button type="button" onclick="press_previous_step_2()" class="button_1 button_previous" style="margin-right: 46.5%;"><span style="transition:0.5s; font-size:15px; padding-right: 20px;">Précédent</span></button>
                         
-                        		<button type="button" onclick="press_next_step_1()" class="button_1 button_next"><span style="transition:0.5s; font-size:15px; padding-left: 20px;">Suivant</span></button>
+                        		<button type="button" class="button_1 button_next" onclick="press_next_step_2()"><span style="transition:0.5s; font-size:15px; padding-left: 20px;">Suivant</span></button>
                         
                       	   </div>
                         
