@@ -34,7 +34,6 @@ public class MySQLDB {
  
 		try {
 			// DriverManager: The basic service for managing a set of JDBC drivers.
-			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Modulilas", "root", "root");
 			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "");
 			if (Conn != null) {
 				log("Connection Successful! Enjoy. Now it's time to push data");
@@ -107,13 +106,13 @@ public class MySQLDB {
 						Enseignement = "Informatique";
 						break;
 					case "E":
-						Enseignement = "�l�ctronique";
+						Enseignement = "&#233;l&#233;ctronique";
 						break;
 					case "R":
-						Enseignement = "R�seaux";
+						Enseignement = "R&#233;seaux";
 						break;
 					case "T":
-						Enseignement = "T�l�com";
+						Enseignement = "T&#233;l&#233;com";
 						break;
 					case "G":
 						Enseignement = "Signal";

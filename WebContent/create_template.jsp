@@ -53,7 +53,7 @@
                 <div id="step_1">
                     
                 <div class="label_input_step_name">Nom de l'&#233;tape</div>
-                <input value="Informations g�n�rales" class="input_step_name" type="text">
+                <input value="Informations g&#233;n&#233;rales" class="input_step_name" type="text">
                 
                 <ul id="list_1" class="list_template">
                     <% int i1 = 0; %>
