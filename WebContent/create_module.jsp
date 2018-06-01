@@ -32,114 +32,45 @@
             <div class="page">
                 <div class="step_name_container">
 
-                    <span class="step_name unactive_text play_text_loadbar">Informations<br>g&#233;n&#233;rales</span>
-                    <span id="l_t_1" class="step_name unactive_text">Pr&#233;sentation<br>g&#233;n&#233;rale</span>
-                    <span id="l_t_2" class="step_name unactive_text">Objectifs<br>p&#233;dagogiques</span>
-                    <span id="l_t_3" class="step_name unactive_text">Modalit&#233;s<br>p&#233;dagogiques</span>
-
+              	 <c:forEach var="step" items="${Fieldtypes.listSteps()}">
+              	 	<c:set var="etape" value="${step}" />
+                	<c:forEach var="max" items="${Steps.specificStep(etape)}">
+                			${max.text()}
+                    </c:forEach>
+                </c:forEach>
+                
                 </div>
                 
                 <div class="loadbar_container">
-                    <span class="loadbar_round play_round_loadbar"></span>
-                    <span class="loadbar_number">1</span>
-                    <div class="loadbar_line unactive_line">
-                        <div class="load_progress play_line_loadbar"></div>
-                    </div>
-                    
-                    <span id="l_r_1" class="loadbar_round unactive_round"></span>
-                    <span id="l_n_1" class="loadbar_number unactive_text">2</span>
-                    <div class="loadbar_line unactive_line">
-                        <div id="l_p_1" class="load_progress"></div>
-                    </div>
-                    
-                    <span id="l_r_2" class="loadbar_round unactive_round"></span>
-                    <span id="l_n_2" class="loadbar_number unactive_text">3</span>
-                    <div class="loadbar_line unactive_line">
-                        <div id="l_p_2" class="load_progress"></div>
-                    </div>
-                    
-                    <span id="l_r_3" class="loadbar_round unactive_round"></span>
-                    <span id="l_n_3" class="loadbar_number unactive_text">4</span>
-                    <div class="loadbar_line unactive_line">
-                        <div id="l_p_3" class="load_progress"></div>
-                    </div>
-                    
-                    <span class="loadbar_round unactive_round"></span>
-                    <span class="loadbar_number unactive_text">5</span>
+                <c:forEach var="step" items="${Fieldtypes.listSteps()}">
+                	<c:set var="etape" value="${step}" />
+                	<c:forEach var="max" items="${Steps.specificStep(etape)}">
+                			${max.loadbar(Fieldtypes.maxStep())}
+                    </c:forEach>
+                </c:forEach>
                     
                 </div>
                 
                 
                 <div class="input_module_container">
                     <form action="Sucess" method="post">
+                    	
+                        <c:forEach var="step" items="${Fieldtypes.listSteps()}">
+                        	<div id="step_${step}" style="transition: 1s;">
                         
-                        <div id="step_1" style="transition: 1s;">
+                        	<c:set var="etape" value="${step}" />
+                        	<c:forEach var="fieldtype" items="${Fieldtypes.specificFieldtype(etape)}">
                         
-                        <c:forEach var="fieldtype" items="${Fieldtypes.specificFieldtype(1)}">
+                        		<label>${fieldtype.getTitle()}</label><i class="fas fa-circle oblig_field"></i>
+                        		${fieldtype.fieldType(fieldtype.getFormat())}
                         
-                        	<label>${fieldtype.getTitle()}</label><i class="fas fa-circle oblig_field"></i>
-                        	${fieldtype.fieldType(fieldtype.getFormat())}
-                        
+                       		</c:forEach>
+                        	<c:forEach var="max" items="${Steps.specificStep(etape)}">
+                        		${max.button(Fieldtypes.maxStep())}
+                       		</c:forEach>
+                      	   
+                        	</div>
                         </c:forEach>
-                        	<button type="button" onclick="press_next_step_1()" class="button_1 button_next"><span style="transition:0.5s; font-size:15px; padding-left: 20px;">Suivant</span></button>
-                        </div>
-                        
-                        
-                        <div id="step_2" style="margin-right: -700px; padding-left: 700px; display: none; transition: 1s; opacity: 1;">
-                            
-                            <c:forEach var="fieldtype" items="${Fieldtypes.specificFieldtype(2)}">
-                        
-                        		<label>${fieldtype.getTitle()}</label><i class="fas fa-circle oblig_field"></i>
-                        		${fieldtype.fieldType(fieldtype.getFormat())}
-                        
-                       	    </c:forEach>
-                            
-                            <div style="display:flex; width:100%;">
-                                
-                                <button type="button" onclick="press_previous_step_2()" class="button_1 button_previous" style="margin-right: 46.5%;"><span style="transition:0.5s; font-size:15px; padding-right: 20px;">Précédent</span></button>
-                        
-                        		<button type="button" class="button_1 button_next" onclick="press_next_step_2()"><span style="transition:0.5s; font-size:15px; padding-left: 20px;">Suivant</span></button>
-                        
-                      	   </div>
-                        
-                        </div>
-                        
-                        <div id="step_3" style="margin-right: -700px; padding-left: 700px; display: none; transition: 1s; opacity: 1;">
-                            
-
-                            <c:forEach var="fieldtype" items="${Fieldtypes.specificFieldtype(3)}">
-                        
-                        		<label>${fieldtype.getTitle()}</label><i class="fas fa-circle oblig_field"></i>
-                        		${fieldtype.fieldType(fieldtype.getFormat())}
-                        
-                       	    </c:forEach>
-                            
-                            <div style="display:flex; width:100%;">
-                                
-                                <button type="button" onclick="press_previous_step_3()" class="button_1 button_previous" style="margin-right: 46.5%;"><span style="transition:0.5s; font-size:15px; padding-right: 20px;">Précédent</span></button>
-                                
-                                <button type="button" class="button_1 button_next" onclick="press_next_step_3()"><span style="transition:0.5s; font-size:15px; padding-left: 20px;">Suivant</span></button>
-                            </div>
-                        
-                        </div>
-                        
-                        <div id="step_4" style="margin-right: -700px; padding-left: 700px; display: none; transition: 1s; opacity: 1;">
-                            
-                            <c:forEach var="fieldtype" items="${Fieldtypes.specificFieldtype(4)}">
-                        
-                        		<label>${fieldtype.getTitle()}</label><i class="fas fa-circle oblig_field"></i>
-                        		${fieldtype.fieldType(fieldtype.getFormat())}
-                        
-                       	    </c:forEach>
-                            
-                            <div style="display:flex; width:100%;">
-                                
-                                <button type="button" onclick="press_previous_step_4()" class="button_1 button_previous" style="margin-right: 46.5%;"><span style="transition:0.5s; font-size:15px; padding-right: 20px;">Précédent</span></button>
-                                
-                                <input class="button_1 button_next button_end" value="Terminer" type="submit">
-                            </div>
-                        
-                        </div>
                         
                     </form>
                 </div>
@@ -469,5 +400,8 @@ function press_previous_step_4(){
     document.getElementById("l_t_3").classList.remove("play_text_loadbar");
 
 }
-    
+
+document.getElementById("step_2").style.display = "none";
+document.getElementById("step_3").style.display = "none";
+document.getElementById("step_4").style.display = "none";
 </script>

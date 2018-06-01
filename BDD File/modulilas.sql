@@ -121,6 +121,27 @@ CREATE TABLE `skill` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `step`
+--
+
+CREATE TABLE `step` (
+  `titre` varchar(255) NOT NULL,
+  `formStep` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `step`
+--
+
+INSERT INTO `step` (`titre`, `formStep`) VALUES
+('Etape 1', 1),
+('Etape 2', 2),
+('Etape 3', 3),
+('Etape 4', 4);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `user`
 --
 

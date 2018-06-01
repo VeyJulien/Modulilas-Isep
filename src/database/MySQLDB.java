@@ -35,8 +35,8 @@ public class MySQLDB {
 		try {
 			// DriverManager: The basic service for managing a set of JDBC drivers.
 			
-			//Noe co : 		Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
-			//Julien co : 	Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
+			//Noe co : 	    Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
+			//Julien co :   Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
 			
 			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "");
 			if (Conn != null) {
@@ -154,10 +154,8 @@ public class MySQLDB {
 			// MySQL Select Query Tutorial
 			String getQueryStatement = "SELECT * FROM fieldtype";
 			
-			
 			PrepareStat = Conn.prepareStatement(getQueryStatement);
 			
- 
 			// Execute the Query, and get a java ResultSet
 			ResultSet rs = PrepareStat.executeQuery();		
  
@@ -199,9 +197,7 @@ public class MySQLDB {
 			// MySQL Select Query Tutorial
 			String getQueryStatement = "SELECT * FROM user";
 			
-			
 			PrepareStat = Conn.prepareStatement(getQueryStatement);
-			
  
 			// Execute the Query, and get a java ResultSet
 			ResultSet rs = PrepareStat.executeQuery();		
@@ -231,6 +227,44 @@ public class MySQLDB {
 			e.printStackTrace();
 		}
 		return allUsers;
+	}
+	
+public static List<Step> allSteps() {
+		
+		List<Step> allSteps = new ArrayList<>();
+		
+		MySQLDB.makeJDBCConnection();
+		
+		try {
+			// MySQL Select Query Tutorial
+			String getQueryStatement = "SELECT * FROM step";
+			
+			PrepareStat = Conn.prepareStatement(getQueryStatement);
+			
+			// Execute the Query, and get a java ResultSet
+			ResultSet rs = PrepareStat.executeQuery();		
+ 
+			// Let's iterate through the java ResultSet
+			while (rs.next()) {
+				String titre = rs.getString("titre");
+				int formStep = rs.getInt("formStep");
+
+				
+				Step steps = new Step();
+				
+				steps.setTitre(titre);
+				steps.setFormStep(formStep);
+				
+				allSteps.add(steps);	
+				
+			}
+ 
+		} catch (
+ 
+		SQLException e) {
+			e.printStackTrace();
+		}
+		return allSteps;
 	}
  
 	// Simple log utility

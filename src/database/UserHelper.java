@@ -3,7 +3,6 @@ package database;
 import java.util.List;
 
 public class UserHelper {
-
 	List<User> listUsers;
 
 	public List<User> getListUsers() {

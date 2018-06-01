@@ -84,9 +84,13 @@ public class Controller extends HttpServlet {
 	private void createModule(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
 		FieldtypeHelper fieldhelp = new FieldtypeHelper();
+		StepHelper stephelp = new StepHelper();
 		List<Fieldtype> fields = MySQLDB.allFieldtypes();
+		List<Step> steps = MySQLDB.allSteps();
 		fieldhelp.setFieldtypes(fields);
+		stephelp.setSteps(steps);
 		request.setAttribute("Fieldtypes",fieldhelp);
+		request.setAttribute("Steps", stephelp);
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/create_module.jsp");
 		dispatcher.include(request, response);
     }
@@ -105,8 +109,10 @@ public class Controller extends HttpServlet {
             throws SQLException, IOException, ServletException {
 		FieldtypeHelper fieldhelp = new FieldtypeHelper();
 		List<Fieldtype> fields = MySQLDB.allFieldtypes();
+		List<Step> steps = MySQLDB.allSteps();
 		fieldhelp.setFieldtypes(fields);
 		request.setAttribute("Fieldtypes",fieldhelp);
+		request.setAttribute("Steps", steps);
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/create_template.jsp");
 		dispatcher.include(request, response);
     }

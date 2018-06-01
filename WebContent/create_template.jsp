@@ -40,25 +40,24 @@
                         <i style="cursor:auto;" class="fas fa-plus-circle icon_selection_type icon_selection_type_active"></i><div style="margin-left: 10px;margin-right: 5px;font-size: 15px;padding-top: 3px;">Un Nombre </div><br>
                     </div>
                     <ul class="menu_template">
-                        <li id="menu_1" class="element_menu_template element_menu_template_active"><a type="button" onclick="show_step_1()">Step 1</a></li>
-                        <li id="menu_2" class="element_menu_template"><a type="button" onclick="show_step_2()">Step 2</a></li>
-                        <li id="menu_3" class="element_menu_template"><a type="button" onclick="show_step_3()">Step 3</a></li>
-                        <li id="menu_4" class="element_menu_template"><a type="button" onclick="show_step_4()">Step 4</a></li>
+                     	<c:forEach var="step" items="${Steps}">
+                        	<li id="menu_${step.getFormStep()}" class="element_menu_template element_menu_template_active"><a type="button" onclick="show_step_${step.getFormStep()}()">Step ${step.getFormStep()}</a></li>
+                        </c:forEach>
                         <li class="save_template"><a style="color: white;">Enregistrer</a></li>
                     </ul>
                 </div>
                 
                 <div style="overflow:auto; height:80%;">
                 
-                <c:forEach var="step" items="${Fieldtypes.listSteps()}">
-                	<div id="step_${step}">
+                <c:forEach var="step" items="${Steps}">
+                	<div id="step_${step.getFormStep()}">
                     
                 	<div class="label_input_step_name">Nom de l'&#233;tape</div>
-                	<input value="Informations g&#233;n&#233;rales" class="input_step_name" type="text">
+                	<input value="${step.getTitre()}" class="input_step_name" type="text">
                 
-                	<ul id="list_${step}" class="list_template">
+                	<ul id="list_${step.getFormStep()}" class="list_template">
                     	<% int i = 0; %>
-                    	<c:set var="etape" value="${step}" />
+                    	<c:set var="etape" value="${step.getFormStep()}" />
                     	<c:forEach var="fieldtype" items="${Fieldtypes.specificFieldtype(etape)}">
                     
                     		<div style="display:flex;">

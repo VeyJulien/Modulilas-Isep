@@ -36,4 +36,15 @@ public class FieldtypeHelper {
 		}
 		return steps;
 	}
+	
+	public int maxStep(){
+		int max = 0;
+		
+		for (Fieldtype var : fieldtypes) {
+			if (max < var.getFormStep()) {
+				max = var.getFormStep();
+			}
+		}
+		return max;
+	}
 }
