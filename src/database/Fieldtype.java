@@ -53,11 +53,13 @@ public class Fieldtype {
 	}
 	
 	public String fieldType(int format){
+		
+		String description = this.getDescription();
 		String fieldType = "";
 		if ( format == 1 ){
-			fieldType = "<div style=\"margin-bottom: 16px;\"><textarea class=\"textarea_module\" style=\"height:170px;\" placeholder=" + description + "></textarea></div>";
+			fieldType = "<div style=\"margin-bottom: 16px;\"><textarea class=\"textarea_module\" style=\"height:170px;\" placeholder=\"" + description + "\"></textarea></div>";
 		}else if( format == 2 ){
-			fieldType = "<div style=\"display: flex; margin-bottom: 16px;\"><input id=\"field_1\" autocomplete=\"off\" onchange=\"check_field_1()\" class=\"input_create_module\" placeholder=" + description + "><i id=\"check_1\" class=\"fas fa-check-circle check_module\"></i><span class=\"ok_popup\" id=\"ok_1\">ok</span></div>";
+			fieldType = "<div style=\"display: flex; margin-bottom: 16px;\"><input id=\"field_1\" autocomplete=\"off\" onchange=\"check_field_1()\" class=\"input_create_module\" placeholder=\"" + description + "\"><i id=\"check_1\" class=\"fas fa-check-circle check_module\"></i><span class=\"ok_popup\" id=\"ok_1\">ok</span></div>";
 		}else if( format == 3){
 			fieldType = "<div style=\"display: flex; margin-bottom: 16px;\"><label class=\"container_check\" style=\"margin-right: 30px;\">Oui<input onchange=\"check_box_field()\" id=\"Mycheck_1\" type=\"checkbox\" style=\"width:0px;\" checked><span class=\"checkmark check_yesno\"></span></label><label class=\"container_check\">Non<input onchange=\"check_box_field_2()\" id=\"Mycheck_2\" type=\"checkbox\" style=\"width:0px;\"><span class=\"checkmark check_yesno\"></span></label></div>";
 		}else if( format == 4 ){
