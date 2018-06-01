@@ -1804,6 +1804,8 @@ input:checked + .slider:before {
     border:1px solid #f45764;
     text-align:center;
     cursor:pointer;
+    margin-top: 0px;
+    padding: 7px;
     transition: .5s;
 }
 

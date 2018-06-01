@@ -61,7 +61,8 @@
                         </div>
                     </div>
                     
-                    <div class="save_container"><div>Enregistrer</div></div>
+              		<form style="overflow:scroll; height:120%;">
+                    <input class="save_container" value="Enregistrer" type="submit">
                     
                     <div style="overflow:scroll; height:50%;">
                     <table class="table_edit_vue">
@@ -177,6 +178,8 @@
                         </tr>
                     </table>
                 </div>
+                
+                </form>
                     
                 </div>
                 
