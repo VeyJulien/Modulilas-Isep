@@ -71,7 +71,7 @@
                 
                 
                 <div class="input_module_container">
-                    <form action="sucess.html" method="post">
+                    <form action="Sucess" method="post">
                         
                         <div id="step_1" style="transition: 1s;">
                         
@@ -136,7 +136,7 @@
                                 
                                 <button type="button" onclick="press_previous_step_4()" class="button_1 button_previous" style="margin-right: 46.5%;"><span style="transition:0.5s; font-size:15px; padding-right: 20px;">Précédent</span></button>
                                 
-                                <input onclick="href='sucess.html'" class="button_1 button_next button_end" value="Terminer" type="submit">
+                                <input class="button_1 button_next button_end" value="Terminer" type="submit">
                             </div>
                         
                         </div>

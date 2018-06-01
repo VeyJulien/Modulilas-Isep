@@ -48,7 +48,7 @@
                     </ul>
                 </div>
                 
-                <div style="overflow:auto; height:85%;">
+                <div style="overflow:auto; height:80%;">
                 
                 <div id="step_1">
                     

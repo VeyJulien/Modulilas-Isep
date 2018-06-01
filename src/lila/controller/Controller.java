@@ -69,6 +69,9 @@ public class Controller extends HttpServlet {
             case "/Rediger_message":
         			writeMessage(request, response);
         			break;
+            case "/Sucess":
+    				sucessPage(request, response);
+    				break;
             default:
                 menu(request, response);
                 break;
@@ -122,6 +125,12 @@ public class Controller extends HttpServlet {
 	private void menu(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/menu.jsp");
+        dispatcher.forward(request, response);
+    }
+	
+	private void sucessPage(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/sucess.jsp");
         dispatcher.forward(request, response);
     }
 	
