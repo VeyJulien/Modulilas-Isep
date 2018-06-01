@@ -50,157 +50,46 @@
                 
                 <div style="overflow:auto; height:80%;">
                 
-                <div id="step_1">
+                <c:forEach var="step" items="${Fieldtypes.listSteps()}">
+                	<div id="step_${step}">
                     
-                <div class="label_input_step_name">Nom de l'&#233;tape</div>
-                <input value="Informations g&#233;n&#233;rales" class="input_step_name" type="text">
+                	<div class="label_input_step_name">Nom de l'&#233;tape</div>
+                	<input value="Informations g&#233;n&#233;rales" class="input_step_name" type="text">
                 
-                <ul id="list_1" class="list_template">
-                    <% int i1 = 0; %>
-                    <c:forEach var="fieldtype" items="${Fieldtypes.specificFieldtype(1)}">
+                	<ul id="list_${step}" class="list_template">
+                    	<% int i = 0; %>
+                    	<c:set var="etape" value="${step}" />
+                    	<c:forEach var="fieldtype" items="${Fieldtypes.specificFieldtype(etape)}">
                     
-                    	<div style="display:flex;">
-                    	<i type="button" onclick="delete_element(this)" class="far fa-trash-alt manage_field_icon"></i>
-                    	<i type="button" onclick="hide_element(this)" class="fas fa-eye manage_field_icon_2"></i>
+                    		<div style="display:flex;">
+                    		<i type="button" onclick="delete_element(this)" class="far fa-trash-alt manage_field_icon"></i>
+                    		<i type="button" onclick="hide_element(this)" class="fas fa-eye manage_field_icon_2"></i>
                         
-                    	<li class="element_list_template2">
+                    		<li class="element_list_template2">
                         
-                        	<div style="padding-left: 18px;padding-right:18px;" class="count_template"><%= i1 = i1 + 1 %></div>
-                        	<div style="display:block; margin-right:10px; min-width: 75px;">
-                            	${fieldtype.activateField(fieldtype.getFormat())}
-                        	</div>
-                        	<div style="display:block;">
-                            	<input class="input_template" value="${fieldtype.getTitle()}">
-                            	<input class="input_template" value="${fieldtype.getDescription()}">
-                        	</div>
-                        	<div class="arrow_container">
-                            	<i class="fas fa-arrow-up arrow_up_template"></i><br>
-                            	<i class="fas fa-arrow-down arrow_down_template"></i>
-                        	</div>
+                        		<div style="padding-left: 18px;padding-right:18px;" class="count_template"><%= i = i + 1 %></div>
+                        		<div style="display:block; margin-right:10px; min-width: 75px;">
+                            		${fieldtype.activateField(fieldtype.getFormat())}
+                        		</div>
+                        		<div style="display:block;">
+                            		<input class="input_template" value="${fieldtype.getTitle()}">
+                            		<input class="input_template" value="${fieldtype.getDescription()}">
+                        		</div>
+                        		<div class="arrow_container">
+                            		<i class="fas fa-arrow-up arrow_up_template"></i><br>
+                            		<i class="fas fa-arrow-down arrow_down_template"></i>
+                        		</div>
                     
-                    	</li>
-                    	</div>
+                    		</li>
+                    		</div>
                     
-                    </c:forEach>   
+                    	</c:forEach>   
                     
-                </ul>
+                	</ul>
                     
-                <div class="add_field" type="button" onclick="add_to_list('list_1')"><i class="fas fa-plus-circle"></i> Ajouter un champ suppl&#233;mentaire</div>
-                </div>
-                
-                <div id="step_2" style="display:none;">
-                    
-                <div class="label_input_step_name">Nom de l'&#233;tape</div>
-                <input value="Pr&#233;sentation g&#233;n&#233;rale" class="input_step_name" type="text">
-                    
-                    <ul id="list_2" class="list_template">
-                    <% int i2 = 0; %>
-                    <c:forEach var="fieldtype" items="${Fieldtypes.specificFieldtype(2)}">
-                    
-                    	<div style="display:flex;">
-                    	<i type="button" onclick="delete_element(this)" class="far fa-trash-alt manage_field_icon"></i>
-                    	<i type="button" onclick="hide_element(this)" class="fas fa-eye manage_field_icon_2"></i>
-                        
-                    	<li class="element_list_template2">
-                        
-                        	<div style="padding-left: 18px;padding-right:18px;" class="count_template"><%= i2 = i2	 + 1 %></div>
-                        	<div style="display:block; margin-right:10px; min-width: 75px;">
-                            	${fieldtype.activateField(fieldtype.getFormat())}
-                            </div>
-                        	<div style="display:block;">
-                            	<input class="input_template" value="${fieldtype.getTitle()}">
-                            	<input class="input_template" value="${fieldtype.getDescription()}">
-                        	</div>
-                        	<div class="arrow_container">
-                            	<i class="fas fa-arrow-up arrow_up_template"></i><br>
-                            	<i class="fas fa-arrow-down arrow_down_template"></i>
-                        	</div>
-                    
-                    	</li>
-                    	</div>
-                    
-                    </c:forEach>  
-                    
-                    </ul>
-                    
-                    <div class="add_field" type="button" onclick="add_to_list('list_2')"><i class="fas fa-plus-circle"></i> Ajouter un champ suppl&#233;mentaire</div>
-                </div>
-                    
-                <div id="step_3" style="display:none;">
-                    
-                <div class="label_input_step_name">Nom de l'&#233;tape</div>
-                <input value="Objectifs pedagogiques" class="input_step_name" type="text">
-                    
-                    <ul id="list_3" class="list_template">
-                    <% int i3 = 0; %>
-                    <c:forEach var="fieldtype" items="${Fieldtypes.specificFieldtype(3)}">
-                    
-                    	<div style="display:flex;">
-                    	<i type="button" onclick="delete_element(this)" class="far fa-trash-alt manage_field_icon"></i>
-                    	<i type="button" onclick="hide_element(this)" class="fas fa-eye manage_field_icon_2"></i>
-                        
-                    	<li class="element_list_template2">
-                        
-                        	<div style="padding-left: 18px;padding-right:18px;" class="count_template"><%= i3 = i3 + 1 %></div>
-                        	<div style="display:block; margin-right:10px; min-width: 75px;">
-                            	${fieldtype.activateField(fieldtype.getFormat())}
-                        	</div>
-                        	<div style="display:block;">
-                            	<input class="input_template" value="${fieldtype.getTitle()}">
-                            	<input class="input_template" value="${fieldtype.getDescription()}">
-                        	</div>
-                        	<div class="arrow_container">
-                            	<i class="fas fa-arrow-up arrow_up_template"></i><br>
-                            	<i class="fas fa-arrow-down arrow_down_template"></i>
-                        	</div>
-                    
-                    	</li>
-                    	</div>
-                    
-                    </c:forEach>  
-                    
-                    </ul>
-                    
-                    <div class="add_field" type="button" onclick="add_to_list('list_3')"><i class="fas fa-plus-circle"></i> Ajouter un champ suppl&#233;mentaire</div>
-                </div>
-                    
-                <div id="step_4" style="display:none;">
-                    
-                <div class="label_input_step_name">Nom de l'&#233;tape</div>
-                <input value="Modalites pedagogiques" class="input_step_name" type="text">
-                    
-                    <ul id="list_4" class="list_template">
-                    <% int i4 = 0; %>
-                    <c:forEach var="fieldtype" items="${Fieldtypes.specificFieldtype(4)}">
-                    
-                    	<div style="display:flex;">
-                    	<i type="button" onclick="delete_element(this)" class="far fa-trash-alt manage_field_icon"></i>
-                    	<i type="button" onclick="hide_element(this)" class="fas fa-eye manage_field_icon_2"></i>
-                        
-                    	<li class="element_list_template2">
-                        
-                        	<div style="padding-left: 18px;padding-right:18px;" class="count_template"><%= i4 = i4 + 1 %></div>
-                        	<div style="display:block; margin-right:10px; min-width: 75px;">
-                            	${fieldtype.activateField(fieldtype.getFormat())}
-                        	</div>
-                        	<div style="display:block;">
-                            	<input class="input_template" value="${fieldtype.getTitle()}">
-                            	<input class="input_template" value="${fieldtype.getDescription()}">
-                        	</div>
-                        	<div class="arrow_container">
-                            	<i class="fas fa-arrow-up arrow_up_template"></i><br>
-                            	<i class="fas fa-arrow-down arrow_down_template"></i>
-                        	</div>
-                    
-                    	</li>
-                    	</div>
-                    
-                    </c:forEach>  
-                    
-                    </ul>
-                    
-                    <div class="add_field" type="button" onclick="add_to_list('list_4')"><i class="fas fa-plus-circle"></i> Ajouter un champ suppl&#233;mentaire</div>
-                </div>
+                	<div class="add_field" type="button" onclick="add_to_list('list_${step}')"><i class="fas fa-plus-circle"></i> Ajouter un champ suppl&#233;mentaire</div>
+                	</div>
+                </c:forEach>
                 
                 </div>
             </div>
@@ -239,7 +128,6 @@ function off() {
     document.getElementById("overlay").style.display = "none";
     document.getElementsByClassName("main_block")[0].style.filter = "blur(0px)";
 }
-
 
 function show_step_1()
     {
@@ -392,4 +280,5 @@ function add_to_list(name)
         
     }
 
+show_step_1();
 </script>

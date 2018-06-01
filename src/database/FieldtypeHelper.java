@@ -25,4 +25,15 @@ public class FieldtypeHelper {
 		}
 		return spFieldtypes;
 	}
+	
+	public List<Integer> listSteps(){
+		List<Integer> steps = new ArrayList<>();
+		
+		for (Fieldtype var : fieldtypes) {
+			if (!steps.contains(var.getFormStep())) {
+				steps.add(var.getFormStep());
+			}
+		}
+		return steps;
+	}
 }
