@@ -40,34 +40,30 @@ public class ModuleCreation extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		MySQLDB.makeJDBCConnection();
 		
 		List<Fieldtype> fields = MySQLDB.allFieldtypes();
-
-		
 		
 		int userID = 1;
 		// récuperer l'user ID actuelle
 		
 		String titre = request.getParameter("Titre du module");
-		String code = request.getParameter("Code");
+		String code = request.getParameter("Identifiant du module");
 		
 		MySQLDB.addModule(titre, code, userID);
 		
-		
-		
+			
 		int moduleId = MySQLDB.getModuleID(code);
-		
-		
+				
 		
 		for (int i=0;i<fields.size();i++) {
 			String fieldObject = fields.get(i).getTitle();
 			String content = request.getParameter(fieldObject);
 			MySQLDB.addContent(content, moduleId, fields.get(i).getFieldTypeId());
 			
-			// INSERT INTO content VALUES content,moduleID, fields.get(i).getFieldtypeID()
 		}
 				
 	}
