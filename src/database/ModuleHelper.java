@@ -2,6 +2,7 @@ package database;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.*;
 
 public class ModuleHelper {
 	private List<Module> modules;
@@ -45,6 +46,11 @@ public class ModuleHelper {
 				annees.add(var.getAnnee());
 			}
 		}
+		annees.sort(new Comparator<Integer>() {
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				return o1.compareTo(o2);
+			}});
 		return annees;
 	}
 	

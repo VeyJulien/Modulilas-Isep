@@ -44,6 +44,7 @@ public class Controller extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		MySQLDB.makeJDBCConnection();
 		String action = request.getServletPath();
 		 
         try {

@@ -52,14 +52,16 @@ public class MySQLDB {
  
 	}
  
-	public static void addDataToDB(String Titre, int Code) {
- 
+	public static void addModule(String Titre, String Code, int userID) {
+		
+		
 		try {
-			String insertQueryStatement = "INSERT  INTO  module  VALUES  (?,?)";
+			String insertQueryStatement = "INSERT INTO module(moduleName, userId, code) VALUES (?,?,?);";
  
 			PrepareStat = Conn.prepareStatement(insertQueryStatement);
 			PrepareStat.setString(1, Titre);
-			PrepareStat.setInt(2, Code);
+			PrepareStat.setInt(2, userID);
+			PrepareStat.setString(3, Code);
  
 			// execute insert SQL statement
 			PrepareStat.executeUpdate();
@@ -70,12 +72,59 @@ public class MySQLDB {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void addContent(String Content, Integer ModuleID, int FieldtypeID) {
+		 
+		
+		try {
+			String insertQueryStatement = "INSERT  INTO  content(content,moduleId,fieldTypeId)  VALUES  (?,?,?)";
+ 
+			PrepareStat = Conn.prepareStatement(insertQueryStatement);
+			PrepareStat.setString(1, Content);
+			PrepareStat.setInt(2, ModuleID);
+			PrepareStat.setInt(3, FieldtypeID);
+ 
+			// execute insert SQL statement
+			PrepareStat.executeUpdate();
+			log(Content + " added successfully");
+		} catch (
+ 
+		SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static int getModuleID(String Code) {
+		
+		int id = -1;
+		try {
+			String insertQueryStatement = "SELECT moduleId FROM module WHERE code = ? ";
+ 
+			PrepareStat = Conn.prepareStatement(insertQueryStatement);
+			PrepareStat.setString(1, Code);
+ 
+			// execute insert SQL statement
+			
+			ResultSet rs = PrepareStat.executeQuery();
+			while (rs.next()) {
+				id = rs.getInt("moduleId");
+			}
+			
+			
+		} catch (
+				 
+		SQLException e) {
+			e.printStackTrace();
+			
+		}
+		
+		return id;
+	}
  
 	public static List<Module> allModules() {
 		
 		List<Module> allmodules = new ArrayList<>();
 		
-		MySQLDB.makeJDBCConnection();
 		
 		try {
 			// MySQL Select Query Tutorial
@@ -91,7 +140,7 @@ public class MySQLDB {
 			// Let's iterate through the java ResultSet
 			while (rs.next()) {
 				String Titre = rs.getString("moduleName");
-				String Code = rs.getString("moduleCode");
+				String Code = rs.getString("code");
 				int Annee = 0;
 				String firstChar = "x";
 				String Enseignement = "error";
@@ -148,7 +197,6 @@ public class MySQLDB {
 		
 		List<Fieldtype> allfieldtypes = new ArrayList<>();
 		
-		MySQLDB.makeJDBCConnection();
 		
 		try {
 			// MySQL Select Query Tutorial
@@ -191,7 +239,6 @@ public class MySQLDB {
 		
 		List<User> allUsers = new ArrayList<>();
 		
-		MySQLDB.makeJDBCConnection();
 		
 		try {
 			// MySQL Select Query Tutorial
@@ -233,7 +280,6 @@ public static List<Step> allSteps() {
 		
 		List<Step> allSteps = new ArrayList<>();
 		
-		MySQLDB.makeJDBCConnection();
 		
 		try {
 			// MySQL Select Query Tutorial

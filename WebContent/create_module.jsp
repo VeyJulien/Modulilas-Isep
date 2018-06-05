@@ -53,7 +53,7 @@
                 
                 
                 <div class="input_module_container">
-                    <form action="Sucess" method="post">
+                    <form id = "formulairedelamort" action="/ModuLilas-Isep/ModuleCreation" method="post">
                     	
                         <c:forEach var="step" items="${Fieldtypes.listSteps()}">
                         	<div id="step_${step}" style="transition: 1s;">
