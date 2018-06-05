@@ -50,7 +50,7 @@ public class Step {
 		if ( formStep == 1 ){
 			text = "<span class=\"step_name unactive_text play_text_loadbar\">" + titre + "</span>";
 		}else{
-			text = "<span id=\"l_t_1\" class=\"step_name unactive_text\">" + titre +"</span>";
+			text = "<span id=\"l_t_" + (formStep-1) + "\" class=\"step_name unactive_text\">" + titre +"</span>";
 		}
 		return text;
 	}
