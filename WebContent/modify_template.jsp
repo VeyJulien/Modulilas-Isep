@@ -36,29 +36,18 @@
                 <div class="input_module_container" style="overflow: hidden; height:97%;">
                     <div class="template_container">
                         
-                        <div class="template_picture activate_template">Template 1<br>
+                        <c:forEach var="template" items="${viewName.getListTemplate()}">
+                        
+                        <div class="template_picture ${template.DisplayActive()}">${template.getName()}<br>
                             <i style="font-size:40px; padding-top:15px;" class="fas fa-images"></i>
                             <div class="manage_template">
                                 <i class="far fa-trash-alt manage_template_icon"></i>
-                                <i class="far fa-check-square manage_template_icon" style="color:#f45765;"></i>
+                                <i class="far fa-check-square manage_template_icon" style="color:${template.DisplayIcon()};"></i>
                             </div>
                         </div>
                         
-                        <div class="template_picture">Template 2<br>
-                            <i style="font-size:40px; padding-top:15px;" class="fas fa-images"></i>
-                            <div class="manage_template">
-                                <i class="far fa-trash-alt manage_template_icon"></i>
-                                <i class="far fa-check-square manage_template_icon"></i>
-                            </div>
-                        </div>
+                        </c:forEach>
                         
-                        <div class="template_picture">Template 3<br>
-                            <i style="font-size:40px; padding-top:15px;" class="fas fa-images"></i>
-                            <div class="manage_template">
-                                <i class="far fa-trash-alt manage_template_icon"></i>
-                                <i class="far fa-check-square manage_template_icon"></i>
-                            </div>
-                        </div>
                     </div>
                     
               		<form style="overflow:scroll; height:120%;">
