@@ -86,7 +86,7 @@
                     
                 	</ul>
                     
-                	<div class="add_field" type="button" onclick="add_to_list('list_${step}')"><i class="fas fa-plus-circle"></i> Ajouter un champ suppl&#233;mentaire</div>
+                	<div class="add_field" type="button" onclick="add_to_list('list_${step.getFormStep()}')"><i class="fas fa-plus-circle"></i> Ajouter un champ suppl&#233;mentaire</div>
                 	</div>
                 </c:forEach>
                 
