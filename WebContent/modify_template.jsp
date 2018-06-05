@@ -56,8 +56,10 @@
                     <div style="overflow:scroll; height:50%;">
                     <table class="table_edit_vue">
                         <title>Template 1</title>
+                        
+                        <c:forEach var="fieldtype" items="${FieldTypes}">
                         <tr>
-                            <td>Titre du module</td>
+                            <td>${fieldtype.getTitle()}</td>
                             <td>Visible</td>
                             <td style="text-align: right;">
                                 <label class="switch_vue" style="margin-top: 6px;">
@@ -66,105 +68,8 @@
                                 </label>
                             </td>
                         </tr>
+                        </c:forEach>
                         
-                        <tr>
-                            <td>Identifiant du module</td>
-                            <td>Visible</td>
-                            <td style="text-align: right;">
-                                <label class="switch_vue" style="margin-top: 6px;">
-                                    <input type="checkbox" checked>
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        
-                         <tr>
-                            <td>Responsable du module</td>
-                            <td>Visible</td>
-                            <td style="text-align: right;">
-                                <label class="switch_vue" style="margin-top: 6px;">
-                                    <input type="checkbox" checked>
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        
-                         <tr>
-                            <td>Nombre de cr&#233;dits ECTS</td>
-                            <td>Visible</td>
-                            <td style="text-align: right;">
-                                <label class="switch_vue" style="margin-top: 6px;">
-                                    <input type="checkbox" checked>
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        
-                         <tr>
-                            <td>Quantit&#233; de travail par &#233;lève</td>
-                            <td>Visible</td>
-                            <td style="text-align: right;">
-                                <label class="switch_vue" style="margin-top: 6px;">
-                                    <input type="checkbox" checked>
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        
-                         <tr>
-                            <td>Travail par &#233;quipe</td>
-                            <td>Visible</td>
-                            <td style="text-align: right;">
-                                <label class="switch_vue" style="margin-top: 6px;">
-                                    <input type="checkbox" checked>
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        
-                         <tr>
-                            <td>Mots Clefs</td>
-                            <td>Visible</td>
-                            <td style="text-align: right;">
-                                <label class="switch_vue" style="margin-top: 6px;">
-                                    <input type="checkbox" checked>
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        
-                         <tr>
-                            <td>Pr&#233;sentation</td>
-                            <td>Visible</td>
-                            <td style="text-align: right;">
-                                <label class="switch_vue" style="margin-top: 6px;">
-                                    <input type="checkbox" checked>
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Objectifs P&#233;dagogiques</td>
-                            <td>Visible</td>
-                            <td style="text-align: right;">
-                                <label class="switch_vue" style="margin-top: 6px;">
-                                    <input type="checkbox" checked>
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Modalit&#233;s P&#233;dagogiques</td>
-                            <td>Visible</td>
-                            <td style="text-align: right;">
-                                <label class="switch_vue" style="margin-top: 6px;">
-                                    <input type="checkbox" checked>
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
                     </table>
                 </div>
                 
