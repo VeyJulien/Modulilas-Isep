@@ -46,7 +46,7 @@ public class Controller extends HttpServlet {
 		 System.out.println(action);
         try {
             switch (action) {
-            case "/Controller":
+            case "/Login":
             	login(request, response);
             	break;
             case "/Chercher_un_module":
@@ -59,14 +59,14 @@ public class Controller extends HttpServlet {
                 espacePerso(request, response);
                 break;
             case "/Menu":
-            		menu(request, response);
-            		break;
+        		menu(request, response);
+        		break;
             case "/Creer_un_module":
-            		creationMod(request, response);
-            		break;
+        		creationMod(request, response);
+        		break;
             case "/Modifier_template":
-            		modTemplate(request, response);
-            		break;
+        		modTemplate(request, response);
+        		break;
             default:
                 menu(request, response);
                 break;
@@ -78,6 +78,13 @@ public class Controller extends HttpServlet {
 	
 	private void login(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
+		try {
+			System.out.println("QUERY TO GET LOGIN");
+			response.sendRedirect("menu.jsp");
+			return ;
+		} catch (Exception e) {
+			return ;
+		}
 		
 	}
 	

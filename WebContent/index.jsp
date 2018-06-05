@@ -16,7 +16,7 @@
 <body>
     <div class="background">
         <div class="main_block">
-            <form class="login_form" method="post" action="/ModuLilas-Isep/Controller">
+            <form class="login_form" method="post" action="/ModuLilas-Isep/Login"><!-- action="/ModuLilas-Isep/Controller" -->
                 <legend class="title_project">Module Creator</legend><br>
                 <div class="label_login">Identifiant<div class="oblig"></div></div>
                 <input type="text" placeholder="Entrez votre identifiant ISEP" required="required"><br><br>
