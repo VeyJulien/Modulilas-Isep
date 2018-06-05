@@ -67,7 +67,7 @@
             
             <ul class="button_list">
                 <a href="Menu" class="link_button"><li class="button_menu menu_select">Ma Page</li><span class="bullet_notif">1</span></a>
-                <a href="Coffee" class="link_button"><li class="button_menu">Cr&#233;er un module</li></a>
+                <a href="Creer_un_module" class="link_button"><li class="button_menu">Cr&#233;er un module</li></a>
                 <a href="Chercher_un_module" class="link_button"><li class="button_menu play_element_2_menu">Chercher un module</li></a>
                 <a href="Gerer_les_champs" class="link_button"><li class="button_menu play_element_3_menu">G&#233;rer les champs</li></a>
                 <a href="Modifier_template" class="link_button"><li class="button_menu">Templates</li></a>

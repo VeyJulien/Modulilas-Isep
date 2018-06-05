@@ -56,13 +56,16 @@
                     <form id = "formulairedelamort" action="/ModuLilas-Isep/ModuleCreation" method="post">
                     	
                         <c:forEach var="step" items="${Fieldtypes.listSteps()}">
+                       	 	<% int i = 1; %>
                         	<div id="step_${step}" style="transition: 1s;">
                         
                         	<c:set var="etape" value="${step}" />
                         	<c:forEach var="fieldtype" items="${Fieldtypes.specificFieldtype(etape)}">
                         
                         		<label>${fieldtype.getTitle()}</label><i class="fas fa-circle oblig_field"></i>
-                        		${fieldtype.fieldType(fieldtype.getFormat())}
+                        		<c:set var="index" value="<%= i %>" />
+                        		${fieldtype.fieldType(fieldtype.getFormat(),index)}
+                        		<% i = i + 1; %>
                         
                        		</c:forEach>
                         	<c:forEach var="max" items="${Steps.specificStep(etape)}">
