@@ -1,17 +1,25 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:8889
--- Généré le :  mar. 05 juin 2018 à 15:03
--- Version du serveur :  5.6.38
--- Version de PHP :  7.2.1
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mar. 05 juin 2018 à 15:55
+-- Version du serveur :  5.7.19
+-- Version de PHP :  5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
--- Base de données :  `Modulilas`
+-- Base de données :  `modulilas`
 --
 
 -- --------------------------------------------------------
@@ -20,12 +28,50 @@ SET time_zone = "+00:00";
 -- Structure de la table `content`
 --
 
-CREATE TABLE `content` (
-  `contentId` int(11) NOT NULL,
+DROP TABLE IF EXISTS `content`;
+CREATE TABLE IF NOT EXISTS `content` (
+  `contentId` int(11) NOT NULL AUTO_INCREMENT,
   `content` varchar(6000) NOT NULL,
   `moduleId` int(11) NOT NULL,
-  `fieldTypeId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `fieldTypeId` int(11) NOT NULL,
+  PRIMARY KEY (`contentId`),
+  KEY `fk_fieldTypeId_content` (`fieldTypeId`),
+  KEY `fk_moduleId_content` (`moduleId`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `content`
+--
+
+INSERT INTO `content` (`contentId`, `content`, `moduleId`, `fieldTypeId`) VALUES
+(1, 'Poterie', 1, 1),
+(2, 'II-1234', 1, 2),
+(3, 'Mr le Potier', 1, 3),
+(4, '5', 1, 4),
+(5, '40', 1, 5),
+(6, 'Poterie, argile, swag', 1, 7),
+(7, 'On fait de la poterie mdr', 1, 8),
+(8, 'S\'occuper jsp', 1, 9),
+(9, 'Avoir des mains', 1, 10),
+(10, 'Piscine', 2, 1),
+(11, 'IT-1245', 2, 2),
+(12, 'Laure Manaudou', 2, 3),
+(13, '4', 2, 4),
+(14, '10', 2, 5),
+(15, 'on', 2, 6),
+(16, 'Piscine, Nage, Baleine', 2, 7),
+(17, 'On nage et c\'est bien', 2, 8),
+(18, 'Nager dans l\'eau', 2, 9),
+(19, 'Savoir nager c\'est pratique', 2, 10),
+(20, 'Cheval', 3, 1),
+(21, 'IE-2145', 3, 2),
+(22, 'La fille sur facebook qui spam des photo de cheval', 3, 3),
+(23, '1', 3, 4),
+(24, '12', 3, 5),
+(25, 'Cheval, Equitation', 3, 7),
+(26, 'Le cheval, le cheval, c\'est vraiment génial', 3, 8),
+(27, 'Aller vite ', 3, 9),
+(28, 'Ne pas être horsophobe', 3, 10);
 
 -- --------------------------------------------------------
 
@@ -33,13 +79,15 @@ CREATE TABLE `content` (
 -- Structure de la table `fieldtype`
 --
 
-CREATE TABLE `fieldtype` (
-  `fieldTypeId` int(11) NOT NULL,
+DROP TABLE IF EXISTS `fieldtype`;
+CREATE TABLE IF NOT EXISTS `fieldtype` (
+  `fieldTypeId` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(500) NOT NULL,
   `description` varchar(500) NOT NULL,
   `format` int(10) NOT NULL,
-  `formStep` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `formStep` int(10) NOT NULL,
+  PRIMARY KEY (`fieldTypeId`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `fieldtype`
@@ -63,11 +111,24 @@ INSERT INTO `fieldtype` (`fieldTypeId`, `title`, `description`, `format`, `formS
 -- Structure de la table `module`
 --
 
-CREATE TABLE `module` (
-  `moduleId` int(11) NOT NULL,
+DROP TABLE IF EXISTS `module`;
+CREATE TABLE IF NOT EXISTS `module` (
+  `moduleId` int(11) NOT NULL AUTO_INCREMENT,
   `moduleName` varchar(255) NOT NULL,
-  `userId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `userId` int(11) NOT NULL,
+  `code` varchar(255) NOT NULL,
+  PRIMARY KEY (`moduleId`),
+  KEY `fk_userId_module` (`userId`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `module`
+--
+
+INSERT INTO `module` (`moduleId`, `moduleName`, `userId`, `code`) VALUES
+(1, 'Poterie', 1, 'II-1234'),
+(2, 'Piscine', 1, 'IT-1245'),
+(3, 'Cheval', 1, 'IE-2145');
 
 -- --------------------------------------------------------
 
@@ -75,10 +136,14 @@ CREATE TABLE `module` (
 -- Structure de la table `moduleskill`
 --
 
-CREATE TABLE `moduleskill` (
-  `moduleSkillId` int(11) NOT NULL,
+DROP TABLE IF EXISTS `moduleskill`;
+CREATE TABLE IF NOT EXISTS `moduleskill` (
+  `moduleSkillId` int(11) NOT NULL AUTO_INCREMENT,
   `moduleId` int(11) NOT NULL,
-  `skillId` int(11) NOT NULL
+  `skillId` int(11) NOT NULL,
+  PRIMARY KEY (`moduleSkillId`),
+  KEY `fk_skillId` (`skillId`),
+  KEY `fk_moduleId_moduleskill` (`moduleId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -87,12 +152,15 @@ CREATE TABLE `moduleskill` (
 -- Structure de la table `notification`
 --
 
-CREATE TABLE `notification` (
-  `notifId` int(11) NOT NULL,
+DROP TABLE IF EXISTS `notification`;
+CREATE TABLE IF NOT EXISTS `notification` (
+  `notifId` int(11) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `message` varchar(1000) NOT NULL,
-  `userId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `userId` int(11) NOT NULL,
+  PRIMARY KEY (`notifId`),
+  KEY `fk_userId_notification` (`userId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `notification`
@@ -107,9 +175,11 @@ INSERT INTO `notification` (`notifId`, `date`, `message`, `userId`) VALUES
 -- Structure de la table `skill`
 --
 
-CREATE TABLE `skill` (
-  `skillId` int(11) NOT NULL,
-  `skillName` varchar(255) NOT NULL
+DROP TABLE IF EXISTS `skill`;
+CREATE TABLE IF NOT EXISTS `skill` (
+  `skillId` int(11) NOT NULL AUTO_INCREMENT,
+  `skillName` varchar(255) NOT NULL,
+  PRIMARY KEY (`skillId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -118,7 +188,8 @@ CREATE TABLE `skill` (
 -- Structure de la table `step`
 --
 
-CREATE TABLE `step` (
+DROP TABLE IF EXISTS `step`;
+CREATE TABLE IF NOT EXISTS `step` (
   `titre` varchar(255) NOT NULL,
   `formStep` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -139,14 +210,16 @@ INSERT INTO `step` (`titre`, `formStep`) VALUES
 -- Structure de la table `user`
 --
 
-CREATE TABLE `user` (
-  `userId` int(11) NOT NULL,
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `userId` int(11) NOT NULL AUTO_INCREMENT,
   `mail` varchar(255) NOT NULL,
   `firstName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`userId`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `user`
@@ -168,11 +241,13 @@ INSERT INTO `user` (`userId`, `mail`, `firstName`, `lastName`, `password`, `stat
 -- Structure de la table `view`
 --
 
-CREATE TABLE `view` (
-  `viewId` int(11) NOT NULL,
+DROP TABLE IF EXISTS `view`;
+CREATE TABLE IF NOT EXISTS `view` (
+  `viewId` int(11) NOT NULL AUTO_INCREMENT,
   `viewName` varchar(255) NOT NULL,
-  `isActive` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `isActive` tinyint(1) NOT NULL,
+  PRIMARY KEY (`viewId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `view`
@@ -188,12 +263,16 @@ INSERT INTO `view` (`viewId`, `viewName`, `isActive`) VALUES
 -- Structure de la table `viewfieldtype`
 --
 
-CREATE TABLE `viewfieldtype` (
-  `viewFieldTypeId` int(11) NOT NULL,
+DROP TABLE IF EXISTS `viewfieldtype`;
+CREATE TABLE IF NOT EXISTS `viewfieldtype` (
+  `viewFieldTypeId` int(11) NOT NULL AUTO_INCREMENT,
   `viewId` int(11) NOT NULL,
   `fieldTypeId` int(11) NOT NULL,
-  `IsActive` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `IsActive` tinyint(1) NOT NULL,
+  PRIMARY KEY (`viewFieldTypeId`),
+  KEY `fk_fieldTypeId_viewFieldType` (`fieldTypeId`),
+  KEY `fk_viewId` (`viewId`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `viewfieldtype`
@@ -210,130 +289,6 @@ INSERT INTO `viewfieldtype` (`viewFieldTypeId`, `viewId`, `fieldTypeId`, `IsActi
 (8, 1, 8, 0),
 (9, 1, 9, 0),
 (10, 1, 10, 0);
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `content`
---
-ALTER TABLE `content`
-  ADD PRIMARY KEY (`contentId`),
-  ADD KEY `fk_fieldTypeId_content` (`fieldTypeId`),
-  ADD KEY `fk_moduleId_content` (`moduleId`);
-
---
--- Index pour la table `fieldtype`
---
-ALTER TABLE `fieldtype`
-  ADD PRIMARY KEY (`fieldTypeId`);
-
---
--- Index pour la table `module`
---
-ALTER TABLE `module`
-  ADD PRIMARY KEY (`moduleId`),
-  ADD KEY `fk_userId_module` (`userId`);
-
---
--- Index pour la table `moduleskill`
---
-ALTER TABLE `moduleskill`
-  ADD PRIMARY KEY (`moduleSkillId`),
-  ADD KEY `fk_skillId` (`skillId`),
-  ADD KEY `fk_moduleId_moduleskill` (`moduleId`);
-
---
--- Index pour la table `notification`
---
-ALTER TABLE `notification`
-  ADD PRIMARY KEY (`notifId`),
-  ADD KEY `fk_userId_notification` (`userId`);
-
---
--- Index pour la table `skill`
---
-ALTER TABLE `skill`
-  ADD PRIMARY KEY (`skillId`);
-
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`userId`);
-
---
--- Index pour la table `view`
---
-ALTER TABLE `view`
-  ADD PRIMARY KEY (`viewId`);
-
---
--- Index pour la table `viewfieldtype`
---
-ALTER TABLE `viewfieldtype`
-  ADD PRIMARY KEY (`viewFieldTypeId`),
-  ADD KEY `fk_fieldTypeId_viewFieldType` (`fieldTypeId`),
-  ADD KEY `fk_viewId` (`viewId`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `content`
---
-ALTER TABLE `content`
-  MODIFY `contentId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `fieldtype`
---
-ALTER TABLE `fieldtype`
-  MODIFY `fieldTypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT pour la table `module`
---
-ALTER TABLE `module`
-  MODIFY `moduleId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `moduleskill`
---
-ALTER TABLE `moduleskill`
-  MODIFY `moduleSkillId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `notification`
---
-ALTER TABLE `notification`
-  MODIFY `notifId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT pour la table `skill`
---
-ALTER TABLE `skill`
-  MODIFY `skillId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `user`
---
-ALTER TABLE `user`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT pour la table `view`
---
-ALTER TABLE `view`
-  MODIFY `viewId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT pour la table `viewfieldtype`
---
-ALTER TABLE `viewfieldtype`
-  MODIFY `viewFieldTypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Contraintes pour les tables déchargées
@@ -371,3 +326,8 @@ ALTER TABLE `notification`
 ALTER TABLE `viewfieldtype`
   ADD CONSTRAINT `fk_fieldTypeId_viewFieldType` FOREIGN KEY (`fieldTypeId`) REFERENCES `fieldtype` (`fieldTypeId`),
   ADD CONSTRAINT `fk_viewId` FOREIGN KEY (`viewId`) REFERENCES `view` (`viewId`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

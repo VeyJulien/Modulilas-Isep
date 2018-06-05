@@ -160,10 +160,15 @@ public class Controller extends HttpServlet {
 	private void modTemplate(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 		
+		//Templates
 		TemplateHelper templatehelper = new TemplateHelper();
 		List<Template> listTemplate = MySQLDB.AllTemplate();
 		templatehelper.setListTemplate(listTemplate);
 		request.setAttribute("viewName", templatehelper);
+		
+		//FieldTypes
+		List<Fieldtype> listFieldtypes = MySQLDB.allFieldtypes();
+		request.setAttribute("FieldTypes", listFieldtypes);
 		
         RequestDispatcher dispatcher = request.getRequestDispatcher("/modify_template.jsp");
         dispatcher.forward(request, response);
