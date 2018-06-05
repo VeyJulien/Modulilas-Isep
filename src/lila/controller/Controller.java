@@ -43,7 +43,10 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String action = request.getServletPath();
-		 System.out.println(action);
+		System.out.close();
+		System.out.flush(); 
+		System.out.println(action);
+		 System.out.println("toto");
         try {
             switch (action) {
             case "/Login":
@@ -78,13 +81,31 @@ public class Controller extends HttpServlet {
 	
 	private void login(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-		try {
-			System.out.println("QUERY TO GET LOGIN");
-			response.sendRedirect("menu.jsp");
-			return ;
-		} catch (Exception e) {
-			return ;
-		}
+		
+		String name = request.getParameter("isepId");
+		System.out.println("toto");
+	    String pass = request.getParameter("mdp");
+	    
+	    if(name == "joe" && pass == "lol") {
+	    	try {
+				System.out.println("QUERY TO GET LOGIN");
+				response.sendRedirect("menu.jsp");
+				return ;
+			} catch (Exception e) {
+				return ;
+			}
+	    }
+	    else {
+	    	try {
+				System.out.println("QUERY TO GET LOGIN");
+				response.sendRedirect("index.jsp");
+				return ;
+			} catch (Exception e) {
+				return ;
+			}
+	    }
+		
+		
 		
 	}
 	

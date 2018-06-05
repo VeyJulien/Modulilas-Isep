@@ -19,10 +19,10 @@
             <form class="login_form" method="post" action="/ModuLilas-Isep/Login"><!-- action="/ModuLilas-Isep/Controller" -->
                 <legend class="title_project">Module Creator</legend><br>
                 <div class="label_login">Identifiant<div class="oblig"></div></div>
-                <input type="text" placeholder="Entrez votre identifiant ISEP" required="required"><br><br>
+                <input type="text" name="isepId" placeholder="Entrez votre identifiant ISEP" required="required"><br><br>
 
                 <div class="label_login">Password<div class="oblig"></div></div>
-                <input type="password" placeholder="Entrez votre mot de passe" required="required"><br>
+                <input type="password" name="mdp" placeholder="Entrez votre mot de passe" required="required"><br>
 
                 <div class="submit_block">
                 <input class="submit_button" type="submit" value="Connexion">
