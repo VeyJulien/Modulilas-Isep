@@ -38,7 +38,7 @@ public class MySQLDB {
 			//Noe co : 	    Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
 			//Julien co :   Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
 			
-			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "");
+			Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
 			if (Conn != null) {
 				log("Connection Successful! Enjoy. Now it's time to push data");
 			} else {
@@ -318,4 +318,44 @@ public static List<Step> allSteps() {
 		System.out.println(string);
  
 	}
+
+//Affiche le nom de la template
+public static List<Template> AllTemplate() {
+	
+	List<Template> allTemplate = new ArrayList<>();
+	
+	MySQLDB.makeJDBCConnection();
+	
+	try {
+		// MySQL Select Query Tutorial
+		String getQueryStatement = "SELECT * FROM view";
+		
+		PrepareStat = Conn.prepareStatement(getQueryStatement);
+		
+		// Execute the Query, and get a java ResultSet
+		ResultSet rs = PrepareStat.executeQuery();		
+
+		// Let's iterate through the java ResultSet
+		while (rs.next()) {
+			String viewName = rs.getString("viewName");
+			int active = rs.getInt("isActive");
+
+			
+			Template template = new Template();
+			
+			template.setName(viewName);
+			template.setIsActive(active);
+			
+			allTemplate.add(template);	
+			
+		}
+
+	} catch (
+
+	SQLException e) {
+		e.printStackTrace();
+	}
+	return allTemplate;
+}
+
 }

@@ -1,23 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.7
+-- https://www.phpmyadmin.net/
 --
--- Client :  127.0.0.1
--- Généré le :  Mar 22 Mai 2018 à 14:21
--- Version du serveur :  10.1.19-MariaDB
--- Version de PHP :  5.6.28
+-- Hôte : localhost:8889
+-- Généré le :  mar. 05 juin 2018 à 15:03
+-- Version du serveur :  5.6.38
+-- Version de PHP :  7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
--- Base de données :  `modulilas`
+-- Base de données :  `Modulilas`
 --
 
 -- --------------------------------------------------------
@@ -48,12 +42,12 @@ CREATE TABLE `fieldtype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `fieldtype`
+-- Déchargement des données de la table `fieldtype`
 --
 
 INSERT INTO `fieldtype` (`fieldTypeId`, `title`, `description`, `format`, `formStep`) VALUES
 (1, 'Titre du module', 'Entrez le nom de votre module', 2, 1),
-(2, 'Identifiant du module', 'Entrez l''identifiant de votre module', 2, 1),
+(2, 'Identifiant du module', 'Entrez l\'identifiant de votre module', 2, 1),
 (3, 'Responsable du module', 'Rentrez le nom du responsable du module', 2, 1),
 (4, 'Nombre de crédits ECTS', '', 4, 1),
 (5, 'Quantité de travail par élève', '', 4, 1),
@@ -101,11 +95,11 @@ CREATE TABLE `notification` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `notification`
+-- Déchargement des données de la table `notification`
 --
 
 INSERT INTO `notification` (`notifId`, `date`, `message`, `userId`) VALUES
-(1, '2018-05-22', 'Bienvenue ! \r\nFélicitations, ceci est votre 1ère connection !\r\nNous vous souhaitons une agréable navigation, si vous rencontrez des difficultés n''hésitez pas à nous en faire part.', 1);
+(1, '2018-05-22', 'Bienvenue ! \r\nFélicitations, ceci est votre 1ère connection !\r\nNous vous souhaitons une agréable navigation, si vous rencontrez des difficultés n\'hésitez pas à nous en faire part.', 1);
 
 -- --------------------------------------------------------
 
@@ -121,7 +115,7 @@ CREATE TABLE `skill` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `step`
+-- Structure de la table `step`
 --
 
 CREATE TABLE `step` (
@@ -130,7 +124,7 @@ CREATE TABLE `step` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `step`
+-- Déchargement des données de la table `step`
 --
 
 INSERT INTO `step` (`titre`, `formStep`) VALUES
@@ -155,7 +149,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `user`
+-- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`userId`, `mail`, `firstName`, `lastName`, `password`, `status`) VALUES
@@ -181,11 +175,12 @@ CREATE TABLE `view` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `view`
+-- Déchargement des données de la table `view`
 --
 
 INSERT INTO `view` (`viewId`, `viewName`, `isActive`) VALUES
-(1, 'Default', 1);
+(1, 'Default', 1),
+(2, 'Template 2', 0);
 
 -- --------------------------------------------------------
 
@@ -196,11 +191,28 @@ INSERT INTO `view` (`viewId`, `viewName`, `isActive`) VALUES
 CREATE TABLE `viewfieldtype` (
   `viewFieldTypeId` int(11) NOT NULL,
   `viewId` int(11) NOT NULL,
-  `fieldTypeId` int(11) NOT NULL
+  `fieldTypeId` int(11) NOT NULL,
+  `IsActive` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Index pour les tables exportées
+-- Déchargement des données de la table `viewfieldtype`
+--
+
+INSERT INTO `viewfieldtype` (`viewFieldTypeId`, `viewId`, `fieldTypeId`, `IsActive`) VALUES
+(1, 1, 1, 1),
+(2, 1, 2, 1),
+(3, 1, 3, 1),
+(4, 1, 4, 0),
+(5, 1, 5, 0),
+(6, 1, 6, 0),
+(7, 1, 7, 0),
+(8, 1, 8, 0),
+(9, 1, 9, 0),
+(10, 1, 10, 0);
+
+--
+-- Index pour les tables déchargées
 --
 
 --
@@ -266,7 +278,7 @@ ALTER TABLE `viewfieldtype`
   ADD KEY `fk_viewId` (`viewId`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
@@ -274,48 +286,57 @@ ALTER TABLE `viewfieldtype`
 --
 ALTER TABLE `content`
   MODIFY `contentId` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `fieldtype`
 --
 ALTER TABLE `fieldtype`
   MODIFY `fieldTypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT pour la table `module`
 --
 ALTER TABLE `module`
   MODIFY `moduleId` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `moduleskill`
 --
 ALTER TABLE `moduleskill`
   MODIFY `moduleSkillId` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `notification`
 --
 ALTER TABLE `notification`
   MODIFY `notifId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT pour la table `skill`
 --
 ALTER TABLE `skill`
   MODIFY `skillId` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
   MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT pour la table `view`
 --
 ALTER TABLE `view`
-  MODIFY `viewId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `viewId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT pour la table `viewfieldtype`
 --
 ALTER TABLE `viewfieldtype`
-  MODIFY `viewFieldTypeId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `viewFieldTypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
--- Contraintes pour les tables exportées
+-- Contraintes pour les tables déchargées
 --
 
 --
@@ -350,7 +371,3 @@ ALTER TABLE `notification`
 ALTER TABLE `viewfieldtype`
   ADD CONSTRAINT `fk_fieldTypeId_viewFieldType` FOREIGN KEY (`fieldTypeId`) REFERENCES `fieldtype` (`fieldTypeId`),
   ADD CONSTRAINT `fk_viewId` FOREIGN KEY (`viewId`) REFERENCES `view` (`viewId`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

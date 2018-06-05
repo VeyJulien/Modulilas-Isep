@@ -46,6 +46,7 @@ public class Controller extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		MySQLDB.makeJDBCConnection();
 		String action = request.getServletPath();
+		System.out.println(action);
 		 
         try {
             switch (action) {
@@ -73,6 +74,8 @@ public class Controller extends HttpServlet {
             case "/Sucess":
     				sucessPage(request, response);
     				break;
+            case "WebContent/coffee.gif":
+            		break;
             default:
                 menu(request, response);
                 break;
@@ -135,6 +138,12 @@ public class Controller extends HttpServlet {
         dispatcher.forward(request, response);
     }
 	
+	private void coffee(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WebContent/coffee.gif");
+        dispatcher.forward(request, response);
+    }
+	
 	private void sucessPage(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/sucess.jsp");
@@ -150,6 +159,12 @@ public class Controller extends HttpServlet {
 	
 	private void modTemplate(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+		
+		TemplateHelper templatehelper = new TemplateHelper();
+		List<Template> listTemplate = MySQLDB.AllTemplate();
+		templatehelper.setListTemplate(listTemplate);
+		request.setAttribute("viewName", templatehelper);
+		
         RequestDispatcher dispatcher = request.getRequestDispatcher("/modify_template.jsp");
         dispatcher.forward(request, response);
     }
