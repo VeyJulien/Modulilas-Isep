@@ -48,6 +48,8 @@ public class Controller extends HttpServlet {
 		String action = request.getServletPath();
 		System.out.println(action);
 		 
+		MySQLDB.getModuleData(1);
+		
         try {
             switch (action) {
             case "/Chercher_un_module":

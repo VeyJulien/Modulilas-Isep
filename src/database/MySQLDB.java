@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
  
 /**
@@ -399,6 +400,36 @@ public static List<Template> AllTemplate() {
 		e.printStackTrace();
 	}
 	return allTemplate;
+}
+
+public static String getModuleData(int id) {
+	String html = null;
+	String content = "";
+	String fieldIds = "fieldTypeId = ";
+	try {
+		String insertQueryStatement = "SELECT content, fieldTypeId FROM content WHERE moduleId = ? ";
+
+		PrepareStat = Conn.prepareStatement(insertQueryStatement);
+		PrepareStat.setString(1, Integer.toString(id));
+		
+		ResultSet rs = PrepareStat.executeQuery();
+		
+		while(rs.next()) {
+			content+=rs.getString("content") + '§';
+			fieldIds +=rs.getString("fieldTypeId") + " OR fieldTypeId = ";
+		}
+		 fieldIds = fieldIds.substring(0, fieldIds.length() - 18);
+		 
+		 System.out.println(fieldIds);
+		
+	} catch (
+			 
+	SQLException e) {
+		e.printStackTrace();
+		
+	}
+	
+	return html;
 }
 
 }
