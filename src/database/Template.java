@@ -1,9 +1,25 @@
 package database;
 
 public class Template {
-	
-	String Name;
+	int viewId;
+	String viewName;
 	int IsActive;
+
+	public int getViewId() {
+		return viewId;
+	}
+
+	public void setViewId(int viewId) {
+		this.viewId = viewId;
+	}
+
+	public String getViewName() {
+		return viewName;
+	}
+
+	public void setViewName(String viewName) {
+		this.viewName = viewName;
+	}
 
 	public int getIsActive() {
 		return IsActive;
@@ -11,14 +27,6 @@ public class Template {
 
 	public void setIsActive(int isActive) {
 		IsActive = isActive;
-	}
-
-	public String getName() {
-		return Name;
-	}
-
-	public void setName(String name) {
-		Name = name;
 	}
 	
 	public String DisplayActive()

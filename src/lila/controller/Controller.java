@@ -167,8 +167,16 @@ public class Controller extends HttpServlet {
 		request.setAttribute("viewName", templatehelper);
 		
 		//FieldTypes
+		FieldtypeHelper fieldtypehelper = new FieldtypeHelper();
 		List<Fieldtype> listFieldtypes = MySQLDB.allFieldtypes();
-		request.setAttribute("FieldTypes", listFieldtypes);
+		fieldtypehelper.setFieldtypes(listFieldtypes);
+		request.setAttribute("FieldTypes", fieldtypehelper);
+		
+		//ViewFieldTypes
+		ViewFieldTypeHelper viewfieldhelper = new ViewFieldTypeHelper();
+		List<ViewFieldType> listViewFieldTypes = MySQLDB.allViewFieldType();
+		viewfieldhelper.setViewfieldtypes(listViewFieldTypes);
+		request.setAttribute("ViewFieldTypes", viewfieldhelper);
 		
         RequestDispatcher dispatcher = request.getRequestDispatcher("/modify_template.jsp");
         dispatcher.forward(request, response);

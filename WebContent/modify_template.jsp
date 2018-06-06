@@ -38,7 +38,7 @@
                         
                         <c:forEach var="template" items="${viewName.getListTemplate()}">
                         
-                        <div class="template_picture ${template.DisplayActive()}">${template.getName()}<br>
+                        <div class="template_picture ${template.DisplayActive()}">${template.getViewName()}<br>
                             <i style="font-size:40px; padding-top:15px;" class="fas fa-images"></i>
                             <div class="manage_template">
                                 <i class="far fa-trash-alt manage_template_icon"></i>
@@ -54,24 +54,24 @@
                     <input class="save_container" value="Enregistrer" type="submit">
                     
                     <div style="overflow:scroll; height:50%;">
-                    <table class="table_edit_vue">
-                        <title>Template 1</title>
-                        
-                        <c:forEach var="fieldtype" items="${FieldTypes}">
-                        <tr>
-                            <td>${fieldtype.getTitle()}</td>
-                            <td>Visible</td>
-                            <td style="text-align: right;">
-                                <label class="switch_vue" style="margin-top: 6px;">
-                                    <input type="checkbox" checked>
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        </c:forEach>
-                        
-                    </table>
-                </div>
+                    	<c:forEach var="template" items="${viewName.getListTemplate()}">
+                    
+                    		<table class="table_edit_vue">
+                        		<title>${template.getViewName()}</title>
+                        		<c:set var="viewid" value="${template.getViewId()}" />
+                        		<c:forEach var="viewfieldtype" items="${ViewFieldTypes.specificViewFieldtype(viewid)}">
+                        		<tr>
+                            		<c:set var="fieldid" value="${viewfieldtype.getFieldTypeId()}" />
+                            		<c:forEach var="fieldtype" items="${FieldTypes.specificFieldtypeId(fieldid)}">
+                            			<td>${fieldtype.getTitle()}</td>
+                            			${viewfieldtype.active()}
+                            		</c:forEach>
+                        		</tr>
+                       			</c:forEach>
+                    		</table>
+                
+                		</c:forEach>
+                	</div>
                 
                 </form>
                     

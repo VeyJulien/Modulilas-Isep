@@ -47,4 +47,15 @@ public class FieldtypeHelper {
 		}
 		return max;
 	}
+	
+	public List<Fieldtype> specificFieldtypeId(int id){
+		List<Fieldtype> spFieldtypes = new ArrayList<>();
+		
+		for (Fieldtype var : fieldtypes) {
+			if (var.getFieldTypeId() == id ) {
+				spFieldtypes.add(var);
+			}
+		}
+		return spFieldtypes;
+	}
 }

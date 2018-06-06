@@ -36,7 +36,7 @@ public class MySQLDB {
 			// DriverManager: The basic service for managing a set of JDBC drivers.
 			
 			//Noe co : 	    Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
-			//Julien co :   Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
+			//Julien co : 	Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
 			
 			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "");
 			if (Conn != null) {
@@ -312,6 +312,47 @@ public static List<Step> allSteps() {
 		}
 		return allSteps;
 	}
+
+public static List<ViewFieldType> allViewFieldType() {
+	
+	List<ViewFieldType> allViewFieldTypes = new ArrayList<>();
+	
+	
+	try {
+		// MySQL Select Query Tutorial
+		String getQueryStatement = "SELECT * FROM viewfieldtype";
+		
+		PrepareStat = Conn.prepareStatement(getQueryStatement);
+		
+		// Execute the Query, and get a java ResultSet
+		ResultSet rs = PrepareStat.executeQuery();		
+
+		// Let's iterate through the java ResultSet
+		while (rs.next()) {
+			int viewFieldTypeId = rs.getInt("viewFieldTypeId");
+			int viewId = rs.getInt("viewId");
+			int fieldTypeId = rs.getInt("fieldTypeId");
+			int isActive = rs.getInt("isActive");
+
+			
+			ViewFieldType viewfieldtypes = new ViewFieldType();
+			
+			viewfieldtypes.setFieldTypeId(fieldTypeId);
+			viewfieldtypes.setViewId(viewId);
+			viewfieldtypes.setViewFieldTypeId(viewFieldTypeId);
+			viewfieldtypes.setIsActive(isActive);
+			
+			allViewFieldTypes.add(viewfieldtypes);	
+			
+		}
+
+	} catch (
+
+	SQLException e) {
+		e.printStackTrace();
+	}
+	return allViewFieldTypes;
+}
  
 	// Simple log utility
 	private static void log(String string) {
@@ -337,13 +378,15 @@ public static List<Template> AllTemplate() {
 
 		// Let's iterate through the java ResultSet
 		while (rs.next()) {
+			int viewId = rs.getInt("viewId");
 			String viewName = rs.getString("viewName");
 			int active = rs.getInt("isActive");
 
 			
 			Template template = new Template();
 			
-			template.setName(viewName);
+			template.setViewId(viewId);
+			template.setViewName(viewName);
 			template.setIsActive(active);
 			
 			allTemplate.add(template);	
