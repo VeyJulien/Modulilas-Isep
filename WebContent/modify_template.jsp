@@ -16,7 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
 </head>
-<body>
+<body onload="hide(document.getElementsByClassName('template_picture')[0])">
     <div class="background">
         
         <div id="overlay" onclick="off()">
@@ -38,7 +38,7 @@
                         
                         <c:forEach var="template" items="${viewName.getListTemplate()}">
                         
-                        <div class="template_picture ${template.DisplayActive()}">${template.getViewName()}<br>
+                        <div onclick="hide(this)" class="template_picture ${template.DisplayActive()}">${template.getViewName()}<br>
                             <i style="font-size:40px; padding-top:15px;" class="fas fa-images"></i>
                             <div class="manage_template">
                                 <i class="far fa-trash-alt manage_template_icon"></i>
@@ -50,10 +50,10 @@
                         
                     </div>
                     
-              		<form style="overflow:scroll; height:120%;">
+              		<form style=" height:120%;">
                     <input class="save_container" value="Enregistrer" type="submit">
                     
-                    <div style="overflow:scroll; height:50%;">
+                    <div style="overflow:scroll; height:40%;">
                     	<c:forEach var="template" items="${viewName.getListTemplate()}">
                     
                     		<table class="table_edit_vue">
@@ -113,4 +113,52 @@ function off() {
     document.getElementById("overlay").style.display = "none";
     document.getElementsByClassName("main_block")[0].style.filter = "blur(0px)";
 }
+</script>
+
+<script>
+
+function hide(element)
+{
+	for(var a = 0; a < 2; a++)
+		{
+		
+	var template = document.getElementsByClassName("template_picture");
+	var table = document.getElementsByClassName("table_edit_vue");
+	var index;
+	
+	for(var i = 0; i < template.length; i++)
+	{
+		var x = document.getElementsByClassName("template_picture")[i];
+		
+		if(x.className == "template_picture activate_template")
+			{
+				index = i;
+				x.className = "template_picture";
+			}
+		else
+			{
+				x.className = "template_picture";
+			}
+	}
+	
+	element.className = "template_picture activate_template";
+	
+	for(var j = 0; j < table.length; j++)
+	{
+		var x = document.getElementsByClassName("table_edit_vue")[j];
+		
+		if(j == index)
+		{
+			x.style = "display:content;";
+		}
+		else
+		{
+			x.style = "display:none;";
+		}
+	}
+	
+	}
+
+}
+
 </script>
