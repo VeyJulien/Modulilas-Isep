@@ -31,6 +31,7 @@
             <p class="title_project title_page">Module Creator</p>
             
             <div class="page">
+                <form  action="/ModuLilas-Isep/FormModification" method="post">
                 
                 <div class="info_container">
                     <div style="display:flex;">
@@ -49,50 +50,54 @@
                     </ul>
                 </div>
                 
-                <div style="overflow:auto; height:80%;">
+                <div id="formulaire" style="overflow:auto; height:80%;">
+                	<input id="maximum" type="hidden" value="" name="max" >
                 
+
                 <c:forEach var="step" items="${Steps}">
                 	<div id="step_${step.getFormStep()}">
                     
                 	<div class="label_input_step_name">Nom de l'&#233;tape</div>
                 	<input value="${step.getTitre()}" class="input_step_name" type="text">
-                
+
                 	<ul id="list_${step.getFormStep()}" class="list_template">
                     	<% int i = 0; %>
                     	<c:set var="etape" value="${step.getFormStep()}" />
                     	<c:forEach var="fieldtype" items="${Fieldtypes.specificFieldtype(etape)}">
-                    
+                    		
                     		<div style="display:flex;">
                     		<i type="button" onclick="delete_element(this)" class="far fa-trash-alt manage_field_icon"></i>
                     		<i type="button" onclick="hide_element(this)" class="fas fa-eye manage_field_icon_2"></i>
                         
                     		<li class="element_list_template2">
                         
-                        		<div style="padding-left: 18px;padding-right:18px;" class="count_template"><%= i = i + 1 %></div>
+                        		<div style="padding-left: 18px;padding-right:18px;" class="count_template"><%= i + 1 %></div>
                         		<div style="display:block; margin-right:10px; min-width: 75px;">
                             		${fieldtype.activateField(fieldtype.getFormat())}
                         		</div>
                         		<div style="display:block;">
-                            		<input class="input_template" value="${fieldtype.getTitle()}">
-                            		<input class="input_template" value="${fieldtype.getDescription()}">
+                            		<input class="input_template" name="title<%=i%>" value="${fieldtype.getTitle()}">
+                            		<input class="input_template" name="description<%=i%>" value="${fieldtype.getDescription()}">
+                            		<% i = i + 1;%>
                         		</div>
                         		<div class="arrow_container">
                             		<i class="fas fa-arrow-up arrow_up_template"></i><br>
                             		<i class="fas fa-arrow-down arrow_down_template"></i>
                         		</div>
-                    
+                    			
                     		</li>
                     		</div>
+                    	
+                    	</c:forEach> 
+                   	</ul>  
                     
-                    	</c:forEach>   
-                    
-                	</ul>
-                    
+                	
                 	<div class="add_field" type="button" onclick="add_to_list('list_${step.getFormStep()}')"><i class="fas fa-plus-circle"></i> Ajouter un champ suppl&#233;mentaire</div>
                 	</div>
                 </c:forEach>
-                
                 </div>
+            	</form>
+                
             </div>
         
         <div class="lateral_menu">
@@ -206,7 +211,9 @@ function delete_element(current)
         setTimeout(function(){  element.remove();
                                 element2.remove();
                                 current.remove();
+                                
                              }, 600);
+        
         
     }
     
@@ -275,11 +282,22 @@ function add_to_list(name)
         var num = $(list_name + ' li').length;
         num = num + 1;
         
-        var list_contain = "<div style=\"display:flex;\"><i type=\"button\" onclick=\"delete_element(this)\" class=\"far fa-trash-alt manage_field_icon\"></i><i type=\"button\" onclick=\"hide_element(this)\" class=\"fas fa-eye manage_field_icon_2\"></i><li class=\"element_list_template2\"><div style=\"padding-right:18px;\"class=\"count_template\">" + num + "</div><div style=\"display:block; margin-right:10px; min-width: 75px;\"><i type=\"button\" onclick=\"switch_button(this)\" class=\"fas fa-align-justify icon_selection_type\"></i><i type=\"button\" onclick=\"switch_button(this)\" class=\"fas fa-underline icon_selection_type icon_selection_type_active\"></i><br><i type=\"button\" onclick=\"switch_button(this)\" class=\"far fa-check-square icon_selection_type \"></i><i type=\"button\" onclick=\"switch_button(this)\" class=\"fas fa-plus-circle icon_selection_type\"></i></div><div style=\"display:block;\"><input class=\"input_template\"><input class=\"input_template\"></div><div class=\"arrow_container\"><i class=\"fas fa-arrow-up arrow_up_template\"></i><br><i class=\"fas fa-arrow-down arrow_down_template\"></i></div></li></div>";
+        var max = $('li').length;
+        
+        var div = document.getElementById("formulaire");
+        var nodelist = div.getElementsByTagName("LI");
+        var max = nodelist.length + 1;
+        
+        var list_contain = "<div style=\"display:flex;\"><i type=\"button\" onclick=\"delete_element(this)\" class=\"far fa-trash-alt manage_field_icon\"></i><i type=\"button\" onclick=\"hide_element(this)\" class=\"fas fa-eye manage_field_icon_2\"></i><li class=\"element_list_template2\"><div style=\"padding-right:18px;\"class=\"count_template\">" + num + "</div><div style=\"display:block; margin-right:10px; min-width: 75px;\"><i type=\"button\" onclick=\"switch_button(this)\" class=\"fas fa-align-justify icon_selection_type\"></i><i type=\"button\" onclick=\"switch_button(this)\" class=\"fas fa-underline icon_selection_type icon_selection_type_active\"></i><br><i type=\"button\" onclick=\"switch_button(this)\" class=\"far fa-check-square icon_selection_type \"></i><i type=\"button\" onclick=\"switch_button(this)\" class=\"fas fa-plus-circle icon_selection_type\"></i></div><div style=\"display:block;\"><input class=\"input_template\" name=\"title" + max + "\"><input class=\"input_template\" name=\"title" + max + "\"></div><div class=\"arrow_container\"><i class=\"fas fa-arrow-up arrow_up_template\"></i><br><i class=\"fas fa-arrow-down arrow_down_template\"></i></div></li></div>";
         
         $(list_name).append(list_contain);
+        
+        document.getElementById("maximum").value = max;
         
     }
 
 show_step_1();
+var div = document.getElementById("formulaire");
+var nodelist = div.getElementsByTagName("LI");
+document.getElementById("maximum").value = nodelist.length;
 </script>
