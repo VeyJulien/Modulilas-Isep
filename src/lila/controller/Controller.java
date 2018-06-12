@@ -47,8 +47,12 @@ public class Controller extends HttpServlet {
 		MySQLDB.makeJDBCConnection();
 		String action = request.getServletPath();
 		System.out.println(action);
-		 
-		MySQLDB.getModuleData(1);
+		
+		String[][] testBienPropre=MySQLDB.getModuleData(1);
+		for(int i=0; i<testBienPropre[0].length; i++) {
+			System.out.println(testBienPropre[0][i]);
+			System.out.println(testBienPropre[1][i]);
+		}
 		
         try {
             switch (action) {
@@ -182,6 +186,22 @@ public class Controller extends HttpServlet {
 		
         RequestDispatcher dispatcher = request.getRequestDispatcher("/modify_template.jsp");
         dispatcher.forward(request, response);
+    }
+	
+	//TODO finish !
+	private void editModule(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+		FieldtypeHelper fieldhelp = new FieldtypeHelper();
+		StepHelper stephelp = new StepHelper();
+		List<Fieldtype> fields = MySQLDB.allFieldtypes();
+		List<Step> steps = MySQLDB.allSteps();
+		fieldhelp.setFieldtypes(fields);
+		stephelp.setSteps(steps);
+		request.setAttribute("Fieldtypes",fieldhelp);
+		request.setAttribute("Steps", stephelp);
+		//request.setAttribute("Data", data);
+		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/edit_module.jsp");
+		dispatcher.include(request, response);
     }
 	
 }

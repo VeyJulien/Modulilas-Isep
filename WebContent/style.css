@@ -1814,3 +1814,24 @@ input:checked + .slider:before {
     background-color: white;
     color:#f45765;
 }
+
+.field_create_new_template
+{
+	background-color: white;
+    padding: 8px;
+    text-align: center;
+    width: 65%;
+}
+
+.submit_create_new_template
+{
+	border: none;
+    background-color: #f55664;
+    color: white;
+    padding-top: 1px;
+    padding-bottom: 3px;
+    width: 65%;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.2s;
+}

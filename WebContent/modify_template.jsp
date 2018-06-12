@@ -48,6 +48,14 @@
                         
                         </c:forEach>
                         
+                        <div onclick="create_template()" class="template_picture">Nouveau<br>
+                            <i id="icon_create" style="font-size:40px; padding-top:15px;" class="fa fa-plus-square"></i>
+                            <form id="form_create" style="display:none">
+                            		<input class="field_create_new_template" type="text" placeholder="nom" style="margin-top: -2px;">
+                            		<input class="submit_create_new_template" type="submit" value="créer">
+                            </form>
+                        </div>
+                        
                     </div>
                     
               		<form style=" height:120%;">
@@ -117,6 +125,14 @@ function off() {
 
 <script>
 
+function create_template()
+{
+	document.getElementById("form_create").style.display = "block";
+	document.getElementById("icon_create").style.display = "none";
+	$(".template_picture").css("background-color", "white");
+	$(".template_picture").css("color", "black");
+}
+
 function hide(element)
 {
 	for(var a = 0; a < 2; a++)
@@ -125,6 +141,9 @@ function hide(element)
 	var template = document.getElementsByClassName("template_picture");
 	var table = document.getElementsByClassName("table_edit_vue");
 	var index;
+	
+	document.getElementById("form_create").style.display = "none";
+	document.getElementById("icon_create").style.display = "inline";
 	
 	for(var i = 0; i < template.length; i++)
 	{
