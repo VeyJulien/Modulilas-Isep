@@ -48,11 +48,12 @@ public class Controller extends HttpServlet {
 		String action = request.getServletPath();
 		System.out.println(action);
 		
-		String[][] testBienPropre=MySQLDB.getModuleData(1);
-		for(int i=0; i<testBienPropre[0].length; i++) {
-			System.out.println(testBienPropre[0][i]);
-			System.out.println(testBienPropre[1][i]);
+		List<String>[] testBienPropre=MySQLDB.get_ListModuleData_And_ListModuleFieldTypeId(1);
+		for(int i=0; i<testBienPropre[0].size(); i++) {
+			System.out.println(testBienPropre[0].get(i));
+			System.out.println(testBienPropre[1].get(i));
 		}
+		MySQLDB.noeFaure(1);
 		
         try {
             switch (action) {
