@@ -47,8 +47,12 @@ public class Controller extends HttpServlet {
 		MySQLDB.makeJDBCConnection();
 		String action = request.getServletPath();
 		System.out.println(action);
-		 
-		MySQLDB.getModuleData(1);
+		
+		String[][] testBienPropre=MySQLDB.getModuleData(1);
+		for(int i=0; i<testBienPropre[0].length; i++) {
+			System.out.println(testBienPropre[0][i]);
+			System.out.println(testBienPropre[1][i]);
+		}
 		
         try {
             switch (action) {

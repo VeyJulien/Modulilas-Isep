@@ -39,7 +39,7 @@ public class MySQLDB {
 			//Noe co : 	    Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
 			//Julien co : 	Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
 			
-			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "");
+			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
 			if (Conn != null) {
 				log("Connection Successful! Enjoy. Now it's time to push data");
 			} else {
@@ -402,10 +402,10 @@ public static List<Template> AllTemplate() {
 	return allTemplate;
 }
 
-public static String getModuleData(int id) {
-	String html = null;
+public static String[][] getModuleData(int id) {
+	String[][] result = new String[2][];
 	String content = "";
-	String fieldIds = "fieldTypeId = ";
+	String fieldIds = "";
 	try {
 		String insertQueryStatement = "SELECT content, fieldTypeId FROM content WHERE moduleId = ? ";
 
@@ -416,11 +416,13 @@ public static String getModuleData(int id) {
 		
 		while(rs.next()) {
 			content+=rs.getString("content") + '§';
-			fieldIds +=rs.getString("fieldTypeId") + " OR fieldTypeId = ";
+			fieldIds +=rs.getString("fieldTypeId") + "§";
 		}
-		 fieldIds = fieldIds.substring(0, fieldIds.length() - 18);
+		result[0]=content.split("§");
+		result[1]=fieldIds.split("§");
+		fieldIds = fieldIds.substring(0, fieldIds.length() - 18);
 		 
-		 System.out.println(fieldIds);
+		//System.out.println(fieldIds);
 		
 	} catch (
 			 
@@ -429,7 +431,9 @@ public static String getModuleData(int id) {
 		
 	}
 	
-	return html;
+	return result;
 }
+
+
 
 }
