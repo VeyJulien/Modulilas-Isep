@@ -69,6 +69,8 @@ public class TemplateModification extends HttpServlet {
 		
 		int templateID =  Integer.parseInt(request.getParameter("templateID"));
 		
+		MySQLDB.deleteTemplateFromDB(templateID);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/Controller");
         dispatcher.forward(request, response);
 		
@@ -82,6 +84,11 @@ public class TemplateModification extends HttpServlet {
 		
 		int templateID =  Integer.parseInt(request.getParameter("templateID"));
 		
+		MySQLDB.switchTemplate(templateID);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Controller");
+        dispatcher.forward(request, response);
+		
 		
 		
 	}
@@ -92,6 +99,10 @@ public class TemplateModification extends HttpServlet {
 		
 		int templateID =  Integer.parseInt(request.getParameter("templateID"));
 		
+		MySQLDB.deleteTemplateFromDB(templateID);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Controller");
+        dispatcher.forward(request, response);
 		
 		
 	}
