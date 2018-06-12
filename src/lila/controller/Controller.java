@@ -47,8 +47,13 @@ public class Controller extends HttpServlet {
 		MySQLDB.makeJDBCConnection();
 		String action = request.getServletPath();
 		System.out.println(action);
-		 
-		MySQLDB.getModuleData(1);
+		
+		List<String>[] testBienPropre=MySQLDB.get_ListModuleData_And_ListModuleFieldTypeId(1);
+		for(int i=0; i<testBienPropre[0].size(); i++) {
+			System.out.println(testBienPropre[0].get(i));
+			System.out.println(testBienPropre[1].get(i));
+		}
+		MySQLDB.noeFaure(1);
 		
         try {
             switch (action) {
@@ -77,6 +82,9 @@ public class Controller extends HttpServlet {
     				sucessPage(request, response);
     				break;
             case "WebContent/coffee.gif":
+            		break;
+            case"/Edit_Module":
+            		editModule(request, response);
             		break;
             default:
                 menu(request, response);
@@ -182,6 +190,23 @@ public class Controller extends HttpServlet {
 		
         RequestDispatcher dispatcher = request.getRequestDispatcher("/modify_template.jsp");
         dispatcher.forward(request, response);
+    }
+	
+	//TODO finish !
+	private void editModule(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+		FieldtypeHelper fieldhelp = new FieldtypeHelper();
+		StepHelper stephelp = new StepHelper();
+		List<Fieldtype> fields = MySQLDB.allFieldtypes();
+		List<Step> steps = MySQLDB.allSteps();
+		//String[][] datas = MySQLDB.getModuleData(1); HAHAHAHAHAHA
+		fieldhelp.setFieldtypes(fields);
+		stephelp.setSteps(steps);
+		request.setAttribute("Fieldtypes",fieldhelp);
+		request.setAttribute("Steps", stephelp);
+		//request.setAttribute("Datas", datas); MUAHAHAHAHAHAHAHAHAHA
+		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/edit_module.jsp");
+		dispatcher.include(request, response);
     }
 	
 }
