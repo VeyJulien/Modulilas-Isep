@@ -48,7 +48,7 @@ public class Controller extends HttpServlet {
 		String action = request.getServletPath();
 		System.out.println(action);
 		
-		String[][] testBienPropre=MySQLDB.getModuleData(1);
+		String[][] testBienPropre= MySQLDB.getModuleData(1);
 		for(int i=0; i<testBienPropre[0].length; i++) {
 			System.out.println(testBienPropre[0][i]);
 			System.out.println(testBienPropre[1][i]);
@@ -81,6 +81,9 @@ public class Controller extends HttpServlet {
     				sucessPage(request, response);
     				break;
             case "WebContent/coffee.gif":
+            		break;
+            case"/Edit_Module":
+            		editModule(request, response);
             		break;
             default:
                 menu(request, response);
@@ -195,11 +198,12 @@ public class Controller extends HttpServlet {
 		StepHelper stephelp = new StepHelper();
 		List<Fieldtype> fields = MySQLDB.allFieldtypes();
 		List<Step> steps = MySQLDB.allSteps();
+		String[][] datas = MySQLDB.getModuleData(1);
 		fieldhelp.setFieldtypes(fields);
 		stephelp.setSteps(steps);
 		request.setAttribute("Fieldtypes",fieldhelp);
 		request.setAttribute("Steps", stephelp);
-		//request.setAttribute("Data", data);
+		request.setAttribute("Datas", datas);
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/edit_module.jsp");
 		dispatcher.include(request, response);
     }
