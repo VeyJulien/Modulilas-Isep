@@ -58,7 +58,7 @@ public class FormModification extends HttpServlet {
 		for (int i=0;i<max;i++){
 				String Titre = request.getParameter("title" + i);
 				if(Titre == null && i< fields.size()){
-					int id = fields.get(i).getFieldTypeId();
+					int id = Integer.parseInt(request.getParameter("id" + i));
 					MySQLDB.delFieldtype(id);
 				}else if(i< fields.size()) {
 					String Description = request.getParameter("description" + i);
