@@ -1,5 +1,6 @@
+package database;
+
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,27 +9,7 @@ import java.util.Scanner;
 import com.itextpdf.html2pdf.ConverterProperties;
 import com.itextpdf.html2pdf.HtmlConverter;
 
-public class main {
-	
-	public static void main(String[] args) throws FileNotFoundException, IOException {
-		// TODO Auto-generated method stub
-		/*String pathToProjectFile="C://Users/thinkpad/Code/GitHubRepositories/Modulilas/";
-		
-		String resources = pathToProjectFile+"WebContent/";
-		String html =readHtmlFile(pathToProjectFile+"WebContent/PDFTest.html")+"<img src=\"smile.png\">";//"<h1>Test</h1><p>Hello World LOLILOL</p>";
-		String path=pathToProjectFile+"PDFCreator/";
-		String pdf=String.format("%stest-01.pdf", path);
-		
-		File file = new File(path);
-		file.mkdirs();
-		
-		ConverterProperties properties = new ConverterProperties();
-    	properties.setBaseUri(resources);
-		HtmlConverter.convertToPdf(html, new FileOutputStream(pdf), properties);
-    	//HtmlConverter.convertToPdf(new FileInputStream(path+"test.html"), new FileOutputStream(pdf));*/
-		htmlToPdf("PDFTest.html", "stest-02.pdf");
-	}
-	
+public class PDFCreator {
 	public static void htmlToPdf(String inputFileName, String outputFileName) throws FileNotFoundException, IOException {
 		String pathToProjectFile="C://Users/thinkpad/Code/GitHubRepositories/Modulilas/";
 		
@@ -68,5 +49,4 @@ public class main {
 		
 		return html;
 	}
-
 }
