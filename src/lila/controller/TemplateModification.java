@@ -86,7 +86,7 @@ public class TemplateModification extends HttpServlet {
 		
 		MySQLDB.switchTemplate(templateID);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/Controller");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Modifier_template");
         dispatcher.forward(request, response);
 		
 		
@@ -101,7 +101,7 @@ public class TemplateModification extends HttpServlet {
 		
 		MySQLDB.deleteTemplateFromDB(templateID);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/Controller");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Modifier_template");
         dispatcher.forward(request, response);
 		
 		
