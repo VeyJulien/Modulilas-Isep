@@ -99,6 +99,7 @@ public class MySQLDB {
 		}
 	}
 	
+	
 public static void updateFieldtype(Integer FieldtypeID ,String Titre, String Description) {
 		 
 		
