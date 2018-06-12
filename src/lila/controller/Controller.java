@@ -81,9 +81,9 @@ public class Controller extends HttpServlet {
             case "/Sucess":
     				sucessPage(request, response);
     				break;
-            case"/Edit_Module":
+           /* case"/Edit_Module":
             		editModule(request, response);
-            		break;
+            		break;*/
             default:
                 menu(request, response);
                 break;
@@ -185,7 +185,7 @@ public class Controller extends HttpServlet {
         dispatcher.forward(request, response);
     }
 	
-	//TODO finish !
+	/*//TODO finish !
 	private void editModule(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
 		FieldtypeHelper fieldhelp = new FieldtypeHelper();
@@ -200,6 +200,6 @@ public class Controller extends HttpServlet {
 		request.setAttribute("Datas", datas);
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/edit_module.jsp");
 		dispatcher.include(request, response);
-    }
+    }*/
 	
 }
