@@ -1835,3 +1835,34 @@ input:checked + .slider:before {
     border-radius: 10px;
     transition: 0.2s;
 }
+
+.generator_book
+{
+	background-color: #f55664;
+    color: white;
+    margin-bottom: 5px;
+    border-left: 1px solid white;
+    border-right: 1px solid #f55664;
+    border-top: 1px solid #f55664;
+    border-bottom: 1px solid #f55664;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.generator_book:hover
+{
+	background-color: white;
+	color: #f55664;
+	border-left: 1px solid #f55664;
+}
+
+.button_submit_5
+{
+	color: white;
+    padding: 0px;
+    border: none;
+    background-color: #ff5a6a;
+    font-size: 12px;
+    cursor: pointer;
+    margin: 0px;
+}

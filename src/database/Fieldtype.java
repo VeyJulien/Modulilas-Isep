@@ -76,9 +76,9 @@ public class Fieldtype {
 		String title = this.getTitle();
 		String fieldType = "";
 		if ( format == 1 ){
-			fieldType = "<div style=\"margin-bottom: 16px;\"><textarea required form = \"formulairedelamort\" name = \"" + title + "\" class=\"textarea_module\" style=\"height:170px;\" placeholder=\"" + description + "\"></textarea></div>";
+			fieldType = "<div style=\"margin-bottom: 16px;\"><textarea required form = \"formulairedelamort\" name = \"" + title + "\" class=\"textarea_module\" style=\"height:170px;\" placeholder=\"" + description + "\" value=\"" + value + "\"></textarea></div>";
 		}else if( format == 2 ){
-			fieldType = "<div style=\"display: flex; margin-bottom: 16px;\"><input required name = \"" + title + "\" id=\"field_" + i + "\" autocomplete=\"off\" onchange=\"check_field_" + i + "()\" class=\"input_create_module\" placeholder=\"" + description + "\"><i id=\"check_" + i + "\" class=\"fas fa-check-circle check_module\"></i><span class=\"ok_popup\" id=\"ok_" + i + "\">ok</span></div>";
+			fieldType = "<div style=\"display: flex; margin-bottom: 16px;\"><input required name = \"" + title + "\" id=\"field_" + i + "\" autocomplete=\"off\" onchange=\"check_field_" + i + "()\" class=\"input_create_module\" placeholder=\"" + description + "\" value=\"" + value + "\"><i id=\"check_" + i + "\" class=\"fas fa-check-circle check_module\"></i><span class=\"ok_popup\" id=\"ok_" + i + "\">ok</span></div>";
 		}else if( format == 3){
 			fieldType = "<div style=\"display: flex; margin-bottom: 16px;\"><label class=\"container_check\" style=\"margin-right: 30px;\">Oui<input name = \"" + title + "\" onchange=\"check_box_field()\" id=\"Mycheck_1\" type=\"checkbox\" style=\"width:0px;\" checked><span class=\"checkmark check_yesno\"></span></label><label class=\"container_check\">Non<input onchange=\"check_box_field_2()\" id=\"Mycheck_2\" type=\"checkbox\" style=\"width:0px;\"><span class=\"checkmark check_yesno\"></span></label></div>";
 		}else if( format == 4 ){

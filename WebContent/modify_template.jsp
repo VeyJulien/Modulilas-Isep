@@ -78,7 +78,10 @@
                     </div>
                     
               		<form style=" height:120%;">
-                    <input class="save_container" value="Enregistrer" type="submit">
+              		<div style="display:flex;">
+                    		<input class="save_container" value="Enregistrer" type="submit">
+                    		<button class="generator_book">Générer le catalogue</button>
+                    </div>
                     
                     <div style="overflow:scroll; height:40%;">
                     	<c:forEach var="template" items="${viewName.getListTemplate()}">
