@@ -192,12 +192,12 @@ public class Controller extends HttpServlet {
 		StepHelper stephelp = new StepHelper();
 		List<Fieldtype> fields = MySQLDB.allFieldtypes();
 		List<Step> steps = MySQLDB.allSteps();
-		//String[][] datas = MySQLDB.getModuleData(1); HAHAHAHAHAHA
+		List<String>[] datas = MySQLDB.get_ListModuleData_And_ListModuleFieldTypeId(1);
 		fieldhelp.setFieldtypes(fields);
 		stephelp.setSteps(steps);
 		request.setAttribute("Fieldtypes",fieldhelp);
 		request.setAttribute("Steps", stephelp);
-		//request.setAttribute("Datas", datas); MUAHAHAHAHAHAHAHAHAHA
+		request.setAttribute("Datas", datas);
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/edit_module.jsp");
 		dispatcher.include(request, response);
     }
