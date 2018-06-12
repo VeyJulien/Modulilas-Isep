@@ -53,6 +53,9 @@ public class TemplateModification extends HttpServlet {
             case "switchTemplate":
             	SwitchTemplate(request,response);
             	break;
+            case "addTemplate":
+            	AddTemplate(request,response);
+            	break;      
             default:
                 
                 break;
@@ -90,8 +93,22 @@ public class TemplateModification extends HttpServlet {
         dispatcher.forward(request, response);
 		
 		
+	}
+	
+	public void AddTemplate(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+		
+		String templateName =  request.getParameter("templateName");
+		
+		MySQLDB.addTemplate(templateName);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Modifier_template");
+        dispatcher.forward(request, response);
+		
 		
 	}
+	
+	
 	
 	
 }

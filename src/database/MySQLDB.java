@@ -566,10 +566,20 @@ public static void noeFaure(int id) {
 public static void deleteTemplateFromDB(int templateID){
     
     try {			
+    	
+    	
+    		String delQueryStatement0 = "DELETE FROM viewfieldtype WHERE viewId = ?";
+    		
+    		PrepareStat = Conn.prepareStatement(delQueryStatement0);
+    		
+    		PrepareStat.setInt(1, templateID);
+			PrepareStat.executeUpdate();
+			
+			
+    		
 			String delQueryStatement = "DELETE FROM view WHERE viewId = ?";
 			
-			PrepareStat = Conn.prepareStatement(delQueryStatement);
-			
+			PrepareStat = Conn.prepareStatement(delQueryStatement);		
 			
 			PrepareStat.setInt(1, templateID);
 			PrepareStat.executeUpdate();
@@ -599,6 +609,64 @@ public static void switchTemplate(int templateID){
             PrepareStat.setInt(1, templateID);
             PrepareStat.executeUpdate();
     		log(templateID + " deleted successfully");
+            
+           
+			       
+ 
+		} catch (
+ 
+		SQLException e) {
+			e.printStackTrace();
+		}
+
+}
+
+
+public static void addTemplate(String templateName){
+    
+    try {			
+			String insertQueryStatement = "INSERT INTO view(viewName, isActive) VALUES (?,0)";           
+			
+			PrepareStat = Conn.prepareStatement(insertQueryStatement);
+			PrepareStat.setString(1, templateName);
+ 
+			// execute insert SQL statement
+			PrepareStat.executeUpdate();
+			log(templateName + " added successfully");
+			
+			String selectQueryStatement = "SELECT viewId FROM view WHERE viewName = ?";
+			
+			PrepareStat = Conn.prepareStatement(selectQueryStatement);
+			PrepareStat.setString(1, templateName);
+			
+			ResultSet rs = PrepareStat.executeQuery();
+			
+			int templateID=0;
+			
+			while(rs.next()) {
+				templateID = rs.getInt("viewId");
+			}
+			
+			
+			List<ViewFieldType> allViewFieldTypes = allViewFieldType();
+			
+			for (ViewFieldType ft : allViewFieldTypes) {
+				
+				String insertQueryStatement1 = "INSERT INTO viewfieldtype(viewId, fieldTypeId, isActive) VALUES (?,?,1)";           
+				
+				PrepareStat = Conn.prepareStatement(insertQueryStatement1);
+				PrepareStat.setInt(1, templateID);
+				PrepareStat.setInt(2, ft.getFieldTypeId());
+	 
+				// execute insert SQL statement
+				PrepareStat.executeUpdate();
+			}
+			
+			
+			
+			
+			
+			
             
            
 			       

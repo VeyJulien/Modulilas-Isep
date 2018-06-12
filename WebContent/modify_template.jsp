@@ -69,8 +69,9 @@
                         
                         <div onclick="create_template()" class="template_picture">Nouveau<br>
                             <i id="icon_create" style="font-size:40px; padding-top:15px;" class="fa fa-plus-square"></i>
-                            <form id="form_create" style="display:none">
-                            		<input class="field_create_new_template" type="text" placeholder="nom" style="margin-top: -2px;">
+                            <form action="/ModuLilas-Isep/TemplateModification" id="form_create" method="post" style="display:none">
+                            		<input class="field_create_new_template" type="text" name="templateName" placeholder="nom" style="margin-top: -2px;">
+                            		<input type="hidden" name="action" value="addTemplate">
                             		<input class="submit_create_new_template" type="submit" value="créer">
                             </form>
                         </div>
