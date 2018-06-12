@@ -188,4 +188,20 @@ public class Controller extends HttpServlet {
         dispatcher.forward(request, response);
     }
 	
+	//TODO finish !
+	private void editModule(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+		FieldtypeHelper fieldhelp = new FieldtypeHelper();
+		StepHelper stephelp = new StepHelper();
+		List<Fieldtype> fields = MySQLDB.allFieldtypes();
+		List<Step> steps = MySQLDB.allSteps();
+		fieldhelp.setFieldtypes(fields);
+		stephelp.setSteps(steps);
+		request.setAttribute("Fieldtypes",fieldhelp);
+		request.setAttribute("Steps", stephelp);
+		//request.setAttribute("Data", data);
+		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/edit_module.jsp");
+		dispatcher.include(request, response);
+    }
+	
 }
