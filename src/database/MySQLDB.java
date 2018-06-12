@@ -39,7 +39,7 @@ public class MySQLDB {
 			//Noe co : 	    Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
 			//Julien co : 	Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
 			
-			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
+			Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
 			if (Conn != null) {
 				log("Connection Successful! Enjoy. Now it's time to push data");
 			} else {
@@ -415,11 +415,11 @@ public static String[][] getModuleData(int id) {
 		ResultSet rs = PrepareStat.executeQuery();
 		
 		while(rs.next()) {
-			content+=rs.getString("content") + '§';
-			fieldIds +=rs.getString("fieldTypeId") + "§";
+			content+=rs.getString("content") + 'ï¿½';
+			fieldIds +=rs.getString("fieldTypeId") + "ï¿½";
 		}
-		result[0]=content.split("§");
-		result[1]=fieldIds.split("§");
+		result[0]=content.split("ï¿½");
+		result[1]=fieldIds.split("ï¿½");
 		fieldIds = fieldIds.substring(0, fieldIds.length() - 18);
 		 
 		//System.out.println(fieldIds);
