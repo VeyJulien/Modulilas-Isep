@@ -70,8 +70,8 @@ public class FormModification extends HttpServlet {
 				}
 		}
 		
-		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/Controller");
-		dispatcher.include(request, response);
+		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/Gerer_les_champs");
+		dispatcher.forward(request, response);
 		
 	}
 
