@@ -49,7 +49,7 @@
                                 			<c:set var="ens" value="${enseignement}" />
                                 			<c:set var="year" value="${annee}" />
                                 			<c:forEach var="module" items="${Modules.specificModules(ens,year)}">
-												<li class="list_accordion childshow"><b>${module.getCode()} : </b>${module.getTitre()}<form action="Edit_Module" method="post"><label><i class="fas fa-edit icon_module edit"></i><input type="submit" style="display:none;"><input type="hidden" name="code" value="${module.getCode()}"></label></form><i class="fas fa-eye icon_module"></i></a></li>
+												<li class="list_accordion childshow"><b>${module.getCode()} : </b>${module.getTitre()}<form action="/ModuLilas-Isep/ModuleEdition" method="post"><label><i class="fas fa-edit icon_module edit"></i><input type="submit" style="display:none;"><input type="hidden" name="code" value="${module.getCode()}"><i class="fas fa-eye icon_module"></i></label></form></li>
 											</c:forEach>
                                 		</ul>
                             		</div>
