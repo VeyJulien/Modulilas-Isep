@@ -53,8 +53,7 @@
                 
                 
                 <div class="input_module_container">
-                    <form id = "formulairedelamort" action="/ModuLilas-Isep/ModuleCreation" method="post">
-                    	<input type="hidden" name="action" value="creation">
+                    <form id = "editModule" action="/ModuLilas-Isep/ModuleEdition" method="post">
                     	
                         <c:forEach var="step" items="${Fieldtypes.listSteps()}">
                        	 	<% int i = 1; %>
@@ -65,7 +64,8 @@
                         
                         		<label>${fieldtype.getTitle()}</label><i class="fas fa-circle oblig_field"></i>
                         		<c:set var="index" value="<%= i %>" />
-                        		${fieldtype.fieldType(fieldtype.getFormat(),index)}
+                        		<c:set var="text" value="${Data[index]}" />
+                        		${fieldtype.fieldTypeForEdit(fieldtype.getFormat(),index,text)}
                         		<% i = i + 1; %>
                         
                        		</c:forEach>
