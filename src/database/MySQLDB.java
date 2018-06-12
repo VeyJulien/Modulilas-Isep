@@ -40,7 +40,7 @@ public class MySQLDB {
 			//Julien co :   Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
 
 
-			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "");
+			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
 
 			if (Conn != null) {
 				log("Connection Successful! Enjoy. Now it's time to push data");
@@ -534,19 +534,23 @@ public static List<String>[] get_ListModuleData_And_ListModuleFieldTypeId(int id
 	return result;
 }
 
-public static void noeFaure(int id) {
+public static String dataToHtml(int id) {
+	String html="<li>";
 	List<String>[] listModuleData_And_ListModuleFieldTypeId =get_ListModuleData_And_ListModuleFieldTypeId(id);
 	List<String> titles=new LinkedList();
 	String sqlComplement="";
-	for (String moduleFieldTypeID : listModuleData_And_ListModuleFieldTypeId[1] )
+	
+	for (String moduleFieldTypeID : listModuleData_And_ListModuleFieldTypeId[1] ) {
 		sqlComplement+=moduleFieldTypeID+" OR fieldTypeId= ";
+	}
+		
 	sqlComplement= sqlComplement.substring(0, sqlComplement.length()-17);
 	System.out.println(sqlComplement);
 	try{
-		String insertQueryStatement = "SELECT title FROM fieldtype WHERE fieldTypeId = ? ";
+		String insertQueryStatement = "SELECT title FROM fieldtype WHERE fieldTypeId = "+sqlComplement;
 
 		PrepareStat = Conn.prepareStatement(insertQueryStatement);
-		PrepareStat.setString(1, sqlComplement);
+		//PrepareStat.setString(1, sqlComplement);
 		
 		ResultSet rs = PrepareStat.executeQuery();
 		
@@ -554,17 +558,39 @@ public static void noeFaure(int id) {
 			titles.add(rs.getString("title"));
 		}
 		
-		for(String e : titles) {
-			System.out.println(e);
-		}
+		
+		
+		for(int i=0; i<titles.size();i++)
+			html+="<ul>"+titles.get(i)+": <br>"+listModuleData_And_ListModuleFieldTypeId[0].get(i)+"</ul>";
+		html+="</li>";
 	}
 	catch(SQLException e) {
 		e.printStackTrace();
 	}
-	
+	return html;
 	
 }
 
+public static String catalogueInHtml() {
+	String html="";
+
+	try{
+		String insertQueryStatement = "SELECT moduleId,code FROM module ";
+
+		PrepareStat = Conn.prepareStatement(insertQueryStatement);
+		
+		ResultSet rs = PrepareStat.executeQuery();
+		
+		while(rs.next()) {
+			html+="<h2> Module "+rs.getString("code")+"</h2></br>"+dataToHtml(rs.getInt("moduleId"));
+		}
+	
+	}
+	catch(SQLException e) {
+		e.printStackTrace();
+	}
+	return html;
+}
 
 public static void deleteTemplateFromDB(int templateID){
     

@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.itextpdf.tool.xml.html.HTML;
+
 import database.*;
 
 /**
@@ -48,16 +50,18 @@ public class Controller extends HttpServlet {
 		String action = request.getServletPath();
 		System.out.println(action);
 		
-		List<String>[] testBienPropre=MySQLDB.get_ListModuleData_And_ListModuleFieldTypeId(1);
+		/*List<String>[] testBienPropre=MySQLDB.get_ListModuleData_And_ListModuleFieldTypeId(1);
 		for(int i=0; i<testBienPropre[0].size(); i++) {
 			System.out.println(testBienPropre[0].get(i));
 			System.out.println(testBienPropre[1].get(i));
-		}
-		MySQLDB.noeFaure(1);
+		}*/
+		
+		PDFCreator.htmlToPdf(MySQLDB.dataToHtml(2), "ficheModule.pdf");
+		PDFCreator.htmlToPdf(MySQLDB.catalogueInHtml(), "catalogue.pdf");
 
 		
 		
-		PDFCreator.htmlToPdf("PDFTest.html", "test-017.pdf");
+		//PDFCreator.htmlToPdf("PDFTest.html", "test-017.pdf");
 		
 		
         try {

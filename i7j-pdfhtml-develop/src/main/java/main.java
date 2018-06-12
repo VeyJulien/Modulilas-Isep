@@ -24,30 +24,21 @@ public class main {
 		
 		ConverterProperties properties = new ConverterProperties();
     	properties.setBaseUri(resources);
-<<<<<<< HEAD
-		HtmlConverter.convertToPdf(html, new FileOutputStream(pdf), properties);
-    	//HtmlConverter.convertToPdf(new FileInputStream(path+"test.html"), new FileOutputStream(pdf));*/
-		htmlToPdf("PDFTest.html", "stest-02.pdf");
-=======
+
 		HtmlConverter.convertToPdf(html, new FileOutputStream(pdf), properties);*/
     	//HtmlConverter.convertToPdf(new FileInputStream(path+"test.html"), new FileOutputStream(pdf));
 		htmlToPdf("PDFTest.html", "test-04.pdf");
->>>>>>> arthur
 	}
 	
 	public static void htmlToPdf(String inputFileName, String outputFileName) throws FileNotFoundException, IOException {
 		String pathToProjectFile="C://Users/thinkpad/Code/GitHubRepositories/Modulilas/";
 		
 		String resources = pathToProjectFile+"WebContent/";
-<<<<<<< HEAD
-		String html =readHtmlFile(pathToProjectFile+"WebContent/"+inputFileName);//"<h1>Test</h1><p>Hello World LOLILOL</p>";
-		String path=pathToProjectFile+"PDFCreator/";
-		String pdf=String.format("%"+outputFileName, path);
-=======
+
 		String html =readHtmlFile(pathToProjectFile+"WebContent/"+inputFileName)+"<img src=\"smile.png\">";//"<h1>Test</h1><p>Hello World LOLILOL</p>";
 		String path=pathToProjectFile+"PDFCreator/";
 		String pdf=String.format("%s"+outputFileName, path);
->>>>>>> arthur
+
 		
 		File file = new File(path);
 		file.mkdirs();
