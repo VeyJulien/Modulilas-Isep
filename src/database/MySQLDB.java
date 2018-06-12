@@ -78,6 +78,25 @@ public class MySQLDB {
 		}
 	}
 	
+	public static void updateContent(String Content, Integer ModuleID, int FieldtypeID) {
+		try {
+			String insertQueryStatement = "UPDATE content SET content = ? WHERE moduleId = ? AND fieldTypeId = ?";
+ 
+			PrepareStat = Conn.prepareStatement(insertQueryStatement);
+			PrepareStat.setString(1, Content);
+			PrepareStat.setInt(2, ModuleID);
+			PrepareStat.setInt(3, FieldtypeID);
+ 
+			// execute insert SQL statement
+			PrepareStat.executeUpdate();
+			log(Content + " updated successfully");
+		} catch (
+ 
+		SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void addContent(String Content, Integer ModuleID, int FieldtypeID) {
 		 
 		
