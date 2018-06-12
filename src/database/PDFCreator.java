@@ -11,12 +11,13 @@ import com.itextpdf.html2pdf.HtmlConverter;
 
 public class PDFCreator {
 	public static void htmlToPdf(String inputFileName, String outputFileName) throws FileNotFoundException, IOException {
-		String pathToProjectFile="C://Users/thinkpad/Code/GitHubRepositories/Modulilas/";
+		String pathToProjectFile="D://Documents/GitHub/Modulilas-Isep/";
+		
 		
 		String resources = pathToProjectFile+"WebContent/";
-		String html =readHtmlFile(pathToProjectFile+"WebContent/"+inputFileName);//"<h1>Test</h1><p>Hello World LOLILOL</p>";
+		String html =readHtmlFile(pathToProjectFile+"WebContent/"+inputFileName);
 		String path=pathToProjectFile+"PDFCreator/";
-		String pdf=String.format("%"+outputFileName, path);
+		String pdf=String.format("%s"+outputFileName, path);
 		
 		File file = new File(path);
 		file.mkdirs();
