@@ -57,19 +57,23 @@ public class FormModification extends HttpServlet {
 		
 		for (int i=0;i<max;i++){
 				String Titre = request.getParameter("title" + i);
-				String Description = request.getParameter("description" + i);
-				int id = fields.get(i).getFieldTypeId();
-				if(Titre == null){
+				if(Titre == null && i< fields.size()){
+					int id = fields.get(i).getFieldTypeId();
 					MySQLDB.delFieldtype(id);
-				}else if(fields.get(i) != null) {
-					if (id == i + 1){
-						MySQLDB.updateFieldtype(id,Titre, Description);
-					}
+				}else if(i< fields.size()) {
+					String Description = request.getParameter("description" + i);
+					int format = Integer.parseInt(request.getParameter("format" + i));
+					int formStep = Integer.parseInt(request.getParameter("step" + i));
+					int id = fields.get(i).getFieldTypeId();
+					MySQLDB.updateFieldtype(id,Titre, Description, format, formStep);			
 				}else{
-					MySQLDB.addFieldtype(Titre,Description);
+					String Description = request.getParameter("description" + i);
+					int format = Integer.parseInt(request.getParameter("format" + i));
+					int formStep = Integer.parseInt(request.getParameter("step" + i));
+					MySQLDB.addFieldtype(Titre,Description, format, formStep);
+					}
 				}
-		}
-		
+
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/Controller");
 		dispatcher.include(request, response);
 		

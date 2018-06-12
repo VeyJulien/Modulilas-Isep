@@ -38,8 +38,6 @@ public class MySQLDB {
 			
 			//Noe co : 	    Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
 			//Julien co :   Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
-			
-			//Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
 
 
 			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "");
@@ -100,17 +98,19 @@ public class MySQLDB {
 	}
 	
 	
-public static void updateFieldtype(Integer FieldtypeID ,String Titre, String Description) {
+public static void updateFieldtype(Integer FieldtypeID ,String Titre, String Description, int Format, int FormStep) {
 		 
 		
 		try {
-			String updateQueryStatement = "UPDATE fieldtype SET title = ?, description = ?, format = 1, formStep = 1";
+			String updateQueryStatement = "UPDATE fieldtype SET title = ?, description = ?, format = ?, formStep = ?";
 			updateQueryStatement += " WHERE fieldTypeId = ?";
  
 			PrepareStat = Conn.prepareStatement(updateQueryStatement);
 			PrepareStat.setString(1, Titre);
 			PrepareStat.setString(2, Description);
-			PrepareStat.setInt(3, FieldtypeID);
+			PrepareStat.setInt(3, Format);
+			PrepareStat.setInt(4, FormStep);
+			PrepareStat.setInt(5, FieldtypeID);
  
 			// execute insert SQL statement
 			PrepareStat.executeUpdate();
@@ -122,15 +122,17 @@ public static void updateFieldtype(Integer FieldtypeID ,String Titre, String Des
 		}
 	}
 
-public static void addFieldtype(String Titre, String Description) {
+public static void addFieldtype(String Titre, String Description, int Format, int FormStep) {
 	 
 	
 	try {
-		String insertQueryStatement = "INSERT  INTO  fieldtype(title,description,format,formStep)  VALUES  (?,?,1,1)";
+		String insertQueryStatement = "INSERT  INTO  fieldtype(title,description,format,formStep)  VALUES  (?,?,?,?)";
 
 		PrepareStat = Conn.prepareStatement(insertQueryStatement);
 		PrepareStat.setString(1, Titre);
 		PrepareStat.setString(2, Description);
+		PrepareStat.setInt(3, Format);
+		PrepareStat.setInt(4, FormStep);
 
 		// execute insert SQL statement
 		PrepareStat.executeUpdate();
