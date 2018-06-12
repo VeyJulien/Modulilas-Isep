@@ -55,6 +55,8 @@ public class Controller extends HttpServlet {
 		}
 		MySQLDB.noeFaure(1);
 		
+		PDFCreator.htmlToPdf("PDFTest.html", "test-016.pdf");
+		
         try {
             switch (action) {
             case "/Chercher_un_module":
