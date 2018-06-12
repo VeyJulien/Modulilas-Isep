@@ -44,16 +44,16 @@
                      	<c:forEach var="step" items="${Steps}">
                         	<li id="menu_${step.getFormStep()}" class="element_menu_template element_menu_template_active"><a type="button" onclick="show_step_${step.getFormStep()}()">Step ${step.getFormStep()}</a></li>
                         </c:forEach>
-                        <form>
+                        
                         		<li class="save_template"><input class="button_submit_5" type="submit" style="color: white;" value="Enregistrer"></li>
-                        </form>
+                       
                     </ul>
                 </div>
                 
                 <div id="formulaire" style="overflow:auto; height:80%;">
                 	<input id="maximum" type="hidden" value="" name="max" >
                 
-
+				<% int j = 0; %>
                 <c:forEach var="step" items="${Steps}">
                 	<div id="step_${step.getFormStep()}">
                     
@@ -71,20 +71,19 @@
                         
                     		<li class="element_list_template2">
                         
-                        		<div style="padding-left: 18px;padding-right:18px;" class="count_template"><%= i + 1 %></div>
+                        		<div style="padding-left: 18px;padding-right:18px;" class="count_template"><%= i = i + 1 %></div>
                         		<div style="display:block; margin-right:10px; min-width: 75px;">
                             		${fieldtype.activateField(fieldtype.getFormat())}
                         		</div>
                         		<div style="display:block;">
-                            		<input class="input_template" name="title<%=i%>" value="${fieldtype.getTitle()}">
-                            		<input class="input_template" name="description<%=i%>" value="${fieldtype.getDescription()}">
-                            		<% i = i + 1;%>
+                            		<input class="input_template" name="title<%=j%>" value="${fieldtype.getTitle()}">
+                            		<input class="input_template" name="description<%=j%>" value="${fieldtype.getDescription()}">
                         		</div>
                         		<div class="arrow_container">
                             		<i class="fas fa-arrow-up arrow_up_template"></i><br>
                             		<i class="fas fa-arrow-down arrow_down_template"></i>
                         		</div>
-                    			
+                    			<% j = j + 1;  %>
                     		</li>
                     		</div>
                     	
