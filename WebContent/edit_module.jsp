@@ -67,7 +67,7 @@
                         		<c:set var="index" value="<%= i %>" />
                         		<c:set var="text" value="${Datas[0].get(index-1)}" />
                         		${fieldtype.fieldTypeForEdit(fieldtype.getFormat(),index,text)}
-                        		<% i = i + 1; %>
+                        		<% i = i + 1;%>
                         
                        		</c:forEach>
                         	<c:forEach var="max" items="${Steps.specificStep(etape)}">

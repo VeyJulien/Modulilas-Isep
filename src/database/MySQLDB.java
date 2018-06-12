@@ -80,9 +80,14 @@ public class MySQLDB {
 	
 	public static void updateContent(String Content, Integer ModuleID, int FieldtypeID) {
 		try {
-			String insertQueryStatement = "UPDATE content SET content = ? WHERE moduleId = ? AND fieldTypeId = ?";
+			String updateQueryStatement = "UPDATE content SET content = ? WHERE moduleId = ? AND fieldTypeId = ?";
  
-			PrepareStat = Conn.prepareStatement(insertQueryStatement);
+			if(FieldtypeID == 1) // Module title
+			{
+				updateModuleName(Content, ModuleID);
+			}
+			
+			PrepareStat = Conn.prepareStatement(updateQueryStatement);
 			PrepareStat.setString(1, Content);
 			PrepareStat.setInt(2, ModuleID);
 			PrepareStat.setInt(3, FieldtypeID);
@@ -95,6 +100,26 @@ public class MySQLDB {
 		SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private static void updateModuleName(String moduleName, int ModuleID)
+	{
+		try {
+		String updateQueryStatement = "UPDATE module SET moduleName = ? WHERE moduleId = ?";
+		 
+		
+		PrepareStat = Conn.prepareStatement(updateQueryStatement);
+		PrepareStat.setString(1, moduleName);
+		PrepareStat.setInt(2, ModuleID);
+
+		// execute insert SQL statement
+		PrepareStat.executeUpdate();
+		log(moduleName + " updated successfully");
+	} catch (
+
+	SQLException e) {
+		e.printStackTrace();
+	}
 	}
 	
 	public static void addContent(String Content, Integer ModuleID, int FieldtypeID) {
