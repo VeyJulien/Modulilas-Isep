@@ -71,7 +71,7 @@ public class TemplateModification extends HttpServlet {
 		
 		MySQLDB.deleteTemplateFromDB(templateID);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/Controller");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Modifier_template");
         dispatcher.forward(request, response);
 		
 		
@@ -94,16 +94,4 @@ public class TemplateModification extends HttpServlet {
 	}
 	
 	
-	public void ForwardTo(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException, ServletException {
-		
-		int templateID =  Integer.parseInt(request.getParameter("templateID"));
-		
-		MySQLDB.deleteTemplateFromDB(templateID);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/Modifier_template");
-        dispatcher.forward(request, response);
-		
-		
-	}
 }
