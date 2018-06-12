@@ -81,8 +81,6 @@ public class Controller extends HttpServlet {
             case "/Sucess":
     				sucessPage(request, response);
     				break;
-            case "WebContent/coffee.gif":
-            		break;
             case"/Edit_Module":
             		editModule(request, response);
             		break;
@@ -148,11 +146,6 @@ public class Controller extends HttpServlet {
         dispatcher.forward(request, response);
     }
 	
-	private void coffee(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WebContent/coffee.gif");
-        dispatcher.forward(request, response);
-    }
 	
 	private void sucessPage(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

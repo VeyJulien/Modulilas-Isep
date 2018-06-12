@@ -39,13 +39,11 @@ public class MySQLDB {
 			//Noe co : 	    Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
 			//Julien co :   Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
 			
-<<<<<<< HEAD
-			Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
-=======
+			//Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
+
 
 			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "");
 
->>>>>>> origin/master
 			if (Conn != null) {
 				log("Connection Successful! Enjoy. Now it's time to push data");
 			} else {
@@ -451,7 +449,6 @@ public static List<Template> AllTemplate() {
 	
 	List<Template> allTemplate = new ArrayList<>();
 	
-	MySQLDB.makeJDBCConnection();
 	
 	try {
 		// MySQL Select Query Tutorial
@@ -544,6 +541,54 @@ public static void noeFaure(int id) {
 	}
 	
 	
+}
+
+public static void deleteTemplateFromDB(int templateID){
+    
+    try {			
+			String delQueryStatement = "DELETE FROM view WHERE viewId = ?";
+			
+			PrepareStat = Conn.prepareStatement(delQueryStatement);
+			
+			
+			PrepareStat.setInt(1, templateID);
+			PrepareStat.executeUpdate();
+    		log(templateID + " deleted successfully");
+            
+ 
+		} catch (
+ 
+		SQLException e) {
+			e.printStackTrace();
+		}
+
+}
+
+
+public static void switchTemplate(int templateID){
+    
+    try {			
+			String updateQueryStatement1 = "UPDATE view SET isActive = 0";
+            String updateQueryStatement2 = "UPDATE view SET isActive = 1 WHERE viewId = ?";           
+			
+			PrepareStat = Conn.prepareStatement(updateQueryStatement1);
+			PrepareStat.executeUpdate();
+			
+            
+            PrepareStat = Conn.prepareStatement(updateQueryStatement2);
+            PrepareStat.setInt(1, templateID);
+            PrepareStat.executeUpdate();
+    		log(templateID + " deleted successfully");
+            
+           
+			       
+ 
+		} catch (
+ 
+		SQLException e) {
+			e.printStackTrace();
+		}
+
 }
 
 
