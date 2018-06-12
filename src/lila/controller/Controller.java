@@ -54,6 +54,11 @@ public class Controller extends HttpServlet {
 			System.out.println(testBienPropre[1].get(i));
 		}
 		MySQLDB.noeFaure(1);
+
+		
+		
+		PDFCreator.htmlToPdf("PDFTest.html", "test-017.pdf");
+		
 		
         try {
             switch (action) {
@@ -81,9 +86,9 @@ public class Controller extends HttpServlet {
             case "/Sucess":
     				sucessPage(request, response);
     				break;
-            case"/Edit_Module":
+           /* case"/Edit_Module":
             		editModule(request, response);
-            		break;
+            		break;*/
             default:
                 menu(request, response);
                 break;
@@ -185,21 +190,21 @@ public class Controller extends HttpServlet {
         dispatcher.forward(request, response);
     }
 	
-	//TODO finish !
+	/*//TODO finish !
 	private void editModule(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
 		FieldtypeHelper fieldhelp = new FieldtypeHelper();
 		StepHelper stephelp = new StepHelper();
 		List<Fieldtype> fields = MySQLDB.allFieldtypes();
 		List<Step> steps = MySQLDB.allSteps();
-		//String[][] datas = MySQLDB.getModuleData(1); HAHAHAHAHAHA
+		List<String>[] datas = MySQLDB.get_ListModuleData_And_ListModuleFieldTypeId(1);
 		fieldhelp.setFieldtypes(fields);
 		stephelp.setSteps(steps);
 		request.setAttribute("Fieldtypes",fieldhelp);
 		request.setAttribute("Steps", stephelp);
-		//request.setAttribute("Datas", datas); MUAHAHAHAHAHAHAHAHAHA
+		request.setAttribute("Datas", datas);
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/edit_module.jsp");
 		dispatcher.include(request, response);
-    }
+    }*/
 	
 }

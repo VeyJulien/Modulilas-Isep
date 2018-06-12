@@ -24,7 +24,7 @@
                 <i class="fas fa-times cross_overlay"></i>
                 <div class="overlay_text">&#202;tes-vous s&#251;r de vouloir<br>vous d&#233;connecter ?</div>
                 <div class="overlay_under_text">Tous les changements non enregistr&#233;s seront perdus.</div>
-                <div style="display:flex;" class="button_overlay"><a class="button_1">Rester</a><a href="index.html" class="button_1">Quitter</a></div>
+                <div style="display:flex;" class="button_overlay"><a class="button_1">Rester</a><a href="index.jsp" class="button_1">Quitter</a></div>
             </div>
         </div>
         
@@ -69,8 +69,9 @@
                         
                         <div onclick="create_template()" class="template_picture">Nouveau<br>
                             <i id="icon_create" style="font-size:40px; padding-top:15px;" class="fa fa-plus-square"></i>
-                            <form id="form_create" style="display:none">
-                            		<input class="field_create_new_template" type="text" placeholder="nom" style="margin-top: -2px;">
+                            <form action="/ModuLilas-Isep/TemplateModification" id="form_create" method="post" style="display:none">
+                            		<input class="field_create_new_template" type="text" name="templateName" placeholder="nom" style="margin-top: -2px;">
+                            		<input type="hidden" name="action" value="addTemplate">
                             		<input class="submit_create_new_template" type="submit" value="créer">
                             </form>
                         </div>

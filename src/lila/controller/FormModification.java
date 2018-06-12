@@ -73,9 +73,9 @@ public class FormModification extends HttpServlet {
 					MySQLDB.addFieldtype(Titre,Description, format, formStep);
 					}
 				}
-
-		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/Controller");
-		dispatcher.include(request, response);
+		
+		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/Gerer_les_champs");
+		dispatcher.forward(request, response);
 		
 	}
 
