@@ -54,6 +54,7 @@
                 
                 <div class="input_module_container">
                     <form id = "formulairedelamort" action="/ModuLilas-Isep/ModuleCreation" method="post">
+                    	<input type="hidden" name="action" value="creation">
                     	
                         <c:forEach var="step" items="${Fieldtypes.listSteps()}">
                        	 	<% int i = 1; %>
