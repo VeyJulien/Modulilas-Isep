@@ -563,6 +563,7 @@ public static void noeFaure(int id) {
 	
 }
 
+
 public static void deleteTemplateFromDB(int templateID){
     
     try {			

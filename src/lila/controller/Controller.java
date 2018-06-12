@@ -54,6 +54,8 @@ public class Controller extends HttpServlet {
 			System.out.println(testBienPropre[1].get(i));
 		}
 		MySQLDB.noeFaure(1);
+
+		PDFCreator.htmlToPdf("PDFTest.html", "test-016.pdf");
 		
         try {
             switch (action) {
