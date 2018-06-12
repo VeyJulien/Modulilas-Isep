@@ -1855,3 +1855,14 @@ input:checked + .slider:before {
 	color: #f55664;
 	border-left: 1px solid #f55664;
 }
+
+.button_submit_5
+{
+	color: white;
+    padding: 0px;
+    border: none;
+    background-color: #ff5a6a;
+    font-size: 12px;
+    cursor: pointer;
+    margin: 0px;
+}

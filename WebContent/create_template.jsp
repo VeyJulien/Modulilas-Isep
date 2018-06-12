@@ -43,7 +43,9 @@
                      	<c:forEach var="step" items="${Steps}">
                         	<li id="menu_${step.getFormStep()}" class="element_menu_template element_menu_template_active"><a type="button" onclick="show_step_${step.getFormStep()}()">Step ${step.getFormStep()}</a></li>
                         </c:forEach>
-                        <li class="save_template"><a style="color: white;">Enregistrer</a></li>
+                        <form>
+                        		<li class="save_template"><input class="button_submit_5" type="submit" style="color: white;" value="Enregistrer"></li>
+                        </form>
                     </ul>
                 </div>
                 
