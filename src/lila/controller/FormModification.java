@@ -1,6 +1,7 @@
 package lila.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,16 +15,16 @@ import database.Fieldtype;
 import database.MySQLDB;
 
 /**
- * Servlet implementation class ModuleCreation
+ * Servlet implementation class FormModification
  */
-@WebServlet("/ModuleCreation")
-public class ModuleCreation extends HttpServlet {
+@WebServlet("/FormModification")
+public class FormModification extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModuleCreation() {
+    public FormModification() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +34,6 @@ public class ModuleCreation extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 	}
 
 	/**
@@ -46,30 +46,34 @@ public class ModuleCreation extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		MySQLDB.makeJDBCConnection();
 		
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		
 		List<Fieldtype> fields = MySQLDB.allFieldtypes();
 		
-		int userID = 1;
-		// récuperer l'user ID actuelle
 		
-		String titre = request.getParameter("Titre du module");
-		String code = request.getParameter("Identifiant du module");
+		//choper le max(nombre de field sur la page et nn pas dans la base)
+		int max = Integer.parseInt(request.getParameter("max"));
 		
-		MySQLDB.addModule(titre, code, userID);
-		
-			
-		int moduleId = MySQLDB.getModuleID(code);
-				
-		
-		for (int i=0;i<fields.size();i++) {
-			String fieldObject = fields.get(i).getTitle();
-			String content = request.getParameter(fieldObject);
-			MySQLDB.addContent(content, moduleId, fields.get(i).getFieldTypeId());
-			
+		for (int i=0;i<max;i++){
+				String Titre = request.getParameter("title" + i);
+				String Description = request.getParameter("description" + i);
+				int id = fields.get(i).getFieldTypeId();
+				if(Titre == null){
+					
+					MySQLDB.delFieldtype(id);
+				}else if(fields.get(i) != null) {
+					if (id == i + 1){
+						MySQLDB.updateFieldtype(id,Titre, Description);
+					}
+				}else{
+					MySQLDB.addFieldtype(Titre,Description);
+				}
 		}
 		
-		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/sucess.jsp");
+		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/Controller");
 		dispatcher.include(request, response);
-				
+		
 	}
 
 }

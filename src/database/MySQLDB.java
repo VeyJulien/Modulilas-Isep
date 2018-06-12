@@ -37,7 +37,7 @@ public class MySQLDB {
 			// DriverManager: The basic service for managing a set of JDBC drivers.
 			
 			//Noe co : 	    Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
-			//Julien co : 	Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
+			//Julien co :   Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
 			
 			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "");
 			if (Conn != null) {
@@ -95,7 +95,86 @@ public class MySQLDB {
 		}
 	}
 	
-	public static int getModuleID(String Code) {
+public static void updateFieldtype(Integer FieldtypeID ,String Titre, String Description) {
+		 
+		
+		try {
+			String updateQueryStatement = "UPDATE fieldtype SET title = ?, description = ?, format = 1, formStep = 1";
+			updateQueryStatement += " WHERE fieldTypeId = ?";
+ 
+			PrepareStat = Conn.prepareStatement(updateQueryStatement);
+			PrepareStat.setString(1, Titre);
+			PrepareStat.setString(2, Description);
+			PrepareStat.setInt(3, FieldtypeID);
+ 
+			// execute insert SQL statement
+			PrepareStat.executeUpdate();
+			log(Titre + " modified successfully");
+		} catch (
+ 
+		SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+public static void addFieldtype(String Titre, String Description) {
+	 
+	
+	try {
+		String insertQueryStatement = "INSERT  INTO  fieldtype(title,description,format,formStep)  VALUES  (?,?,1,1)";
+
+		PrepareStat = Conn.prepareStatement(insertQueryStatement);
+		PrepareStat.setString(1, Titre);
+		PrepareStat.setString(2, Description);
+
+		// execute insert SQL statement
+		PrepareStat.executeUpdate();
+		log(Titre + " added successfully");
+	} catch (
+
+	SQLException e) {
+		e.printStackTrace();
+	}
+}
+
+public static void delFieldtype(int ID) {
+	 
+	
+	try {
+		String delQueryStatement2 = "DELETE FROM content WHERE fieldTypeId= ?";
+
+		PrepareStat = Conn.prepareStatement(delQueryStatement2);
+		PrepareStat.setInt(1, ID);
+		
+		// execute insert SQL statement
+		PrepareStat.executeUpdate();
+		log(ID + " deleted successfully");
+		
+		String delQueryStatement3 = "DELETE FROM viewfieldtype WHERE fieldTypeId= ?";
+
+		PrepareStat = Conn.prepareStatement(delQueryStatement3);
+		PrepareStat.setInt(1, ID);
+
+		// execute insert SQL statement
+		PrepareStat.executeUpdate();
+		log(ID + " deleted successfully");
+		
+		String delQueryStatement = "DELETE  FROM  fieldtype  WHERE fieldTypeId = ?";
+		
+		PrepareStat = Conn.prepareStatement(delQueryStatement);
+		PrepareStat.setInt(1, ID);
+
+		// execute insert SQL statement
+		PrepareStat.executeUpdate();
+		log(ID + " deleted successfully");
+	} catch (
+
+	SQLException e) {
+		e.printStackTrace();
+	}
+}
+	
+public static int getModuleID(String Code) {
 		
 		int id = -1;
 		try {
@@ -120,7 +199,7 @@ public class MySQLDB {
 		}
 		
 		return id;
-	}
+}
  
 	public static List<Module> allModules() {
 		
