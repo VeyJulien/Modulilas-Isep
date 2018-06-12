@@ -39,11 +39,9 @@ public class MySQLDB {
 			//Noe co : 	    Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
 			//Julien co : 	Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
 			
-<<<<<<< HEAD
-			Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
-=======
+
 			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "");
->>>>>>> origin/master
+
 			if (Conn != null) {
 				log("Connection Successful! Enjoy. Now it's time to push data");
 			} else {
@@ -406,28 +404,24 @@ public static List<Template> AllTemplate() {
 	return allTemplate;
 }
 
-public static String[][] getModuleData(int id) {
-	String[][] result = new String[2][];
-	String content = "";
-	String fieldIds = "";
+
+public static List<String>[] get_ListModuleData_And_ListModuleFieldTypeId(int id) {
+	List<String>[] result = new LinkedList[2];
+	result[0]=new LinkedList();
+	result[1]=new LinkedList();
 	try {
 		String insertQueryStatement = "SELECT content, fieldTypeId FROM content WHERE moduleId = ? ";
 
 		PrepareStat = Conn.prepareStatement(insertQueryStatement);
-		PrepareStat.setString(1, Integer.toString(id));
+		PrepareStat.setInt(1, id);
 		
 		ResultSet rs = PrepareStat.executeQuery();
 		
 		while(rs.next()) {
-			content+=rs.getString("content") + '�';
-			fieldIds +=rs.getString("fieldTypeId") + "�";
+			result[0].add(rs.getString("content"));
+			result[1].add(rs.getString("fieldTypeId"));
 		}
-		result[0]=content.split("�");
-		result[1]=fieldIds.split("�");
-		fieldIds = fieldIds.substring(0, fieldIds.length() - 18);
-		 
-		//System.out.println(fieldIds);
-		
+		 		
 	} catch (
 			 
 	SQLException e) {
@@ -438,6 +432,36 @@ public static String[][] getModuleData(int id) {
 	return result;
 }
 
+public static void noeFaure(int id) {
+	List<String>[] listModuleData_And_ListModuleFieldTypeId =get_ListModuleData_And_ListModuleFieldTypeId(id);
+	List<String> titles=new LinkedList();
+	String sqlComplement="";
+	for (String moduleFieldTypeID : listModuleData_And_ListModuleFieldTypeId[1] )
+		sqlComplement+=moduleFieldTypeID+" OR fieldTypeId= ";
+	sqlComplement= sqlComplement.substring(0, sqlComplement.length()-17);
+	System.out.println(sqlComplement);
+	try{
+		String insertQueryStatement = "SELECT title FROM fieldtype WHERE fieldTypeId = ? ";
+
+		PrepareStat = Conn.prepareStatement(insertQueryStatement);
+		PrepareStat.setString(1, sqlComplement);
+		
+		ResultSet rs = PrepareStat.executeQuery();
+		
+		while(rs.next()) {
+			titles.add(rs.getString("title"));
+		}
+		
+		for(String e : titles) {
+			System.out.println(e);
+		}
+	}
+	catch(SQLException e) {
+		e.printStackTrace();
+	}
+	
+	
+}
 
 
 }
