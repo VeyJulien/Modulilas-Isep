@@ -32,20 +32,16 @@ public class MySQLDB {
 			e.printStackTrace();
 			return;
 		}
- 
+
 		try {
 			// DriverManager: The basic service for managing a set of JDBC drivers.
 			
 			//Noe co : 	    Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
 			//Julien co :   Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
 			
-<<<<<<< HEAD
-			Conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/Modulilas", "root", "root");
-=======
-
 			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "");
 
->>>>>>> origin/master
+
 			if (Conn != null) {
 				log("Connection Successful! Enjoy. Now it's time to push data");
 			} else {
