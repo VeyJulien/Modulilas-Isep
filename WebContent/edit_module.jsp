@@ -64,7 +64,7 @@
                         
                         		<label>${fieldtype.getTitle()}</label><i class="fas fa-circle oblig_field"></i>
                         		<c:set var="index" value="<%= i %>" />
-                        		<c:set var="text" value="${Datas[index]}" />
+                        		<c:set var="text" value="${Datas[0][index-1]}" />
                         		${fieldtype.fieldTypeForEdit(fieldtype.getFormat(),index,text)}
                         		<% i = i + 1; %>
                         
