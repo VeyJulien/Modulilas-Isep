@@ -40,9 +40,28 @@
                         
                         <div onclick="hide(this)" class="template_picture ${template.DisplayActive()}">${template.getViewName()}<br>
                             <i style="font-size:40px; padding-top:15px;" class="fas fa-images"></i>
-                            <div class="manage_template">
-                                <i class="far fa-trash-alt manage_template_icon"></i>
-                                <i class="far fa-check-square manage_template_icon" style="color:${template.DisplayIcon()};"></i>
+                            <div class="manage_template" style="display:flex; justify-content:center;">
+                            
+                            	<form action="/ModuLilas-Isep/TemplateModification" method="post">
+                            		<label>
+                            			<i class="far fa-trash-alt manage_template_icon"></i>
+                            			<input type="submit" style="display:none;">
+                            			<input type="hidden" name="action" value="deleteTemplate">
+                            			<input type="hidden" name="templateID" value="${template.getViewId()}">
+                            		</label>
+                                	
+                                </form>
+                                
+                                <form action="/ModuLilas-Isep/TemplateModification" method="post">
+                            		<label>
+                            			<i class="far fa-check-square manage_template_icon" style="color:${template.DisplayIcon()};"></i>
+                            			<input type="submit" style="display:none;">
+                            			<input type="hidden" name="action" value="switchTemplate">
+                            			<input type="hidden" name="templateID" value="${template.getViewId()}">
+                            		</label>
+                                	
+                                </form>
+                                
                             </div>
                         </div>
                         
