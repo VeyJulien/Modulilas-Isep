@@ -76,7 +76,7 @@ public class Fieldtype {
 		String title = this.getTitle();
 		String fieldType = "";
 		if ( format == 1 ){
-			fieldType = "<div style=\"margin-bottom: 16px;\"><textarea required form = \"editModule\" name = \"" + title + "\" class=\"textarea_module\" style=\"height:170px;\" placeholder=\"" + description + ">" + value + "</textarea></div>";
+			fieldType = "<div style=\"margin-bottom: 16px;\"><textarea required form = \"editModule\" name = \"" + title + "\" class=\"textarea_module\" style=\"height:170px;\" placeholder=\"" + description + "\">" + value + "</textarea></div>";
 		}else if( format == 2 ){
 			fieldType = "<div style=\"display: flex; margin-bottom: 16px;\"><input required name = \"" + title + "\" id=\"field_" + i + "\" autocomplete=\"off\" onchange=\"check_field_" + i + "()\" class=\"input_create_module\" placeholder=\"" + description + "\" value=\"" + value + "\"><i id=\"check_" + i + "\" class=\"fas fa-check-circle check_module\"></i><span class=\"ok_popup\" id=\"ok_" + i + "\">ok</span></div>";
 		}else if( format == 3)

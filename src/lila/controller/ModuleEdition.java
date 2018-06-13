@@ -50,12 +50,11 @@ public class ModuleEdition extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		MySQLDB.makeJDBCConnection();
 		
-		String code = request.getParameter("code");
-		int moduleId = MySQLDB.getModuleID(code);
+		
 		
 
         try {
-			editModule(request, response, moduleId);
+			editModule(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -65,8 +64,12 @@ public class ModuleEdition extends HttpServlet {
     }
 	
 	//TODO finish !
-		private void editModule(HttpServletRequest request, HttpServletResponse response, int moduleId)
+		private void editModule(HttpServletRequest request, HttpServletResponse response)
 	            throws SQLException, IOException, ServletException {
+			
+			String code = request.getParameter("code");
+			int moduleId = MySQLDB.getModuleID(code);
+			
 			FieldtypeHelper fieldhelp = new FieldtypeHelper();
 			StepHelper stephelp = new StepHelper();
 			List<Fieldtype> fields = MySQLDB.allFieldtypes();
@@ -77,6 +80,7 @@ public class ModuleEdition extends HttpServlet {
 			request.setAttribute("Fieldtypes",fieldhelp);
 			request.setAttribute("Steps", stephelp);
 			request.setAttribute("Datas", datas);
+			
 			RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/edit_module.jsp");
 			dispatcher.include(request, response);
 	    }

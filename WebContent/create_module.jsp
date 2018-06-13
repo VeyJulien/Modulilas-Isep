@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html lang="fr">
 <head>
     <meta charset="utf-8">
@@ -22,7 +23,7 @@
                 <i class="fas fa-times cross_overlay"></i>
                 <div class="overlay_text">&#202;tes-vous s&#251;r de vouloir<br>vous d&#233;connecter ?</div>
                 <div class="overlay_under_text">Tous les changements non enregistr&#233;s seront perdus.</div>
-                <div style="display:flex;" class="button_overlay"><a class="button_1">Rester</a><a href="index.html" class="button_1">Quitter</a></div>
+                <div style="display:flex;" class="button_overlay"><a class="button_1">Rester</a><a href="index.jsp" class="button_1">Quitter</a></div>
             </div>
         </div>
         

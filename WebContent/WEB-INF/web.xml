@@ -12,6 +12,10 @@
     <servlet-name>FormModification</servlet-name>
     <servlet-class>lila.controller.FormModification</servlet-class>
   </servlet>
+    <servlet>
+    <servlet-name>ModuleEdition</servlet-name>
+    <servlet-class>lila.controller.ModuleEdition</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>Controller</servlet-name>
     <url-pattern>/</url-pattern>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="fr">
@@ -12,7 +12,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <link rel="icon" href="icon_website.gif" type="image/gif" sizes="16x16">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="background">
@@ -22,14 +22,14 @@
                 <i class="fas fa-times cross_overlay"></i>
                 <div class="overlay_text">&#202;tes-vous s&#251;re de vouloir<br>vous d&#233;connecter ?</div>
                 <div class="overlay_under_text">Tous les changements non enregistr&#233;s seront perdus.</div>
-                <div style="display:flex;" class="button_overlay"><a class="button_1">Rester</a><a href="index.html" class="button_1">Quitter</a></div>
+                <div style="display:flex;" class="button_overlay"><a class="button_1">Rester</a><a href="index.jsp" class="button_1">Quitter</a></div>
             </div>
         </div>
         
         <div class="main_block">
             <p class="title_project title_page">Module Creator</p>
             <div class="page">
-                <form class="find_page">
+                <div class="find_page">
                     <div style="display:flex;"><input class="search_bar" type="text" placeholder="Rechercher un module..."><i class="fas fa-search icon_search"></i></div>
                     
                     <label class="container_check">Afficher uniquement mes fiches<input type="checkbox" style="width:0px;">
@@ -50,16 +50,20 @@
                                 			<c:set var="year" value="${annee}" />
                                 			<c:forEach var="module" items="${Modules.specificModules(ens,year)}">
 												<li class="list_accordion childshow">
-												<b>${module.getCode()} : </b>
-												${module.getTitre()}
-												<form action="/ModuLilas-Isep/ModuleEdition" method="post">
-												<label>
-												<i class="fas fa-edit icon_module edit"></i>
-												<input type="submit" style="display:none;">
-												<input type="hidden" name="code" value="${module.getCode()}">
-												<i class="fas fa-eye icon_module"></i>
-												</label>
-												</form>
+													<form action="/ModuLilas-Isep/ModuleEdition" method="post">
+														<b>${module.getCode()} : </b>
+														${module.getTitre()}
+												
+														<label>
+															<i class="fas fa-edit icon_module edit"></i>
+															<input type="hidden" name="code" value="${module.getCode()}">
+												
+															<input type="submit" style="display:none;">
+														</label>
+														<i class="fas fa-eye icon_module"></i>
+													</form>
+												
+												
 												</li>
 											</c:forEach>
                                 		</ul>
@@ -70,7 +74,7 @@
                     </div>
                         
                  
-                </form>
+                </div>
             </div>
         
         <div class="lateral_menu">
@@ -96,8 +100,9 @@
     </div>
 </body>
 </html>
-
+ 
 <script>
+
     
 $(".childshow").click(function (e) {
     e.stopPropagation();
