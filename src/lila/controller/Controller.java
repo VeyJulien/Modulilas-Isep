@@ -48,10 +48,10 @@ public class Controller extends HttpServlet {
 		String action = request.getServletPath();
 		System.out.println(action);
 		
-		/*
-		PDFCreator.htmlToPdf(MySQLDB.dataToHtml(2), "ficheModule.pdf");
+		
+		PDFCreator.htmlToPdf(MySQLDB.dataToHtml(1), "ficheModule.pdf");
 		PDFCreator.htmlToPdf(MySQLDB.catalogueInHtml(), "catalogue.pdf");
-*/
+
 
 		
 		

@@ -81,7 +81,7 @@
               		<form style=" height:120%;">
               		<div style="display:flex;">
                     		<input class="save_container" value="Enregistrer" type="submit">
-                    		<button class="generator_book">Générer le catalogue</button>
+                    		<button class="generator_book"><a href="catalogue.pdf" download style="color:white; font_decoration:none">Générer le catalogue</a></button>
                     </div>
                     
                     <div style="overflow:scroll; height:40%;">

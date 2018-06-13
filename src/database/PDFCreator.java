@@ -17,7 +17,7 @@ public class PDFCreator {
 		
 		String resources = pathToProjectFile+"WebContent/"; //fichier danslequel il faut mettre les ressources (images, etc...) utilisée par le créateur de pdf
 		//String html =readHtmlFile(pathToProjectFile+"WebContent/"+inputFileName);
-		String path=pathToProjectFile+"PDFCreator/";
+		String path=pathToProjectFile+"WebContent/";
 		String pdf=String.format("%s"+outputFileName, path);
 		
 		File file = new File(path);
