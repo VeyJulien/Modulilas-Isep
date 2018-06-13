@@ -78,6 +78,11 @@ public class FormModification extends HttpServlet {
 					}
 				}
 		
+		for (int i = 1; i<=4; i++){
+			String Titre = request.getParameter("formStep" + i);
+			MySQLDB.updateStep(Titre, i);
+		}
+		
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/Gerer_les_champs");
 		dispatcher.forward(request, response);
 		
