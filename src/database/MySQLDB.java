@@ -40,7 +40,7 @@ public class MySQLDB {
 			//Julien co :   Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
 
 
-			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "root");
+			Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulilas", "root", "");
 
 			if (Conn != null) {
 				log("Connection Successful! Enjoy. Now it's time to push data");

@@ -11,7 +11,7 @@ import com.itextpdf.html2pdf.HtmlConverter;
 
 public class PDFCreator {
 	public static void htmlToPdf(String html, String outputFileName) throws FileNotFoundException, IOException {
-		String pathToProjectFile="C://Users/thinkpad/Code/GitHubRepositories/Modulilas/";//"D://Documents/GitHub/Modulilas-Isep/";
+		String pathToProjectFile="D://Documents/GitHub/Modulilas-Isep/";//Documents/GitHub/Modulilas-Isep/";
 		//System.out.println(System.getProperty("user.dir"));
 		
 		
