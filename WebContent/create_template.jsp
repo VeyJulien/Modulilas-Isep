@@ -67,6 +67,7 @@
                     		
                     		<div style="display:flex;">
                     		<input id="step<%=j%>" type="hidden" value="${step.getFormStep()}" name="step<%=j%>" >
+                    		<input id="id<%=j%>" type="hidden" value="${fieldtype.getFieldTypeId()}" name="id<%=j%>" >
                     		<i type="button" onclick="delete_element(this)" class="far fa-trash-alt manage_field_icon"></i>
                     		<i type="button" onclick="hide_element(this)" class="fas fa-eye manage_field_icon_2"></i>
                         
@@ -291,17 +292,15 @@ function add_to_list(name)
         num = num + 1;
         
         
-        var div = document.getElementById("formulaire");
-        var nodelist = div.getElementsByTagName("LI");
-        var max = nodelist.length;
+        var max = parseInt(document.getElementById("maximum").value);
         
         var list_contain = "<div style=\"display:flex;\"><input id=\"step" + max + "\" type=\"hidden\" value=\"" + st + "\" name=\"step" + max + "\" ><i type=\"button\" onclick=\"delete_element(this)\" class=\"far fa-trash-alt manage_field_icon\"></i><i type=\"button\" onclick=\"hide_element(this)\" class=\"fas fa-eye manage_field_icon_2\"></i><li class=\"element_list_template2\"><div style=\"padding-right:18px;\"class=\"count_template\">" + num + "</div><div style=\"display:block; margin-right:10px; min-width: 75px;\"><i type=\"button\" onclick=\"switch_button(this, " + max + ")\" class=\"fas fa-align-justify icon_selection_type\"></i><i type=\"button\" onclick=\"switch_button(this, " + max + ")\" class=\"fas fa-underline icon_selection_type icon_selection_type_active\"></i><br><i type=\"button\" onclick=\"switch_button(this, " + max + ")\" class=\"far fa-check-square icon_selection_type \"></i><i type=\"button\" onclick=\"switch_button(this, " + max + ")\" class=\"fas fa-plus-circle icon_selection_type\"></i><input id=\"format" + max + "\" type=\"hidden\" value=\"2\" name=\"format" + max + "\" ></div><div style=\"display:block;\"><input class=\"input_template\" name=\"title" + max + "\"><input class=\"input_template\" name=\"description" + max + "\"></div><div class=\"arrow_container\"><i class=\"fas fa-arrow-up arrow_up_template\"></i><br><i class=\"fas fa-arrow-down arrow_down_template\"></i></div></li></div>";
         
         $(list_name).append(list_contain);
         
-        var max = max + 1;
-        document.getElementById("maximum").value = max;
         
+        max = max + 1;
+        document.getElementById("maximum").value = max;
     }
 
 show_step_1();

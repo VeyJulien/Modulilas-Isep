@@ -156,6 +156,32 @@ public static void addFieldtype(String Titre, String Description, int Format, in
 		// execute insert SQL statement
 		PrepareStat.executeUpdate();
 		log(Titre + " added successfully");
+		
+		String selectQueryStatement = "SELECT fieldTypeId FROM fieldtype WHERE title = ?";
+		
+		PrepareStat = Conn.prepareStatement(selectQueryStatement);
+		PrepareStat.setString(1, Titre);
+		
+		ResultSet rs = PrepareStat.executeQuery();
+		
+		int fieldID=0;
+		
+		while(rs.next()) {
+			fieldID = rs.getInt("fieldTypeId");
+		}
+		
+		List<Template> allViews = AllTemplate(); 
+		
+		for (Template view : allViews){
+			String insertQueryStatement1 = "INSERT INTO viewfieldtype(viewId, fieldTypeId, isActive) VALUES (?,?,1)";           
+			
+			PrepareStat = Conn.prepareStatement(insertQueryStatement1);
+			PrepareStat.setInt(1, view.getViewId());
+			PrepareStat.setInt(2, fieldID);
+ 
+			// execute insert SQL statement
+			PrepareStat.executeUpdate();
+		}
 	} catch (
 
 	SQLException e) {

@@ -58,19 +58,23 @@ public class FormModification extends HttpServlet {
 		for (int i=0;i<max;i++){
 				String Titre = request.getParameter("title" + i);
 				if(Titre == null && i< fields.size()){
-					int id = fields.get(i).getFieldTypeId();
+					int id = Integer.parseInt(request.getParameter("id" + i));
 					MySQLDB.delFieldtype(id);
 				}else if(i< fields.size()) {
 					String Description = request.getParameter("description" + i);
-					int format = Integer.parseInt(request.getParameter("format" + i));
-					int formStep = Integer.parseInt(request.getParameter("step" + i));
-					int id = fields.get(i).getFieldTypeId();
-					MySQLDB.updateFieldtype(id,Titre, Description, format, formStep);			
+					if (request.getParameter("format" + i)!=null){
+						int format = Integer.parseInt(request.getParameter("format" + i));
+						int formStep = Integer.parseInt(request.getParameter("step" + i));
+						int id = Integer.parseInt(request.getParameter("id" + i));
+						MySQLDB.updateFieldtype(id,Titre, Description, format, formStep);
+					}
 				}else{
-					String Description = request.getParameter("description" + i);
-					int format = Integer.parseInt(request.getParameter("format" + i));
-					int formStep = Integer.parseInt(request.getParameter("step" + i));
-					MySQLDB.addFieldtype(Titre,Description, format, formStep);
+					if (request.getParameter("format" + i)!=null){
+						String Description = request.getParameter("description" + i);
+						int format = Integer.parseInt(request.getParameter("format" + i));
+						int formStep = Integer.parseInt(request.getParameter("step" + i));
+						MySQLDB.addFieldtype(Titre,Description, format, formStep);
+						}
 					}
 				}
 		
