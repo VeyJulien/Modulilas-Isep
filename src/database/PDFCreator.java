@@ -10,12 +10,13 @@ import com.itextpdf.html2pdf.ConverterProperties;
 import com.itextpdf.html2pdf.HtmlConverter;
 
 public class PDFCreator {
-	public static void htmlToPdf(String inputFileName, String outputFileName) throws FileNotFoundException, IOException {
-		String pathToProjectFile="D://Documents/GitHub/Modulilas-Isep/";
+	public static void htmlToPdf(String html, String outputFileName) throws FileNotFoundException, IOException {
+		String pathToProjectFile="C://Users/thinkpad/Code/GitHubRepositories/Modulilas/";//"D://Documents/GitHub/Modulilas-Isep/";
+		//System.out.println(System.getProperty("user.dir"));
 		
 		
-		String resources = pathToProjectFile+"WebContent/";
-		String html =readHtmlFile(pathToProjectFile+"WebContent/"+inputFileName);
+		String resources = pathToProjectFile+"WebContent/"; //fichier danslequel il faut mettre les ressources (images, etc...) utilisée par le créateur de pdf
+		//String html =readHtmlFile(pathToProjectFile+"WebContent/"+inputFileName);
 		String path=pathToProjectFile+"PDFCreator/";
 		String pdf=String.format("%s"+outputFileName, path);
 		

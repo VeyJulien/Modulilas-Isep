@@ -48,12 +48,14 @@ public class Controller extends HttpServlet {
 		String action = request.getServletPath();
 		System.out.println(action);
 		
-		List<String>[] testBienPropre=MySQLDB.get_ListModuleData_And_ListModuleFieldTypeId(1);
+		/*List<String>[] testBienPropre=MySQLDB.get_ListModuleData_And_ListModuleFieldTypeId(1);
 		for(int i=0; i<testBienPropre[0].size(); i++) {
 			System.out.println(testBienPropre[0].get(i));
 			System.out.println(testBienPropre[1].get(i));
-		}
-		MySQLDB.noeFaure(1);
+		}*/
+		PDFCreator.htmlToPdf(MySQLDB.dataToHtml(2), "ficheModule.pdf");
+		PDFCreator.htmlToPdf(MySQLDB.catalogueInHtml(), "catalogue.pdf");
+
 
 		
 		
