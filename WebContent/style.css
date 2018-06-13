@@ -204,11 +204,11 @@ input::-webkit-input-placeholder
 .lateral_menu
 {
     width:20%;
-    height:542px;
+    height:540px;
     background-color: rgb(73,73,76);
     color:white;
     position:absolute;
-    margin-top:-492px;
+    margin-top:-490px;
     border-radius: 20px 0px 0px 20px;
     min-width: 157px;
     border-right: 10px solid white;
@@ -324,7 +324,7 @@ input::-webkit-input-placeholder
 {
     border-radius: 50%;
     font-size: 40px;
-    padding: 0px 17px 0px 16px;
+    padding: 9px 17px 9px 16px;
     color: white;
     background-color: #ff5c6a;
     position: absolute;
