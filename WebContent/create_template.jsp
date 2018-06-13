@@ -58,7 +58,7 @@
                 	<div id="step_${step.getFormStep()}">
                     
                 	<div class="label_input_step_name">Nom de l'&#233;tape</div>
-                	<input value="${step.getTitre()}" class="input_step_name" type="text">
+                	<input value="${step.getTitre()}" class="input_step_name" type="text" name="formStep${step.getFormStep()}">
 
                 	<ul id="list_${step.getFormStep()}" class="list_template">
                     	<% int i = 0; %>

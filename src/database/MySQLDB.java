@@ -225,6 +225,27 @@ public static void delFieldtype(int ID) {
 		e.printStackTrace();
 	}
 }
+
+public static void updateStep(String Titre, int Step) {
+	 
+	
+	try {
+		String updateQueryStatement = "UPDATE step SET titre = ?";
+		updateQueryStatement += " WHERE formStep = ?";
+
+		PrepareStat = Conn.prepareStatement(updateQueryStatement);
+		PrepareStat.setString(1, Titre);
+		PrepareStat.setInt(2, Step);
+
+		// execute insert SQL statement
+		PrepareStat.executeUpdate();
+		log(Titre + " modified successfully");
+	} catch (
+
+	SQLException e) {
+		e.printStackTrace();
+	}
+}
 	
 public static int getModuleID(String Code) {
 		
